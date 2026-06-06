@@ -11,14 +11,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, delay },
 });
 
-const categoryOrder = ['Undergraduate', 'Masters', 'Advisor'];
-
 export default function Team() {
-  const grouped = categoryOrder.map((cat) => ({
-    cat,
-    members: teamMembers.filter((m) => m.category === cat),
-  }));
-
   return (
     <SectionWrapper id="team" className="py-24 bg-[#081C2D] relative overflow-hidden">
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#00C16E]/4 blur-[140px] pointer-events-none" />
@@ -93,36 +86,6 @@ export default function Team() {
           ))}
         </div>
 
-        {/* University affiliation */}
-        <motion.div
-          {...fadeUp(0.2)}
-          className="rounded-2xl p-8 border border-white/5 bg-gradient-to-r from-white/[0.015] to-transparent flex flex-col sm:flex-row items-center gap-6"
-        >
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#00C16E]/15 to-[#3B82F6]/10 flex items-center justify-center border border-[#00C16E]/20 flex-shrink-0">
-            <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10 text-[#00C16E]">
-              <path d="M24 6 L44 16 L24 26 L4 16 Z" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.5"/>
-              <path d="M10 20 L10 36 Q24 42 38 36 L38 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.7"/>
-              <line x1="44" y1="16" x2="44" y2="30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-white font-bold text-lg mb-1">University of Queensland</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              TacklEmissions is an undergraduate research initiative within the School of Chemical
-              Engineering at the University of Queensland, Brisbane, Australia. Our work is supported
-              by access to state-of-the-art molecular biology and bioprocess engineering facilities.
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-2 flex-shrink-0">
-            <span className="text-xs text-gray-500 uppercase tracking-wider">We are hiring</span>
-            <a
-              href="#contact"
-              className="text-sm font-medium text-[#00C16E] border border-[#00C16E]/30 px-4 py-2 rounded-full hover:bg-[#00C16E]/10 transition-all whitespace-nowrap"
-            >
-              Join the Team →
-            </a>
-          </div>
-        </motion.div>
       </div>
     </SectionWrapper>
   );

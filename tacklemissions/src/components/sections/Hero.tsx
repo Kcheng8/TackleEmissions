@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, ChevronRight } from 'lucide-react';
 
@@ -191,15 +192,14 @@ export default function Hero() {
           <p className="text-center text-xs text-gray-500 uppercase tracking-widest mb-6 font-medium">
             How It Works
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0">
+          <div className="flex flex-col sm:flex-row items-center justify-center">
             {flowSteps.map((step, i) => (
-              <div key={i} className="flex flex-row sm:flex-col items-center sm:items-center gap-3 sm:gap-0">
-                {/* Card */}
+              <React.Fragment key={i}>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-                  className="glass rounded-xl p-4 flex flex-col items-center gap-2 min-w-[100px] sm:min-w-[110px] hover:border-[#00C16E]/30 transition-all duration-300 group"
+                  className="glass rounded-xl p-4 flex flex-col items-center gap-2 w-[120px] hover:border-[#00C16E]/30 transition-all duration-300 group"
                 >
                   <div className="text-[#00C16E] group-hover:scale-110 transition-transform">
                     {step.icon}
@@ -209,21 +209,22 @@ export default function Hero() {
                     <p className="text-gray-500 text-[10px] mt-0.5 leading-tight">{step.sublabel}</p>
                   </div>
                 </motion.div>
-                {/* Arrow */}
                 {i < flowSteps.length - 1 && (
-                  <div className="flex items-center sm:hidden text-gray-600">
-                    <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4">
-                      <path d="M8 3L13 8L8 13M3 8H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                    </svg>
-                  </div>
+                  <>
+                    {/* Mobile: down arrow */}
+                    <div className="flex sm:hidden items-center justify-center py-2 text-gray-600">
+                      <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
+                        <path d="M8 3v10M3 11l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    {/* Desktop: horizontal connector */}
+                    <div className="hidden sm:flex items-center mx-1">
+                      <div className="w-6 h-[1px] bg-gradient-to-r from-[#00C16E]/40 to-[#3B82F6]/40" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]/60" />
+                    </div>
+                  </>
                 )}
-                {i < flowSteps.length - 1 && (
-                  <div className="hidden sm:flex flex-col items-center my-1 self-center">
-                    <div className="w-8 h-[1px] bg-gradient-to-r from-[#00C16E]/40 to-[#3B82F6]/40" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]/60 mt-[-3px] ml-6" />
-                  </div>
-                )}
-              </div>
+              </React.Fragment>
             ))}
           </div>
         </motion.div>
