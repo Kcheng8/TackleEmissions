@@ -52,12 +52,16 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .glass-card {
   background: rgba(13, 43, 71, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.06);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .glass-card:hover {
   border-color: rgba(0, 193, 110, 0.2);
