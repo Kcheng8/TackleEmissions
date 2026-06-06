@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { teamMembers } from '@/lib/data';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 
@@ -44,14 +45,19 @@ export default function Team() {
               {/* Avatar */}
               <div className="flex items-center gap-4 mb-5">
                 <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold border-2 flex-shrink-0 transition-transform group-hover:scale-105"
+                  className="relative w-14 h-14 rounded-full overflow-hidden border-2 flex-shrink-0 transition-transform group-hover:scale-105"
                   style={{
                     background: `linear-gradient(135deg, ${member.color}25, ${member.color}10)`,
                     borderColor: `${member.color}40`,
-                    color: member.color,
                   }}
                 >
-                  {member.initials}
+                  <Image
+                    src="/Placeholder.png"
+                    alt={member.name}
+                    fill
+                    sizes="56px"
+                    className="object-cover opacity-80"
+                  />
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm leading-tight">{member.name}</p>
