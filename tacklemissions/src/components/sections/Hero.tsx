@@ -192,7 +192,8 @@ export default function Hero() {
           <p className="text-center text-xs text-gray-500 uppercase tracking-widest mb-6 font-medium">
             How It Works
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center">
+          <div className="overflow-x-auto pb-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:min-w-max mx-auto">
             {flowSteps.map((step, i) => (
               <React.Fragment key={i}>
                 <motion.div
@@ -226,6 +227,7 @@ export default function Hero() {
                 )}
               </React.Fragment>
             ))}
+          </div>
           </div>
         </motion.div>
       </div>

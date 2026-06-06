@@ -67,8 +67,8 @@ export default function Market() {
           <h3 className="text-white font-bold text-xl mb-8">Revenue Stream Breakdown</h3>
           <div className="space-y-4">
             {marketSegments.map((seg, i) => (
-              <div key={i} className="flex items-center gap-4">
-                <div className="w-36 text-sm text-gray-300 text-right">{seg.label}</div>
+              <div key={i} className="flex items-center gap-3 sm:gap-4">
+                <div className="w-24 sm:w-36 text-xs sm:text-sm text-gray-300 text-right shrink-0">{seg.label}</div>
                 <div className="flex-1 h-3 rounded-full bg-white/5 overflow-hidden">
                   <motion.div
                     className="h-full rounded-full"
@@ -100,7 +100,38 @@ export default function Market() {
             — differentiating from both chemical and supply-chain-constrained solutions.
           </motion.p>
 
-          <motion.div {...fadeUp(0.1)} className="overflow-x-auto">
+          {/* Mobile: cards */}
+          <motion.div {...fadeUp(0.1)} className="flex flex-col gap-3 sm:hidden">
+            {competitors.map((c, i) => (
+              <div
+                key={i}
+                className={`rounded-xl p-4 border ${
+                  c.isOurs ? 'border-[#00C16E]/30 bg-[#00C16E]/5' : 'border-white/5 bg-white/[0.02]'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className={`font-semibold text-sm ${c.isOurs ? 'text-[#00C16E]' : 'text-white'}`}>
+                    {c.company}
+                  </span>
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                    c.isOurs
+                      ? 'bg-[#00C16E]/15 text-[#00C16E] border border-[#00C16E]/30'
+                      : 'bg-[#F59E0B]/10 text-[#F59E0B] border border-[#F59E0B]/20'
+                  }`}>
+                    {c.stage}
+                  </span>
+                </div>
+                <p className="text-gray-300 text-xs mb-1">{c.technology}</p>
+                <div className="flex items-center justify-between mt-2">
+                  <span className="text-gray-500 text-xs">{c.limitation}</span>
+                  <span className="text-gray-400 text-xs font-mono ml-3 shrink-0">{c.funding}</span>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Desktop: table */}
+          <motion.div {...fadeUp(0.1)} className="hidden sm:block overflow-x-auto">
             <table className="w-full min-w-[700px]">
               <thead>
                 <tr className="border-b border-white/8">

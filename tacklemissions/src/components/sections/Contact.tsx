@@ -58,7 +58,7 @@ export default function Contact() {
               <h3 className="text-white font-bold text-lg mb-4">Contact Details</h3>
               <div className="space-y-3">
                 {[
-                  { icon: '📧', label: 'Email', value: 'kierrencheng10@gmail.com' },
+                  { icon: '📧', label: 'Email', value: 'contact@tacklemissions.com' },
                   { icon: '📍', label: 'Location', value: 'Brisbane, Queensland, Australia' },
                   { icon: '🎓', label: 'Affiliation', value: 'University of Queensland' },
                   { icon: '⏱', label: 'Response Time', value: 'Within 48 hours' },

@@ -122,7 +122,27 @@ export default function Research() {
         {/* Workflow */}
         <motion.div {...fadeUp(0.15)} className="mt-16 glass-card rounded-2xl p-8">
           <h3 className="text-white font-bold text-lg mb-6 text-center">Synthetic Biology Design Workflow</h3>
-          <div className="flex flex-wrap justify-center items-center gap-3">
+          {/* Mobile: 2-col grid, no connectors */}
+          <div className="grid grid-cols-3 sm:hidden gap-4 justify-items-center max-w-xs mx-auto">
+            {['Design', 'Build', 'Test', 'Learn', 'Optimise'].map((step, i) => (
+              <div key={i} className="flex flex-col items-center gap-1">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-sm font-bold border"
+                  style={{
+                    color: ['#00C16E','#22d87a','#3B82F6','#60A5FA','#8B5CF6'][i],
+                    borderColor: `${['#00C16E','#22d87a','#3B82F6','#60A5FA','#8B5CF6'][i]}30`,
+                    background: `${['#00C16E','#22d87a','#3B82F6','#60A5FA','#8B5CF6'][i]}10`,
+                  }}
+                >
+                  {['D','B','T','L','O'][i]}
+                </div>
+                <span className="text-xs text-gray-400">{step}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: row with connectors */}
+          <div className="hidden sm:flex flex-wrap justify-center items-center gap-3">
             {['Design', 'Build', 'Test', 'Learn', 'Optimise'].map((step, i, arr) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="flex flex-col items-center gap-1">

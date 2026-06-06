@@ -108,7 +108,7 @@ export default function Impact() {
 
               {/* Visual element */}
               <div className="flex items-center justify-center">
-                <div className="relative w-64 h-64">
+                <div className="relative w-44 h-44 sm:w-64 sm:h-64">
                   {/* Rings */}
                   {[0, 1, 2].map((ring) => (
                     <div
@@ -116,7 +116,7 @@ export default function Impact() {
                       className="absolute inset-0 rounded-full border opacity-20 animate-spin-slow"
                       style={{
                         borderColor: ['#00C16E', '#3B82F6', '#8B5CF6'][ring],
-                        margin: `${ring * 20}px`,
+                        margin: `${ring * 14}px`,
                         animationDelay: `${ring * -4}s`,
                         animationDuration: `${20 + ring * 8}s`,
                       }}
@@ -125,10 +125,10 @@ export default function Impact() {
                   {/* Centre */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-5xl font-bold gradient-text-green leading-none">
+                      <div className="text-3xl sm:text-5xl font-bold gradient-text-green leading-none">
                         Net
                       </div>
-                      <div className="text-5xl font-bold text-white leading-none">Zero</div>
+                      <div className="text-3xl sm:text-5xl font-bold text-white leading-none">Zero</div>
                       <div className="text-xs text-gray-400 mt-2">Agriculture</div>
                     </div>
                   </div>
