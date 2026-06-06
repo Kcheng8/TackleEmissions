@@ -88,15 +88,6 @@ export default function Investors() {
                 boxShadow: tier.featured ? `0 0 60px ${tier.color}15` : undefined,
               }}
             >
-              {tier.featured && (
-                <div
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-1 rounded-full"
-                  style={{ background: tier.color, color: '#081C2D' }}
-                >
-                  Most Popular
-                </div>
-              )}
-
               {/* Icon + title */}
               <div className="flex items-center gap-3 mb-4">
                 <div
