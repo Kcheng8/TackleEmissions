@@ -144,8 +144,8 @@ export default function Hero() {
         >
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-white">
             Engineering Biology to{' '}
-            <span className="gradient-text">Eliminate Livestock</span>{' '}
-            Methane
+            <span className="gradient-text">Eliminate Methane</span>{' '}
+            from Livestock
           </h1>
         </motion.div>
 

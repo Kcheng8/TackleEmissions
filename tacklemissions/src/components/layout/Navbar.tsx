@@ -5,6 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navLinks } from '@/lib/data';
 
+const NAV_HEIGHT = 64;
+
+function scrollToSection(href: string) {
+  const id = href.replace('#', '');
+  const el = document.getElementById(id);
+  if (el) {
+    const top = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -44,6 +55,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
+                onClick={(e) => { e.preventDefault(); scrollToSection(l.href); }}
                 className="text-gray-400 hover:text-white text-sm px-3 py-2 rounded-lg hover:bg-white/5 transition-all duration-200"
               >
                 {l.label}
@@ -55,6 +67,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="#investors"
+              onClick={(e) => { e.preventDefault(); scrollToSection('#investors'); }}
               className="text-sm font-medium text-[#00C16E] border border-[#00C16E]/40 px-4 py-2 rounded-full hover:bg-[#00C16E]/10 transition-all duration-200"
             >
               Partner With Us
@@ -87,7 +100,7 @@ export default function Navbar() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => { e.preventDefault(); setOpen(false); setTimeout(() => scrollToSection(l.href), 300); }}
                   className="block text-gray-300 hover:text-white px-3 py-2.5 rounded-lg hover:bg-white/5 transition-colors text-sm"
                 >
                   {l.label}
@@ -96,7 +109,7 @@ export default function Navbar() {
               <div className="pt-2 border-t border-white/5">
                 <a
                   href="#investors"
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => { e.preventDefault(); setOpen(false); setTimeout(() => scrollToSection('#investors'), 300); }}
                   className="block text-[#00C16E] font-medium px-3 py-2.5 text-sm"
                 >
                   Partner With Us →
