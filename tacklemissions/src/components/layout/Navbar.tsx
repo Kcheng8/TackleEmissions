@@ -45,7 +45,7 @@ export default function Navbar() {
               </svg>
             </div>
             <span className="font-bold text-white tracking-tight text-lg">
-              Tackl<span className="text-[#00C16E]">Emissions</span>
+              Tackl<span className="text-[#00C16E]">Emission</span>
             </span>
           </a>
 

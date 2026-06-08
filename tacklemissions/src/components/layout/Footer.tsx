@@ -15,7 +15,7 @@ export default function Footer() {
                 </svg>
               </div>
               <span className="font-bold text-white text-lg tracking-tight">
-                Tackl<span className="text-[#00C16E]">Emissions</span>
+                Tackl<span className="text-[#00C16E]">Emission</span>
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
