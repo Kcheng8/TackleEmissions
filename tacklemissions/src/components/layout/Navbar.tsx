@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import { navLinks } from '@/lib/data';
 
 const NAV_HEIGHT = 64;
@@ -38,11 +39,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00C16E] to-[#3B82F6] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-              <svg viewBox="0 0 20 20" fill="white" className="w-4 h-4">
-                <path d="M10 2C6.686 2 4 4.686 4 8c0 2.21 1.13 4.16 2.847 5.305L6 18h8l-.847-4.695C14.87 12.16 16 10.21 16 8c0-3.314-2.686-6-6-6zm0 2a4 4 0 110 8A4 4 0 0110 4z" />
-                <circle cx="10" cy="8" r="2" fill="white" opacity="0.7" />
-              </svg>
+            <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform">
+              <Image
+                src="/logo.png"
+                alt="TacklEmission logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="font-bold text-white tracking-tight text-lg">
               Tackl<span className="text-[#00C16E]">Emission</span>
