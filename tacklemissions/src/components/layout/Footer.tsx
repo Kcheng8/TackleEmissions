@@ -66,7 +66,7 @@ export default function Footer() {
         <div className="section-divider mb-8" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© {year} TacklEmissions. All rights reserved. University of Queensland research project.</p>
+          <p>© {year} TacklEmission. All rights reserved. University of Queensland research project.</p>
           <p className="text-gray-600">* Efficacy projections based on literature data. Not yet validated in vivo.</p>
         </div>
       </div>

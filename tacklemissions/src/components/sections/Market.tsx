@@ -86,7 +86,7 @@ export default function Market() {
             ))}
           </div>
           <p className="text-gray-600 text-xs mt-6">
-            * Revenue projections are indicative. TacklEmissions intends to pursue multiple
+            * Revenue projections are indicative. TacklEmission intends to pursue multiple
             parallel revenue streams including feed additives, carbon credit generation, and
             technology licensing.
           </p>
@@ -96,7 +96,7 @@ export default function Market() {
         <div>
           <motion.h3 {...fadeUp()} className="text-2xl font-bold text-white mb-2">Competitive Landscape</motion.h3>
           <motion.p {...fadeUp(0.05)} className="text-gray-400 text-sm mb-8">
-            TacklEmissions occupies a unique position with targeted biodegradable nanotechnology
+            TacklEmission occupies a unique position with targeted biodegradable nanotechnology
             — differentiating from both chemical and supply-chain-constrained solutions.
           </motion.p>
 

@@ -156,7 +156,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="text-center text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          TacklEmissions develops targeted biodegradable nanotechnology that reduces
+          TacklEmission develops targeted biodegradable nanotechnology that reduces
           methane-producing microbes in cattle, helping agriculture reach net zero.
         </motion.p>
 

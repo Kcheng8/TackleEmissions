@@ -58,7 +58,7 @@ export default function Contact() {
               <h3 className="text-white font-bold text-lg mb-4">Contact Details</h3>
               <div className="space-y-3">
                 {[
-                  { icon: '📧', label: 'Email', value: 'contact@tacklemissions.com' },
+                  { icon: '📧', label: 'Email', value: 'contact@tacklemission.com' },
                   { icon: '📍', label: 'Location', value: 'Brisbane, Queensland, Australia' },
                   { icon: '🎓', label: 'Affiliation', value: 'University of Queensland' },
                   { icon: '⏱', label: 'Response Time', value: 'Within 48 hours' },
@@ -167,7 +167,7 @@ export default function Contact() {
                   <textarea
                     required
                     rows={5}
-                    placeholder="Tell us about your interest in TacklEmissions, any specific questions, or how you'd like to collaborate…"
+                    placeholder="Tell us about your interest in TacklEmission, any specific questions, or how you'd like to collaborate…"
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className={inputClass + ' resize-none'}
@@ -186,7 +186,7 @@ export default function Contact() {
                   {submitting ? 'Sending…' : 'Send Message'}
                 </button>
                 <p className="text-gray-600 text-xs text-center">
-                  Your message is sent directly to the TacklEmissions team. We do not share contact details with third parties.
+                  Your message is sent directly to the TacklEmission team. We do not share contact details with third parties.
                 </p>
               </form>
             )}

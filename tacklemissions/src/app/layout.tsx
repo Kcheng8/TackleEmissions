@@ -4,11 +4,11 @@ import "./globals.css";
 
 const geist = Geist({ subsets: ["latin"] });
 
-const SITE_URL = "https://tacklemissions.com";
-const SITE_NAME = "TacklEmissions";
-const TITLE = "TacklEmissions — Engineering Biology to Eliminate Methane from Livestock";
+const SITE_URL = "https://tacklemission.com";
+const SITE_NAME = "TacklEmission";
+const TITLE = "TacklEmission — Engineering Biology to Eliminate Methane from Livestock";
 const DESCRIPTION =
-  "TacklEmissions develops targeted, biodegradable PHA nanoparticles displaying the PeiR enzyme to selectively reduce methane-producing archaea in the cattle rumen — helping agriculture reach net zero.";
+  "TacklEmission develops targeted, biodegradable PHA nanoparticles displaying the PeiR enzyme to selectively reduce methane-producing archaea in the cattle rumen — helping agriculture reach net zero.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -70,7 +70,7 @@ const organizationJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   description: DESCRIPTION,
-  email: "contact@tacklemissions.com",
+  email: "contact@tacklemission.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Brisbane",

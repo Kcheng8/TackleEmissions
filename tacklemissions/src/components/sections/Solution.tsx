@@ -30,7 +30,7 @@ export default function Solution() {
             Our Solution
           </motion.div>
           <motion.h2 {...fadeUp(0.05)} className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            How <span className="gradient-text">TacklEmissions</span> Works
+            How <span className="gradient-text">TacklEmission</span> Works
           </motion.h2>
           <motion.p {...fadeUp(0.1)} className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             A five-step biological pathway from engineered nanoparticles to sustained methane

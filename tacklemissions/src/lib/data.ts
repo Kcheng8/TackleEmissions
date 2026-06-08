@@ -82,7 +82,7 @@ export const currentSolutions = [
   },
   {
     name: "PHA Nano-PeiR",
-    company: "TacklEmissions",
+    company: "TacklEmission",
     effectiveness: "60–80%*",
     limitations: ["Novel approach — in validation"],
     status: "R&D Stage",
@@ -178,7 +178,7 @@ export const competitors = [
   { company: "Rumin8",            technology: "Synthetic bromoform delivery",   stage: "Commercial",   limitation: "Regulatory concerns, daily dosing",       funding: "$100M+" },
   { company: "Bovaer (DSM)",      technology: "3-NOP chemical inhibitor",       stage: "Commercial",   limitation: "Daily dosing, chemical safety pathway",   funding: ">$500M" },
   { company: "Mootral",           technology: "Garlic & citrus extract",        stage: "Commercial",   limitation: "Inconsistent efficacy, palatability",     funding: "$30M+" },
-  { company: "TacklEmissions",    technology: "Targeted PHA-PeiR nanoparticles", stage: "Pre-Seed R&D", limitation: "— Differentiated novel approach",       funding: "Seeking seed", isOurs: true },
+  { company: "TacklEmission",    technology: "Targeted PHA-PeiR nanoparticles", stage: "Pre-Seed R&D", limitation: "— Differentiated novel approach",       funding: "Seeking seed", isOurs: true },
 ];
 
 export const researchTimeline = [
@@ -293,7 +293,7 @@ export const partnershipTiers = [
   },
   {
     tier: "Industry Pilot Partner",
-    description: "Be first to test TacklEmissions technology in real livestock operations and participate in the commercial rollout.",
+    description: "Be first to test TacklEmission technology in real livestock operations and participate in the commercial rollout.",
     benefits: [
       "Exclusive pilot program access",
       "Carbon credit participation rights",

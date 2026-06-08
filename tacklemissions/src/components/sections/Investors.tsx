@@ -65,7 +65,7 @@ export default function Investors() {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <blockquote className="text-xl text-gray-300 leading-relaxed border-l-2 border-[#00C16E]/40 pl-6 text-left italic">
-            &ldquo;TacklEmissions represents an early-stage opportunity in one of the largest
+            &ldquo;TacklEmission represents an early-stage opportunity in one of the largest
             untapped climate mitigation markets — with a biologically novel, IP-protected approach
             positioned ahead of regulatory and ESG tailwinds.&rdquo;
           </blockquote>

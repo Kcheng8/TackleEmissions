@@ -30,7 +30,7 @@ export default function Impact() {
             <span className="gradient-text">Matter</span>
           </motion.h2>
           <motion.p {...fadeUp(0.1)} className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            If adopted at scale, TacklEmissions technology could represent one of the
+            If adopted at scale, TacklEmission technology could represent one of the
             largest single-source methane reductions ever achieved in agriculture.
           </motion.p>
         </div>
@@ -84,7 +84,7 @@ export default function Impact() {
                   A Pathway to Carbon Credits for Farmers
                 </h3>
                 <p className="text-gray-300 text-base leading-relaxed mb-6">
-                  Beyond direct methane reduction, TacklEmissions enables farmers to participate
+                  Beyond direct methane reduction, TacklEmission enables farmers to participate
                   in emerging voluntary carbon markets. Each tonne of CO₂-equivalent avoided
                   can be monetised as carbon credits, creating a new revenue stream while the
                   planet benefits.
