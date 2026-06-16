@@ -18,9 +18,6 @@ function scrollToSection(href: string) {
 
 const num = (i: number) => String(i + 1).padStart(2, '0');
 
-/* Desktop nav drops the trailing Contact link (design shows Problem → Impact). */
-const desktopLinks = navLinks.filter((l) => l.href !== '#contact');
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -79,7 +76,7 @@ export default function Navbar() {
         </a>
 
         <nav className="nav__links" aria-label="Primary">
-          {desktopLinks.map((l, i) => (
+          {navLinks.map((l, i) => (
             <a
               key={l.href}
               href={l.href}
