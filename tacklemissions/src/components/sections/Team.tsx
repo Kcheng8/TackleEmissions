@@ -75,7 +75,6 @@ export default function Team() {
             </div>
             <p className="member__role">{supervisor.role}</p>
             <p className="supervisor__affil">{supervisor.affiliation}</p>
-            <p className="member__bio">{supervisor.bio}</p>
           </div>
         </motion.article>
       </div>
