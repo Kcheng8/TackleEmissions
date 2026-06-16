@@ -7,7 +7,6 @@ import Solution from '@/components/sections/Solution';
 import Technology from '@/components/sections/Technology';
 import Market from '@/components/sections/Market';
 import Research from '@/components/sections/Research';
-import Safety from '@/components/sections/Safety';
 import Team from '@/components/sections/Team';
 import Impact from '@/components/sections/Impact';
 import Investors from '@/components/sections/Investors';
@@ -27,7 +26,6 @@ export default function Home() {
         <Technology />
         <Market />
         <Research />
-        <Safety />
         <Team />
         <Impact />
         <Investors />

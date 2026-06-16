@@ -4,7 +4,6 @@ export const navLinks = [
   { href: "#technology", label: "Technology" },
   { href: "#market",     label: "Market" },
   { href: "#research",   label: "R&D" },
-  { href: "#safety",     label: "Safety" },
   { href: "#team",       label: "Team" },
   { href: "#impact",     label: "Impact" },
   { href: "#contact",    label: "Contact" },
@@ -226,64 +225,6 @@ export const researchTimeline = [
       "Scale-up fermentation studies and COGS modelling",
       "Series A fundraising and global licensing strategy",
     ],
-  },
-];
-
-export const safetyPillars = [
-  {
-    title: "No Meat or Milk Residues",
-    description:
-      "PHA nanoparticles fully biodegrade in the rumen and digestive tract — leaving no chemical residue in meat, milk, or animal tissue. Nothing novel persists in the food chain.",
-    specs: ["Biodegrades in 7–14 days", "No bioaccumulation", "Food-chain safe"],
-    color: "#00C16E",
-  },
-  {
-    title: "Microbiome-Preserving",
-    description:
-      "PeiR cleaves pseudomurein, a cell-wall component unique to methanogenic archaea. Beneficial rumen bacteria, digestion, and animal productivity remain fully intact.",
-    specs: ["Archaea-specific", "Zero bacterial off-target", "Productivity maintained"],
-    color: "#3B82F6",
-  },
-  {
-    title: "GRAS-Safe Biomaterials",
-    description:
-      "PHAs are naturally occurring, metabolisable biopolymers already established as safe in biomedical and food applications — not a synthetic chemical additive.",
-    specs: ["Naturally occurring", "Metabolisable", "Established safety record"],
-    color: "#8B5CF6",
-  },
-  {
-    title: "Animal Welfare First",
-    description:
-      "Delivered through standard feed at low dosing frequency. No wearables, no invasive devices, and no change to animal behaviour or husbandry practices.",
-    specs: ["Non-invasive delivery", "Low dosing burden", "No behavioural impact"],
-    color: "#F59E0B",
-  },
-];
-
-export const regulatoryPath = [
-  {
-    agency: "APVMA — Australia",
-    status: "Pre-submission",
-    statusColor: "green",
-    detail:
-      "Engaging the Australian Pesticides and Veterinary Medicines Authority on the feed-additive registration pathway ahead of animal trials.",
-    color: "#00C16E",
-  },
-  {
-    agency: "FDA CVM — United States",
-    status: "Scoping",
-    statusColor: "amber",
-    detail:
-      "Mapping the Center for Veterinary Medicine animal-food pathway, including a potential GRAS notification route for the PHA carrier.",
-    color: "#3B82F6",
-  },
-  {
-    agency: "EFSA — European Union",
-    status: "Scoping",
-    statusColor: "amber",
-    detail:
-      "Assessing feed-additive authorisation under Regulation (EC) No 1831/2003 — the framework governing novel feed additives across the EU.",
-    color: "#8B5CF6",
   },
 ];
 
