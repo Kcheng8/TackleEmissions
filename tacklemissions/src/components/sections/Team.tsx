@@ -39,7 +39,6 @@ export default function Team() {
                 {m.initials}
               </div>
               <h3>{m.name}</h3>
-              <p className="member__role">{m.role}</p>
               <p className="member__bio">{m.bio}</p>
               <a
                 className="member__linkedin"

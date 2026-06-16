@@ -231,7 +231,6 @@ export const researchTimeline = [
 export const teamMembers = [
   {
     name: "Felipe Victorica",
-    role: "Role / Title",
     affiliation: "University of Queensland",
     bio: "Master of Synthetic Biology & Industrial Biotechnology.",
     category: "Masters",
@@ -241,7 +240,6 @@ export const teamMembers = [
   },
   {
     name: "Rachel Mueller",
-    role: "Role / Title",
     affiliation: "University of Queensland",
     bio: "Master of Synthetic Biology & Industrial Biotechnology.",
     category: "Masters",
@@ -251,7 +249,6 @@ export const teamMembers = [
   },
   {
     name: "Kierren Cheng",
-    role: "Role / Title",
     affiliation: "University of Queensland",
     bio: "Bachelor of Engineering & Science — Chemical & Bioprocess Engineering and Microbiology.",
     category: "Bachelor",
@@ -261,7 +258,6 @@ export const teamMembers = [
   },
   {
     name: "James Fearon",
-    role: "Role / Title",
     affiliation: "University of Queensland",
     bio: "Bachelor of Computer Science & Music.",
     category: "Bachelor",
@@ -271,7 +267,6 @@ export const teamMembers = [
   },
   {
     name: "Jake Yu",
-    role: "Role / Title",
     affiliation: "University of Queensland",
     bio: "Master of Molecular Biology.",
     category: "Masters",

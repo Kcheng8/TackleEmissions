@@ -45,6 +45,28 @@ export default function Footer() {
         </nav>
       </div>
 
+      <div className="wrap footer__partners">
+        <span className="footer__partners-label">Affiliated with</span>
+        <div className="footer__partners-logos">
+          <span className="footer__partner">
+            <Image
+              src="/AIBN.png"
+              alt="Australian Institute for Bioengineering and Nanotechnology (AIBN)"
+              width={30}
+              height={30}
+            />
+          </span>
+          <span className="footer__partner">
+            <Image
+              src="/ASBC.png"
+              alt="Australasian Synthetic Biology Challenge (ASBC)"
+              width={73}
+              height={30}
+            />
+          </span>
+        </div>
+      </div>
+
       <div className="wrap footer__bar">
         <p>© {year} TacklEmission. All rights reserved. University of Queensland research project.</p>
         <p className="footer__disc">
