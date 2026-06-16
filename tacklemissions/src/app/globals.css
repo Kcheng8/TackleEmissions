@@ -388,17 +388,6 @@ em { font-style: normal; }
   border: 1px solid rgba(74,141,222,0.35); border-radius: 2px; pointer-events: none;
 }
 
-/* scroll cue */
-.hero__scroll {
-  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-}
-.hero__scroll-line { width: 1px; height: 38px; background: linear-gradient(var(--faint), transparent); position: relative; overflow: hidden; }
-.hero__scroll-line::after {
-  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 12px;
-  background: var(--primary); animation: scrolldot 1.8s var(--ease) infinite;
-}
-
 /* ---------- Section shell ---------- */
 .section {
   position: relative;
@@ -459,7 +448,6 @@ em { font-style: normal; }
 /* ---------- Keyframes ---------- */
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
 @keyframes shimmer { to { transform: translateX(130%); } }
-@keyframes scrolldot { 0% { transform: translateY(-12px); } 100% { transform: translateY(40px); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes floatp {
   0%   { transform: translateY(0) translateX(0); opacity: var(--o); }

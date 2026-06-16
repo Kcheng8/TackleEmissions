@@ -189,11 +189,6 @@ export default function Hero() {
           ))}
         </ol>
       </motion.div>
-
-      <a className="hero__scroll" href="#problem" aria-label="Scroll to content">
-        <span className="mono-label">SCROLL</span>
-        <span className="hero__scroll-line" />
-      </a>
     </section>
   );
 }
