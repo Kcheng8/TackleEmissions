@@ -833,25 +833,16 @@ em { font-style: normal; }
 
 /* =================== FOOTER =================== */
 .footer { background: #030C13; border-top: 1px solid var(--line); padding-left: var(--spine-w); }
-.footer__inner { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr; gap: 44px; padding-top: 64px; padding-bottom: 40px; }
+.footer__inner { display: grid; grid-template-columns: 1.6fr 1fr; gap: 44px; padding-top: 64px; padding-bottom: 40px; }
 .footer__top { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
 .footer__logo img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; }
 .footer__word { font-size: 1.1rem; }
 .footer__blurb { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 320px; margin-bottom: 14px; }
 .footer__org { font-family: var(--mono); font-size: 0.76rem; color: var(--faint); letter-spacing: 0.03em; }
-.footer__nav h4, .footer__news h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
+.footer__nav h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
 .footer__nav { display: flex; flex-direction: column; gap: 10px; }
 .footer__nav a { font-size: 0.88rem; color: var(--muted); transition: color 0.2s; width: fit-content; }
 .footer__nav a:hover { color: var(--primary); }
-.footer__news p { font-size: 0.84rem; color: var(--muted); margin-bottom: 16px; line-height: 1.5; max-width: 280px; }
-.footer__form { display: flex; gap: 8px; }
-.footer__form input { flex: 1; font-size: 0.86rem; color: var(--fg); background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 11px 14px; }
-.footer__form input:focus { outline: none; border-color: rgba(74,141,222,0.5); }
-.footer__form button { width: 44px; border-radius: var(--r-sm); background: var(--primary); color: #07182C; font-size: 1.1rem; font-weight: 700; border: none; transition: background 0.2s, transform 0.2s; }
-.footer__form button:hover { background: var(--primary-2); transform: translateX(2px); }
-.footer__news-msg { font-size: 0.78rem; margin-top: 10px; min-height: 1em; }
-.footer__news-msg.ok { color: var(--primary); }
-.footer__news-msg.err { color: var(--danger); }
 .footer__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; padding-bottom: 30px; border-top: 1px solid var(--line-soft); }
 .footer__bar p { font-size: 0.76rem; color: var(--faint); }
 .footer__disc { color: #46596b; }

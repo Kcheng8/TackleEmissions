@@ -1,25 +1,8 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 import { navLinks } from '@/lib/data';
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export default function Footer() {
   const year = new Date().getFullYear();
-  const [email, setEmail] = useState('');
-  const [msg, setMsg] = useState<{ text: string; ok: boolean } | null>(null);
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!EMAIL_RE.test(email.trim())) {
-      setMsg({ text: 'Please enter a valid email address.', ok: false });
-      return;
-    }
-    setMsg({ text: 'Thanks — you’re on the list.', ok: true });
-    setEmail('');
-  };
 
   return (
     <footer className="footer">
@@ -48,28 +31,6 @@ export default function Footer() {
             </a>
           ))}
         </nav>
-
-        <div className="footer__news">
-          <h4>Stay updated</h4>
-          <p>Occasional progress notes on our research and partnerships.</p>
-          <form className="footer__form" onSubmit={onSubmit} noValidate>
-            <input
-              type="email"
-              placeholder="you@email.com"
-              aria-label="Email for newsletter"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button type="submit" aria-label="Subscribe">
-              →
-            </button>
-          </form>
-          {msg && (
-            <p className={`footer__news-msg ${msg.ok ? 'ok' : 'err'}`} role="status">
-              {msg.text}
-            </p>
-          )}
-        </div>
       </div>
 
       <div className="wrap footer__bar">
