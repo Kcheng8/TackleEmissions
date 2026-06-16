@@ -730,6 +730,25 @@ em { font-style: normal; }
 .member__tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .member__tags span { font-family: var(--mono); font-size: 9.5px; color: var(--faint); padding: 3px 8px; border-radius: 6px; border: 1px solid var(--line); }
 
+/* Supervisor — dedicated block under the team grid */
+.supervisor {
+  margin-top: 26px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: start;
+  padding: 28px 30px; border-radius: var(--r);
+  border: 1px solid color-mix(in srgb, var(--c) 25%, transparent);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--c) 10%, transparent), transparent 62%);
+}
+.supervisor__avatar {
+  width: 84px; height: 84px; border-radius: 16px; display: grid; place-items: center;
+  font-family: var(--mono); font-weight: 600; font-size: 1.6rem; letter-spacing: 0.04em;
+  color: var(--c);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--c) 25%, transparent), color-mix(in srgb, var(--c) 8%, transparent));
+  border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+}
+.supervisor__top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.supervisor__top h3 { font-size: 1.15rem; font-weight: 600; }
+.supervisor__affil { font-family: var(--mono); font-size: 0.78rem; color: var(--faint); letter-spacing: 0.03em; margin: 6px 0 12px; }
+.supervisor .member__bio { max-width: 660px; }
+
 /* =================== 06 · IMPACT =================== */
 .impactgrid { grid-template-columns: repeat(4, 1fr); position: relative; z-index: 1; }
 .impactm {
@@ -766,7 +785,6 @@ em { font-style: normal; }
 .tiers { grid-template-columns: repeat(3, 1fr); align-items: start; }
 .tier { position: relative; padding: 28px 26px; border-radius: var(--r); border: 1px solid color-mix(in srgb, var(--c) 25%, transparent); background: linear-gradient(160deg, color-mix(in srgb, var(--c) 8%, transparent), transparent); transition: transform 0.3s var(--ease); display: flex; flex-direction: column; }
 .tier:hover { transform: translateY(-5px); }
-.tier--featured { border: 1.5px solid var(--c); box-shadow: 0 0 50px -16px color-mix(in srgb, var(--c) 60%, transparent); }
 .tier__badge { position: absolute; top: -10px; left: 26px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; padding: 5px 11px; border-radius: 100px; background: var(--primary); color: #07182C; font-weight: 600; }
 .tier__head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .tier__icon { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); background: color-mix(in srgb, var(--c) 10%, transparent); }
@@ -816,6 +834,7 @@ em { font-style: normal; }
 .field.has-error input, .field.has-error textarea { border-color: var(--danger); }
 .field__err { font-size: 0.74rem; color: var(--danger); margin-top: 6px; min-height: 0; opacity: 0; transition: opacity 0.2s; }
 .field.has-error .field__err { opacity: 1; }
+.contact__err { font-size: 0.82rem; color: var(--danger); text-align: center; margin-top: 14px; line-height: 1.45; }
 .contact__priv { font-size: 0.74rem; color: var(--faint); text-align: center; margin-top: 16px; line-height: 1.5; }
 
 .contact__success { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; background: var(--panel); border-radius: var(--r); padding: 30px; }
@@ -885,6 +904,7 @@ em { font-style: normal; }
 
 @media (max-width: 620px) {
   .statgrid, .solgrid, .advgrid, .teamgrid, .impactgrid { grid-template-columns: 1fr; }
+  .supervisor { grid-template-columns: 1fr; gap: 18px; }
   .field-row { grid-template-columns: 1fr; }
   .contact__form { padding: 22px; }
   .footer__inner { grid-template-columns: 1fr; }

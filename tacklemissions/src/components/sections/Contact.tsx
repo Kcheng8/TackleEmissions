@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import { fadeUp } from '@/lib/motion';
@@ -18,6 +18,8 @@ const enquiryTypes = [
   'Other',
 ];
 
+const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
 export default function Contact() {
   const [form, setForm] = useState<Fields>({
     name: '',
@@ -29,6 +31,8 @@ export default function Contact() {
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const honeypot = useRef<HTMLInputElement>(null);
 
   const validateField = (name: keyof Fields, value: string): string => {
     if (name === 'name' && !value.trim()) return 'This field is required.';
@@ -63,10 +67,46 @@ export default function Contact() {
     setErrors(next);
     if (Object.values(next).some(Boolean)) return;
 
+    // Honeypot: bots fill hidden fields — silently accept without sending.
+    if (honeypot.current?.value) {
+      setSubmitted(true);
+      return;
+    }
+
+    setSubmitError('');
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitting(false);
-    setSubmitted(true);
+    try {
+      if (!ACCESS_KEY) {
+        throw new Error(
+          'The contact form is not configured yet. Please email contact@tacklemission.com directly.',
+        );
+      }
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: `New ${form.type} enquiry from ${form.name}`,
+          from_name: 'TacklEmission Website',
+          name: form.name,
+          organisation: form.org || '—',
+          email: form.email,
+          enquiry_type: form.type,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || 'Something went wrong. Please try again.');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : 'Something went wrong. Please try again.',
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -131,6 +171,16 @@ export default function Contact() {
           </motion.aside>
 
           <motion.form {...fadeUp(0.08)} className="contact__form" onSubmit={handleSubmit} noValidate>
+            {/* Honeypot — hidden from real users, catches bots */}
+            <input
+              ref={honeypot}
+              type="text"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: 'absolute', left: '-9999px', opacity: 0 }}
+            />
             <div className="field-row">
               <div className={`field${errors.name ? ' has-error' : ''}`}>
                 <label htmlFor="cf-name">
@@ -210,6 +260,7 @@ export default function Contact() {
                 <path d="M14 2L7 9M14 2l-4.5 12-2.5-5-5-2.5L14 2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
               </svg>
             </button>
+            {submitError && <p className="contact__err">{submitError}</p>}
             <p className="contact__priv">
               Your message is sent directly to the TacklEmission team. We do not share contact
               details with third parties.

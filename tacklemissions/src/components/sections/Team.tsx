@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import { fadeUp } from '@/lib/motion';
-import { teamMembers } from '@/lib/data';
+import { teamMembers, supervisor } from '@/lib/data';
 
 export default function Team() {
   return (
@@ -49,6 +49,29 @@ export default function Team() {
             </motion.article>
           ))}
         </div>
+
+        <motion.div {...fadeUp()} className="subhead">
+          <span className="mono-label">Academic Supervision</span>
+          <h3>Guided by established UQ research leadership</h3>
+        </motion.div>
+        <motion.article
+          {...fadeUp(0.05)}
+          className="supervisor"
+          style={{ ['--c' as string]: supervisor.color }}
+        >
+          <div className="supervisor__avatar" aria-hidden="true">
+            {supervisor.initials}
+          </div>
+          <div className="supervisor__body">
+            <div className="supervisor__top">
+              <h3>{supervisor.name}</h3>
+              <span className="member__cat">Supervisor</span>
+            </div>
+            <p className="member__role">{supervisor.role}</p>
+            <p className="supervisor__affil">{supervisor.affiliation}</p>
+            <p className="member__bio">{supervisor.bio}</p>
+          </div>
+        </motion.article>
       </div>
     </SectionWrapper>
   );

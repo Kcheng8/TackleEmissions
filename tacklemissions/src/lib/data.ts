@@ -260,16 +260,35 @@ export const teamMembers = [
     expertise: ["Bioinformatics", "Computational Biology", "Data Analysis"],
   },
   {
-    name: "Academic Advisor",
-    role: "Scientific Advisor",
+    name: "Team Member",
+    role: "Formulation & Delivery",
     affiliation: "University of Queensland",
-    bio: "Expert in livestock rumen microbiology and methane measurement. Provides oversight on experimental design, animal ethics, and translation strategy.",
-    category: "Advisor",
-    initials: "AA",
+    bio: "Undergraduate researcher developing feed-additive formulation, nanoparticle delivery systems, and stability testing under simulated rumen conditions.",
+    category: "Undergraduate",
+    initials: "TM",
     color: "#F59E0B",
-    expertise: ["Rumen Biology", "Animal Science", "Methane Measurement"],
+    expertise: ["Formulation Science", "Delivery Systems", "Analytical Chemistry"],
+  },
+  {
+    name: "Team Member",
+    role: "Business & Operations",
+    affiliation: "University of Queensland",
+    bio: "Undergraduate researcher leading commercialisation strategy, stakeholder engagement, and grant development to translate the platform from lab to market.",
+    category: "Undergraduate",
+    initials: "TM",
+    color: "#60A5FA",
+    expertise: ["Commercial Strategy", "Partnerships", "Grant Writing"],
   },
 ];
+
+export const supervisor = {
+  name: "Academic Supervisor",
+  role: "Principal Investigator & Scientific Supervisor",
+  affiliation: "University of Queensland",
+  bio: "Expert in livestock rumen microbiology and methane measurement. Provides scientific oversight on experimental design, animal ethics, and translation strategy — anchoring the project within UQ's research programs.",
+  initials: "AS",
+  color: "#60A5FA",
+};
 
 export const impactMetrics = [
   { value: 60,   suffix: "%",  label: "Methane Reduction Target",        description: "Per animal, per dosing cycle",               color: "#00C16E" },

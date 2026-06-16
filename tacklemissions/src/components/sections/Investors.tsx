@@ -39,12 +39,6 @@ export default function Investors() {
           </p>
         </motion.header>
 
-        <motion.blockquote {...fadeUp()} className="quote">
-          TacklEmission represents an early-stage opportunity in one of the largest untapped climate
-          mitigation markets — with a biologically novel, IP-protected approach positioned ahead of
-          regulatory and ESG tailwinds.
-        </motion.blockquote>
-
         <div className="tiers">
           {partnershipTiers.map((t, i) => {
             const featured = !!t.featured;

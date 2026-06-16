@@ -46,13 +46,12 @@ export default function Research() {
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
             <span className="shead__coord">[ 04 — RESEARCH ]</span>
-            <span className="shead__tag tag--purple">PEER-REVIEWED</span>
           </div>
           <h2 className="shead__title">
             Literature-backed. <em>Scientifically rigorous.</em>
           </h2>
           <p className="shead__lede">
-            Our approach is grounded in peer-reviewed research on PeiR enzyme activity, PHA
+            Our approach is grounded in published research on PeiR enzyme activity, PHA
             nanoparticle engineering, and rumen methanogenesis biology.
           </p>
         </motion.header>
