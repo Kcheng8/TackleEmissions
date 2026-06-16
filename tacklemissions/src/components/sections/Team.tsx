@@ -1,97 +1,54 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { teamMembers } from '@/lib/data';
 import SectionWrapper from '@/components/ui/SectionWrapper';
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 14 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.6, delay },
-});
+import { fadeUp } from '@/lib/motion';
+import { teamMembers } from '@/lib/data';
 
 export default function Team() {
   return (
-    <SectionWrapper id="team" className="py-24 bg-[#081C2D] relative overflow-hidden">
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#00C16E]/4 blur-[140px] pointer-events-none" />
+    <SectionWrapper id="team" className="section section--bg">
+      <div className="wrap">
+        <motion.header {...fadeUp()} className="shead">
+          <div className="shead__rule">
+            <span className="shead__coord">[ 05 — TEAM ]</span>
+            <span className="shead__tag tag--amber">UNIVERSITY OF QUEENSLAND</span>
+          </div>
+          <h2 className="shead__title">
+            Built by <em>scientists &amp; engineers</em>
+          </h2>
+          <p className="shead__lede">
+            A multidisciplinary team combining chemical engineering, molecular biology, synthetic
+            biology, and computational science — anchored at the University of Queensland.
+          </p>
+        </motion.header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div {...fadeUp()} className="inline-flex items-center gap-2 text-xs font-medium text-[#F59E0B] border border-[#F59E0B]/25 bg-[#F59E0B]/8 px-4 py-1.5 rounded-full mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
-            Our Team
-          </motion.div>
-          <motion.h2 {...fadeUp(0.05)} className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Built by{' '}
-            <span className="gradient-text">Scientists & Engineers</span>
-          </motion.h2>
-          <motion.p {...fadeUp(0.1)} className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            A multidisciplinary team combining chemical engineering, molecular biology,
-            synthetic biology, and computational science — anchored at the University of Queensland.
-          </motion.p>
-        </div>
-
-        {/* Team cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
-          {teamMembers.map((member, i) => (
-            <motion.div
-              key={i}
-              {...fadeUp(0.07 * i)}
-              className="glass-card rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 group"
+        <div className="teamgrid">
+          {teamMembers.map((m, i) => (
+            <motion.article
+              key={`${m.name}-${i}`}
+              {...fadeUp(0.08 * i)}
+              className="member"
+              style={{ ['--c' as string]: m.color }}
             >
-              {/* Avatar */}
-              <div className="flex items-center gap-4 mb-5">
-                <div
-                  className="relative w-14 h-14 rounded-full overflow-hidden border-2 flex-shrink-0 transition-transform group-hover:scale-105"
-                  style={{
-                    background: `linear-gradient(135deg, ${member.color}25, ${member.color}10)`,
-                    borderColor: `${member.color}40`,
-                  }}
-                >
-                  <Image
-                    src="/Placeholder.png"
-                    alt={member.name}
-                    fill
-                    sizes="56px"
-                    className="object-cover opacity-80"
-                  />
-                </div>
-                <div>
-                  <p className="text-white font-semibold text-sm leading-tight">{member.name}</p>
-                  <p className="text-gray-400 text-xs mt-0.5">{member.role}</p>
-                </div>
+              <div className="member__top">
+                <span className="member__mono">{m.initials}</span>
+                <span className="member__cat">{m.category}</span>
               </div>
-
-              {/* Category badge */}
-              <span
-                className="inline-block text-xs font-medium px-2.5 py-1 rounded-full border mb-3"
-                style={{
-                  color: member.color,
-                  borderColor: `${member.color}30`,
-                  background: `${member.color}10`,
-                }}
-              >
-                {member.category} · {member.affiliation.split(' ').slice(-2).join(' ')}
-              </span>
-
-              {/* Bio */}
-              <p className="text-gray-400 text-xs leading-relaxed mb-4">{member.bio}</p>
-
-              {/* Expertise tags */}
-              <div className="flex flex-wrap gap-1.5">
-                {member.expertise.map((tag, j) => (
-                  <span key={j} className="text-[10px] text-gray-500 border border-white/8 px-2 py-0.5 rounded-md">
-                    {tag}
-                  </span>
+              <div className="member__avatar" aria-hidden="true">
+                {m.initials}
+              </div>
+              <h3>{m.name}</h3>
+              <p className="member__role">{m.role}</p>
+              <p className="member__bio">{m.bio}</p>
+              <div className="member__tags">
+                {m.expertise.map((tag) => (
+                  <span key={tag}>{tag}</span>
                 ))}
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
-
       </div>
     </SectionWrapper>
   );

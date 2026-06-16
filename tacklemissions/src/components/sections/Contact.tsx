@@ -2,195 +2,232 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle } from 'lucide-react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
+import { fadeUp } from '@/lib/motion';
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 14 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.6, delay },
-});
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type Fields = { name: string; org: string; email: string; type: string; message: string };
+type Errors = Partial<Record<keyof Fields, string>>;
+
+const enquiryTypes = [
+  'Industry Partnership',
+  'Investment Enquiry',
+  'Research Collaboration',
+  'Media & Press',
+  'Other',
+];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', org: '', email: '', message: '', type: 'Partnership' });
-  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState<Fields>({
+    name: '',
+    org: '',
+    email: '',
+    type: enquiryTypes[0],
+    message: '',
+  });
+  const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const validateField = (name: keyof Fields, value: string): string => {
+    if (name === 'name' && !value.trim()) return 'This field is required.';
+    if (name === 'email') {
+      if (!value.trim()) return 'This field is required.';
+      if (!EMAIL_RE.test(value.trim())) return 'Enter a valid email address.';
+    }
+    if (name === 'message' && !value.trim()) return 'This field is required.';
+    return '';
+  };
+
+  const onBlur = (name: keyof Fields) => () => {
+    const msg = validateField(name, form[name]);
+    setErrors((e) => ({ ...e, [name]: msg }));
+  };
+
+  const onChange = (name: keyof Fields) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const value = e.target.value;
+    setForm((f) => ({ ...f, [name]: value }));
+    setErrors((prev) => (prev[name] ? { ...prev, [name]: validateField(name, value) } : prev));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const next: Errors = {
+      name: validateField('name', form.name),
+      email: validateField('email', form.email),
+      message: validateField('message', form.message),
+    };
+    setErrors(next);
+    if (Object.values(next).some(Boolean)) return;
+
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1200));
+    await new Promise((r) => setTimeout(r, 900));
     setSubmitting(false);
     setSubmitted(true);
   };
 
-  const inputClass =
-    'w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#00C16E]/50 focus:bg-white/6 transition-all duration-200';
-
   return (
-    <SectionWrapper id="contact" className="py-24 bg-[#030D14] relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#00C16E]/4 blur-[140px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div {...fadeUp()} className="inline-flex items-center gap-2 text-xs font-medium text-[#00C16E] border border-[#00C16E]/25 bg-[#00C16E]/8 px-4 py-1.5 rounded-full mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00C16E] animate-pulse-glow" />
-            Get in Touch
-          </motion.div>
-          <motion.h2 {...fadeUp(0.05)} className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Let&apos;s Build the Future{' '}
-            <span className="gradient-text">Together</span>
-          </motion.h2>
-          <motion.p {...fadeUp(0.1)} className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+    <SectionWrapper id="contact" className="section section--ink">
+      <div className="wrap">
+        <motion.header {...fadeUp()} className="shead">
+          <div className="shead__rule">
+            <span className="shead__coord">[ 08 — CONTACT ]</span>
+            <span className="shead__tag tag--green">48-HOUR RESPONSE</span>
+          </div>
+          <h2 className="shead__title">
+            Let&apos;s build the future <em>together</em>
+          </h2>
+          <p className="shead__lede">
             Whether you&apos;re an investor, research partner, industry collaborator, or simply
             curious — we&apos;d love to hear from you.
-          </motion.p>
-        </div>
+          </p>
+        </motion.header>
 
-        <div className="grid lg:grid-cols-5 gap-12 max-w-5xl mx-auto">
-          {/* Info panel */}
-          <motion.div {...fadeUp(0.1)} className="lg:col-span-2 space-y-8">
-            {/* Contact info */}
-            <div>
-              <h3 className="text-white font-bold text-lg mb-4">Contact Details</h3>
-              <div className="space-y-3">
-                {[
-                  { icon: '📧', label: 'Email', value: 'contact@tacklemission.com' },
-                  { icon: '📍', label: 'Location', value: 'Brisbane, Queensland, Australia' },
-                  { icon: '🎓', label: 'Affiliation', value: 'University of Queensland' },
-                  { icon: '⏱', label: 'Response Time', value: 'Within 48 hours' },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="text-lg mt-0.5">{item.icon}</span>
-                    <div>
-                      <p className="text-gray-500 text-xs uppercase tracking-wider mb-0.5">{item.label}</p>
-                      <p className="text-gray-300 text-sm">{item.value}</p>
-                    </div>
-                  </div>
-                ))}
+        <div className="contact">
+          <motion.aside {...fadeUp()} className="contact__info">
+            <h3 className="contact__h">Contact details</h3>
+            <dl className="contact__dl">
+              <div>
+                <dt>Email</dt>
+                <dd>contact@tacklemission.com</dd>
+              </div>
+              <div>
+                <dt>Location</dt>
+                <dd>Brisbane, Queensland, Australia</dd>
+              </div>
+              <div>
+                <dt>Affiliation</dt>
+                <dd>University of Queensland</dd>
+              </div>
+              <div>
+                <dt>Response time</dt>
+                <dd>Within 48 hours</dd>
+              </div>
+            </dl>
+
+            <div className="contact__next">
+              <h4>What happens next?</h4>
+              <ol>
+                <li>
+                  <span>1</span>We review your message and identify the best point of contact.
+                </li>
+                <li>
+                  <span>2</span>We respond within 48 hours with an appropriate next step.
+                </li>
+                <li>
+                  <span>3</span>We schedule an introductory call or share requested materials.
+                </li>
+              </ol>
+            </div>
+
+            <div className="contact__social">
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="X / Twitter">X</a>
+              <a href="#" aria-label="ResearchGate">RG</a>
+            </div>
+          </motion.aside>
+
+          <motion.form {...fadeUp(0.08)} className="contact__form" onSubmit={handleSubmit} noValidate>
+            <div className="field-row">
+              <div className={`field${errors.name ? ' has-error' : ''}`}>
+                <label htmlFor="cf-name">
+                  Full name <span>*</span>
+                </label>
+                <input
+                  type="text"
+                  id="cf-name"
+                  name="name"
+                  placeholder="Jane Smith"
+                  autoComplete="name"
+                  value={form.name}
+                  onChange={onChange('name')}
+                  onBlur={onBlur('name')}
+                />
+                <p className="field__err">{errors.name}</p>
+              </div>
+              <div className="field">
+                <label htmlFor="cf-org">Organisation</label>
+                <input
+                  type="text"
+                  id="cf-org"
+                  name="org"
+                  placeholder="Company or University"
+                  autoComplete="organization"
+                  value={form.org}
+                  onChange={onChange('org')}
+                />
               </div>
             </div>
 
-            {/* What to expect */}
-            <div className="glass-card rounded-2xl p-5">
-              <h4 className="text-white font-semibold text-sm mb-4">What Happens Next?</h4>
-              <div className="space-y-3">
-                {[
-                  { step: '1', text: 'We review your message and identify the best point of contact.' },
-                  { step: '2', text: 'We respond within 48 hours with an appropriate next step.' },
-                  { step: '3', text: 'We schedule an introductory call or share requested materials.' },
-                ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#00C16E]/15 border border-[#00C16E]/30 flex items-center justify-center text-[10px] font-bold text-[#00C16E] flex-shrink-0 mt-0.5">
-                      {s.step}
-                    </div>
-                    <p className="text-gray-400 text-xs leading-relaxed">{s.text}</p>
-                  </div>
-                ))}
-              </div>
+            <div className={`field${errors.email ? ' has-error' : ''}`}>
+              <label htmlFor="cf-email">
+                Email address <span>*</span>
+              </label>
+              <input
+                type="email"
+                id="cf-email"
+                name="email"
+                placeholder="jane@company.com"
+                autoComplete="email"
+                value={form.email}
+                onChange={onChange('email')}
+                onBlur={onBlur('email')}
+              />
+              <p className="field__err">{errors.email}</p>
             </div>
-          </motion.div>
 
-          {/* Form */}
-          <motion.div {...fadeUp(0.12)} className="lg:col-span-3">
-            {submitted ? (
-              <div className="h-full flex items-center justify-center">
-                <div className="text-center py-16">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    <CheckCircle className="w-16 h-16 text-[#00C16E] mx-auto mb-4" />
-                  </motion.div>
-                  <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
-                  <p className="text-gray-400 text-sm max-w-xs mx-auto">
-                    Thanks for reaching out. We&apos;ll get back to you within 48 hours.
-                  </p>
+            <div className="field">
+              <label htmlFor="cf-type">Enquiry type</label>
+              <select id="cf-type" name="type" value={form.type} onChange={onChange('type')}>
+                {enquiryTypes.map((t) => (
+                  <option key={t}>{t}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className={`field${errors.message ? ' has-error' : ''}`}>
+              <label htmlFor="cf-msg">
+                Message <span>*</span>
+              </label>
+              <textarea
+                id="cf-msg"
+                name="message"
+                rows={5}
+                placeholder="Tell us about your interest in TacklEmission, any specific questions, or how you'd like to collaborate…"
+                value={form.message}
+                onChange={onChange('message')}
+                onBlur={onBlur('message')}
+              />
+              <p className="field__err">{errors.message}</p>
+            </div>
+
+            <button className="btn btn--primary btn--full" type="submit" disabled={submitting}>
+              <span className="btn__label">{submitting ? 'Sending…' : 'Send message'}</span>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M14 2L7 9M14 2l-4.5 12-2.5-5-5-2.5L14 2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <p className="contact__priv">
+              Your message is sent directly to the TacklEmission team. We do not share contact
+              details with third parties.
+            </p>
+
+            {submitted && (
+              <div className="contact__success">
+                <div className="contact__success-ic">
+                  <svg viewBox="0 0 48 48" fill="none">
+                    <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="2" opacity="0.4" />
+                    <path d="M15 24l6 6 12-13" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
+                <h3>Message sent</h3>
+                <p>Thanks for reaching out. We&apos;ll get back to you within 48 hours.</p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs text-gray-400 font-medium mb-1.5">Full Name *</label>
-                    <input
-                      required
-                      type="text"
-                      placeholder="Jane Smith"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className={inputClass}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-gray-400 font-medium mb-1.5">Organisation</label>
-                    <input
-                      type="text"
-                      placeholder="Company or University"
-                      value={form.org}
-                      onChange={(e) => setForm({ ...form, org: e.target.value })}
-                      className={inputClass}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-400 font-medium mb-1.5">Email Address *</label>
-                  <input
-                    required
-                    type="email"
-                    placeholder="jane@company.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-400 font-medium mb-1.5">Enquiry Type</label>
-                  <select
-                    value={form.type}
-                    onChange={(e) => setForm({ ...form, type: e.target.value })}
-                    className={inputClass + ' cursor-pointer'}
-                  >
-                    <option value="Partnership">Industry Partnership</option>
-                    <option value="Investment">Investment Enquiry</option>
-                    <option value="Research">Research Collaboration</option>
-                    <option value="Media">Media & Press</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs text-gray-400 font-medium mb-1.5">Message *</label>
-                  <textarea
-                    required
-                    rows={5}
-                    placeholder="Tell us about your interest in TacklEmission, any specific questions, or how you'd like to collaborate…"
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className={inputClass + ' resize-none'}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-[#00C16E] to-[#009852] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#00C16E]/25 hover:scale-[1.01] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {submitting ? (
-                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    <Send className="w-4 h-4" />
-                  )}
-                  {submitting ? 'Sending…' : 'Send Message'}
-                </button>
-                <p className="text-gray-600 text-xs text-center">
-                  Your message is sent directly to the TacklEmission team. We do not share contact details with third parties.
-                </p>
-              </form>
             )}
-          </motion.div>
+          </motion.form>
         </div>
       </div>
     </SectionWrapper>

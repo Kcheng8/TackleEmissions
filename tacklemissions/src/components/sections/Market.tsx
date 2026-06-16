@@ -1,181 +1,126 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { competitors } from '@/lib/data';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
+import { fadeUp } from '@/lib/motion';
+import { competitors } from '@/lib/data';
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 14 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.6, delay },
-});
+const metrics = [
+  { prefix: '$', value: 2.7, decimals: 1, suffix: 'B', heading: 'Current market size', note: '2024 global market', color: '#00C16E' },
+  { prefix: '$', value: 5.2, decimals: 1, suffix: 'B', heading: 'Projected by 2034', note: '10-year outlook', color: '#3B82F6' },
+  { prefix: '', value: 7.5, decimals: 1, suffix: '%', heading: 'CAGR', note: '2024–2034', color: '#8B5CF6' },
+];
 
-const marketSegments = [
-  { label: 'Feed Additives',   pct: 35, color: '#00C16E' },
-  { label: 'Carbon Markets',   pct: 25, color: '#3B82F6' },
-  { label: 'Tech Licensing',   pct: 20, color: '#8B5CF6' },
-  { label: 'Direct Sales',     pct: 20, color: '#F59E0B' },
+const revenueBars = [
+  { label: 'Feed Additives', pct: 35, color: '#00C16E' },
+  { label: 'Carbon Markets', pct: 25, color: '#3B82F6' },
+  { label: 'Tech Licensing', pct: 20, color: '#8B5CF6' },
+  { label: 'Direct Sales', pct: 20, color: '#F59E0B' },
 ];
 
 export default function Market() {
   return (
-    <SectionWrapper id="market" className="py-24 bg-[#081C2D] relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-[600px] h-[500px] rounded-full bg-[#3B82F6]/4 blur-[130px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div {...fadeUp()} className="inline-flex items-center gap-2 text-xs font-medium text-[#F59E0B] border border-[#F59E0B]/25 bg-[#F59E0B]/8 px-4 py-1.5 rounded-full mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
-            Market Opportunity
-          </motion.div>
-          <motion.h2 {...fadeUp(0.05)} className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            A <span className="gradient-text">$5.2B Market</span> by 2034
-          </motion.h2>
-          <motion.p {...fadeUp(0.1)} className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            The livestock methane mitigation market is expanding rapidly, driven by net-zero
+    <SectionWrapper id="market" className="section section--bg">
+      <div className="wrap">
+        <motion.header {...fadeUp()} className="shead">
+          <div className="shead__rule">
+            <span className="shead__coord">[ 03 — MARKET ]</span>
+            <span className="shead__tag tag--amber">OPPORTUNITY</span>
+          </div>
+          <h2 className="shead__title">
+            A <em>$5.2B market</em> by 2034
+          </h2>
+          <p className="shead__lede">
+            The livestock methane-mitigation market is expanding rapidly, driven by net-zero
             commitments, carbon pricing, and regulatory pressure on agriculture.
-          </motion.p>
-        </div>
+          </p>
+        </motion.header>
 
-        {/* Market metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
-          {[
-            { label: 'Current Market Size', value: 2.7, prefix: '$', suffix: 'B', desc: '2024 global market', color: '#00C16E' },
-            { label: 'Projected by 2034',   value: 5.2, prefix: '$', suffix: 'B', desc: '10-year outlook',   color: '#3B82F6' },
-            { label: 'CAGR',                value: 7.5, prefix: '',  suffix: '%', desc: '2024–2034',         color: '#8B5CF6', decimals: 1 },
-          ].map((m, i) => (
-            <motion.div
-              key={i}
+        <div className="mktmetrics">
+          {metrics.map((m, i) => (
+            <motion.article
+              key={m.heading}
               {...fadeUp(0.08 * i)}
-              className="gradient-border-card p-8 text-center hover:-translate-y-1 transition-all duration-300"
+              className="mktm"
+              style={{ ['--c' as string]: m.color }}
             >
-              <div className="text-5xl font-bold mb-2 tracking-tight" style={{ color: m.color }}>
+              <div className="mktm__num">
                 {m.prefix}
-                <AnimatedCounter value={m.value} suffix={m.suffix} decimals={m.decimals ?? 0} duration={2.5} />
+                <AnimatedCounter value={m.value} decimals={m.decimals} suffix={m.suffix} />
               </div>
-              <div className="text-white font-semibold text-sm mb-1">{m.label}</div>
-              <div className="text-gray-500 text-xs">{m.desc}</div>
-            </motion.div>
+              <h3>{m.heading}</h3>
+              <p>{m.note}</p>
+            </motion.article>
           ))}
         </div>
 
-        {/* Market segments */}
-        <motion.div {...fadeUp(0.1)} className="glass-card rounded-2xl p-8 mb-16">
-          <h3 className="text-white font-bold text-xl mb-8">Revenue Stream Breakdown</h3>
-          <div className="space-y-4">
-            {marketSegments.map((seg, i) => (
-              <div key={i} className="flex items-center gap-3 sm:gap-4">
-                <div className="w-24 sm:w-36 text-xs sm:text-sm text-gray-300 text-right shrink-0">{seg.label}</div>
-                <div className="flex-1 h-3 rounded-full bg-white/5 overflow-hidden">
-                  <motion.div
-                    className="h-full rounded-full"
-                    style={{ background: seg.color }}
+        <motion.div {...fadeUp()} className="revenue">
+          <div className="revenue__head">
+            <h3>Revenue-stream breakdown</h3>
+            <span className="mono-label">INDICATIVE MIX</span>
+          </div>
+          <div className="bars">
+            {revenueBars.map((b) => (
+              <div className="bar" key={b.label} style={{ ['--c' as string]: b.color }}>
+                <span className="bar__label">{b.label}</span>
+                <span className="bar__track">
+                  <motion.span
+                    className="bar__fill"
                     initial={{ width: 0 }}
-                    whileInView={{ width: `${seg.pct}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: 0.1 * i }}
+                    whileInView={{ width: `${b.pct}%` }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
                   />
-                </div>
-                <div className="w-10 text-sm font-bold" style={{ color: seg.color }}>
-                  {seg.pct}%
-                </div>
+                </span>
+                <span className="bar__val">{b.pct}%</span>
               </div>
             ))}
           </div>
-          <p className="text-gray-600 text-xs mt-6">
-            * Revenue projections are indicative. TacklEmission intends to pursue multiple
-            parallel revenue streams including feed additives, carbon credit generation, and
-            technology licensing.
+          <p className="revenue__note">
+            * Revenue projections are indicative. TacklEmission intends to pursue multiple parallel
+            revenue streams including feed additives, carbon-credit generation, and technology
+            licensing.
           </p>
         </motion.div>
 
-        {/* Competitive landscape */}
-        <div>
-          <motion.h3 {...fadeUp()} className="text-2xl font-bold text-white mb-2">Competitive Landscape</motion.h3>
-          <motion.p {...fadeUp(0.05)} className="text-gray-400 text-sm mb-8">
-            TacklEmission occupies a unique position with targeted biodegradable nanotechnology
-            — differentiating from both chemical and supply-chain-constrained solutions.
-          </motion.p>
+        <motion.div {...fadeUp()} className="subhead">
+          <span className="mono-label">LANDSCAPE</span>
+          <h3>Competitive landscape</h3>
+          <p>
+            TacklEmission occupies a unique position with targeted biodegradable nanotechnology —
+            differentiated from both chemical and supply-chain-constrained solutions.
+          </p>
+        </motion.div>
 
-          {/* Mobile: cards */}
-          <motion.div {...fadeUp(0.1)} className="flex flex-col gap-3 sm:hidden">
-            {competitors.map((c, i) => (
-              <div
-                key={i}
-                className={`rounded-xl p-4 border ${
-                  c.isOurs ? 'border-[#00C16E]/30 bg-[#00C16E]/5' : 'border-white/5 bg-white/[0.02]'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className={`font-semibold text-sm ${c.isOurs ? 'text-[#00C16E]' : 'text-white'}`}>
-                    {c.company}
-                  </span>
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                    c.isOurs
-                      ? 'bg-[#00C16E]/15 text-[#00C16E] border border-[#00C16E]/30'
-                      : 'bg-[#F59E0B]/10 text-[#F59E0B] border border-[#F59E0B]/20'
-                  }`}>
-                    {c.stage}
-                  </span>
-                </div>
-                <p className="text-gray-300 text-xs mb-1">{c.technology}</p>
-                <div className="flex items-center justify-between mt-2">
-                  <span className="text-gray-500 text-xs">{c.limitation}</span>
-                  <span className="text-gray-400 text-xs font-mono ml-3 shrink-0">{c.funding}</span>
-                </div>
+        <motion.div {...fadeUp()} className="ctable">
+          <div className="ctable__row ctable__row--head">
+            <span>Company</span>
+            <span>Technology</span>
+            <span>Stage</span>
+            <span>Funding</span>
+            <span>Key limitation</span>
+          </div>
+          {competitors.map((c) => {
+            const ours = !!c.isOurs;
+            return (
+              <div key={c.company} className={`ctable__row${ours ? ' ctable__row--ours' : ''}`}>
+                <span data-th="Company" className="ctable__co">
+                  {c.company}
+                  {ours && <i className="us">US</i>}
+                </span>
+                <span data-th="Technology">{c.technology}</span>
+                <span data-th="Stage">
+                  <i className={`pill ${ours ? 'pill--green' : 'pill--amber'}`}>{c.stage}</i>
+                </span>
+                <span data-th="Funding" className="mono">
+                  {c.funding}
+                </span>
+                <span data-th="Limitation">{c.limitation.replace(/^—\s*/, '')}</span>
               </div>
-            ))}
-          </motion.div>
-
-          {/* Desktop: table */}
-          <motion.div {...fadeUp(0.1)} className="hidden sm:block overflow-x-auto">
-            <table className="w-full min-w-[700px]">
-              <thead>
-                <tr className="border-b border-white/8">
-                  <th className="text-left py-3 pr-4 text-gray-500 text-xs font-semibold uppercase tracking-wider">Company</th>
-                  <th className="text-left py-3 pr-4 text-gray-500 text-xs font-semibold uppercase tracking-wider">Technology</th>
-                  <th className="text-left py-3 pr-4 text-gray-500 text-xs font-semibold uppercase tracking-wider">Stage</th>
-                  <th className="text-left py-3 pr-4 text-gray-500 text-xs font-semibold uppercase tracking-wider">Funding</th>
-                  <th className="text-left py-3 text-gray-500 text-xs font-semibold uppercase tracking-wider">Key Limitation</th>
-                </tr>
-              </thead>
-              <tbody>
-                {competitors.map((c, i) => (
-                  <tr
-                    key={i}
-                    className={`border-b transition-colors duration-200 ${
-                      c.isOurs
-                        ? 'border-[#00C16E]/20 bg-[#00C16E]/5 hover:bg-[#00C16E]/8'
-                        : 'border-white/5 hover:bg-white/[0.02]'
-                    }`}
-                  >
-                    <td className="py-4 pr-4">
-                      <span className={`font-semibold text-sm ${c.isOurs ? 'text-[#00C16E]' : 'text-white'}`}>
-                        {c.company}
-                        {c.isOurs && <span className="ml-2 text-[10px] bg-[#00C16E]/20 text-[#00C16E] px-1.5 py-0.5 rounded-full">US</span>}
-                      </span>
-                    </td>
-                    <td className="py-4 pr-4 text-gray-300 text-sm">{c.technology}</td>
-                    <td className="py-4 pr-4">
-                      <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
-                        c.isOurs
-                          ? 'bg-[#00C16E]/15 text-[#00C16E] border border-[#00C16E]/30'
-                          : 'bg-[#F59E0B]/10 text-[#F59E0B] border border-[#F59E0B]/20'
-                      }`}>
-                        {c.stage}
-                      </span>
-                    </td>
-                    <td className="py-4 pr-4 text-gray-400 text-sm font-mono">{c.funding}</td>
-                    <td className="py-4 text-gray-400 text-xs">{c.limitation}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </motion.div>
-        </div>
+            );
+          })}
+        </motion.div>
       </div>
     </SectionWrapper>
   );

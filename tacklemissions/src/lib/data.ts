@@ -86,7 +86,7 @@ export const currentSolutions = [
     effectiveness: "60–80%*",
     limitations: ["Novel approach — in validation"],
     status: "R&D Stage",
-    statusColor: "#00C16E",
+    statusColor: "#4A8DDE",
     isOurs: true,
   },
 ];
@@ -301,7 +301,7 @@ export const partnershipTiers = [
       "Commercial licensing priority",
     ],
     idealFor: "Feedlots · Dairy Farms · Ag Input Companies",
-    color: "#00C16E",
+    color: "#4A8DDE",
     featured: true,
   },
   {
