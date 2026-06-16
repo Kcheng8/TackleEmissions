@@ -49,7 +49,6 @@ export default function Investors() {
                 className={`tier${featured ? ' tier--featured' : ''}`}
                 style={{ ['--c' as string]: t.color }}
               >
-                {featured && <span className="tier__badge">MOST SOUGHT</span>}
                 <div className="tier__head">
                   <span className="tier__icon">{tierIcons[i]}</span>
                   <h3>{t.tier}</h3>

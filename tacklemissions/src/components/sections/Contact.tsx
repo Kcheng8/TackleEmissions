@@ -164,9 +164,14 @@ export default function Contact() {
             </div>
 
             <div className="contact__social">
-              <a href="#" aria-label="LinkedIn">in</a>
-              <a href="#" aria-label="X / Twitter">X</a>
-              <a href="#" aria-label="ResearchGate">RG</a>
+              <a
+                href="https://www.linkedin.com/company/tacklemission/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TacklEmission on LinkedIn"
+              >
+                in
+              </a>
             </div>
           </motion.aside>
 

@@ -715,8 +715,19 @@ em { font-style: normal; }
 .member h3 { font-size: 1rem; font-weight: 600; }
 .member__role { font-size: 0.82rem; color: var(--c); margin: 3px 0 12px; font-weight: 500; }
 .member__bio { font-size: 0.8rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px; }
-.member__tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.member__tags span { font-family: var(--mono); font-size: 9.5px; color: var(--faint); padding: 3px 8px; border-radius: 6px; border: 1px solid var(--line); }
+.member__linkedin {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 8px;
+  color: var(--muted); border: 1px solid var(--line); background: rgba(255,255,255,0.02);
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.member__linkedin svg { width: 17px; height: 17px; }
+.member__linkedin:hover {
+  color: var(--c);
+  border-color: color-mix(in srgb, var(--c) 40%, transparent);
+  background: color-mix(in srgb, var(--c) 10%, transparent);
+  transform: translateY(-2px);
+}
 
 /* Supervisor — dedicated block under the team grid */
 .supervisor {
@@ -773,7 +784,6 @@ em { font-style: normal; }
 .tiers { grid-template-columns: repeat(3, 1fr); align-items: start; }
 .tier { position: relative; padding: 28px 26px; border-radius: var(--r); border: 1px solid color-mix(in srgb, var(--c) 25%, transparent); background: linear-gradient(160deg, color-mix(in srgb, var(--c) 8%, transparent), transparent); transition: transform 0.3s var(--ease); display: flex; flex-direction: column; }
 .tier:hover { transform: translateY(-5px); }
-.tier__badge { position: absolute; top: -10px; left: 26px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; padding: 5px 11px; border-radius: 100px; background: var(--primary); color: #07182C; font-weight: 600; }
 .tier__head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .tier__icon { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); background: color-mix(in srgb, var(--c) 10%, transparent); }
 .tier__icon svg { width: 22px; height: 22px; }
@@ -802,7 +812,7 @@ em { font-style: normal; }
 .contact__next li { display: flex; gap: 12px; font-size: 0.84rem; color: var(--muted); line-height: 1.45; }
 .contact__next li span { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--primary); border: 1px solid rgba(74,141,222,0.35); background: rgba(74,141,222,0.1); }
 .contact__social { display: flex; gap: 10px; }
-.contact__social a { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; font-family: var(--mono); font-size: 13px; color: var(--muted); border: 1px solid var(--line); transition: color 0.2s, border-color 0.2s, transform 0.2s; }
+.contact__social a { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; color: var(--muted); border: 1px solid var(--line); transition: color 0.2s, border-color 0.2s, transform 0.2s; }
 .contact__social a:hover { color: var(--primary); border-color: rgba(74,141,222,0.4); transform: translateY(-2px); }
 
 .contact__form { position: relative; padding: 32px; border-radius: var(--r); border: 1px solid var(--line); background: var(--panel); }
@@ -839,6 +849,20 @@ em { font-style: normal; }
 .footer__word { font-size: 1.1rem; }
 .footer__blurb { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 320px; margin-bottom: 14px; }
 .footer__org { font-family: var(--mono); font-size: 0.76rem; color: var(--faint); letter-spacing: 0.03em; }
+.footer__linkedin {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  font-size: 0.84rem; color: var(--muted);
+  padding: 8px 14px; border-radius: 100px; border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.footer__linkedin svg { width: 16px; height: 16px; }
+.footer__linkedin:hover {
+  color: var(--primary);
+  border-color: rgba(74,141,222,0.4);
+  background: rgba(74,141,222,0.1);
+  transform: translateY(-2px);
+}
 .footer__nav h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
 .footer__nav { display: flex; flex-direction: column; gap: 10px; }
 .footer__nav a { font-size: 0.88rem; color: var(--muted); transition: color 0.2s; width: fit-content; }
