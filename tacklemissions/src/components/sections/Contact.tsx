@@ -114,7 +114,7 @@ export default function Contact() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 08 — CONTACT ]</span>
+            <span className="shead__coord">[ CONTACT ]</span>
             <span className="shead__tag tag--green">48-HOUR RESPONSE</span>
           </div>
           <h2 className="shead__title">

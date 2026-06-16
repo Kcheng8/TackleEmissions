@@ -45,7 +45,7 @@ export default function Research() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 04 — RESEARCH ]</span>
+            <span className="shead__coord">[ RESEARCH ]</span>
           </div>
           <h2 className="shead__title">
             Literature-backed. <em>Scientifically rigorous.</em>

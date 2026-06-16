@@ -41,7 +41,7 @@ export default function Technology() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 02 — TECHNOLOGY ]</span>
+            <span className="shead__coord">[ TECHNOLOGY ]</span>
             <span className="shead__tag tag--blue">PLATFORM</span>
           </div>
           <h2 className="shead__title">

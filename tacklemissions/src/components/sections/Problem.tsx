@@ -26,7 +26,7 @@ export default function Problem() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 00 — PROBLEM ]</span>
+            <span className="shead__coord">[ PROBLEM ]</span>
             <span className="shead__tag tag--danger">CLIMATE EMERGENCY</span>
           </div>
           <h2 className="shead__title">

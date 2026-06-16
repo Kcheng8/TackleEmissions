@@ -11,7 +11,7 @@ export default function Team() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 05 — TEAM ]</span>
+            <span className="shead__coord">[ TEAM ]</span>
             <span className="shead__tag tag--amber">UNIVERSITY OF QUEENSLAND</span>
           </div>
           <h2 className="shead__title">

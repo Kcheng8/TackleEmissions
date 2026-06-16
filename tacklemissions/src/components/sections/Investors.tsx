@@ -27,7 +27,7 @@ export default function Investors() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 07 — INVESTORS ]</span>
+            <span className="shead__coord">[ INVESTORS ]</span>
             <span className="shead__tag tag--green">SEEKING PARTNERS</span>
           </div>
           <h2 className="shead__title">
@@ -73,16 +73,6 @@ export default function Investors() {
             );
           })}
         </div>
-
-        <motion.div {...fadeUp()} className="dd">
-          <div>
-            <h3>Ready to conduct due diligence?</h3>
-            <p>We provide a detailed investor deck, technical brief, and literature synthesis on request.</p>
-          </div>
-          <a className="btn btn--primary" href="#contact">
-            Request investor deck
-          </a>
-        </motion.div>
       </div>
     </SectionWrapper>
   );

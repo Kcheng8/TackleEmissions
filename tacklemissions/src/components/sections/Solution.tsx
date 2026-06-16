@@ -17,7 +17,7 @@ export default function Solution() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 01 — SOLUTION ]</span>
+            <span className="shead__coord">[ SOLUTION ]</span>
             <span className="shead__tag tag--green">FIVE-STEP PATHWAY</span>
           </div>
           <h2 className="shead__title">

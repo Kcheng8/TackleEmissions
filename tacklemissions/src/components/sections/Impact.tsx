@@ -19,7 +19,7 @@ export default function Impact() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 06 — IMPACT ]</span>
+            <span className="shead__coord">[ IMPACT ]</span>
             <span className="shead__tag tag--green">PROJECTED</span>
           </div>
           <h2 className="shead__title">

@@ -25,7 +25,7 @@ export default function Market() {
       <div className="wrap">
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
-            <span className="shead__coord">[ 03 — MARKET ]</span>
+            <span className="shead__coord">[ MARKET ]</span>
             <span className="shead__tag tag--amber">OPPORTUNITY</span>
           </div>
           <h2 className="shead__title">
