@@ -9,7 +9,6 @@ import Market from '@/components/sections/Market';
 import Research from '@/components/sections/Research';
 import Team from '@/components/sections/Team';
 import Impact from '@/components/sections/Impact';
-import Investors from '@/components/sections/Investors';
 import Contact from '@/components/sections/Contact';
 
 export default function Home() {
@@ -28,7 +27,6 @@ export default function Home() {
         <Research />
         <Team />
         <Impact />
-        <Investors />
         <Contact />
       </main>
       <Footer />

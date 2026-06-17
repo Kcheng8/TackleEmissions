@@ -87,7 +87,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__actions">
-          <a className="btn btn--ghost btn--sm" href="#investors" onClick={go('#investors')}>
+          <a className="btn btn--ghost btn--sm" href="#contact" onClick={go('#contact')}>
             Partner With Us
           </a>
           <button
@@ -119,7 +119,7 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
-            <a className="nav__mobile-cta" href="#investors" onClick={go('#investors', true)}>
+            <a className="nav__mobile-cta" href="#contact" onClick={go('#contact', true)}>
               Partner With Us →
             </a>
           </motion.div>

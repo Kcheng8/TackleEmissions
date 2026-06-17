@@ -11,7 +11,6 @@ const SECTION_IDS = [
   'research',
   'team',
   'impact',
-  'investors',
   'contact',
 ];
 
@@ -62,7 +61,7 @@ export default function Spine() {
       </div>
       <div className="spine__coord">
         {coord}
-        <span>/</span>08
+        <span>/</span>07
       </div>
       <div className="spine__rot">TACKLEMISSION · UQ</div>
     </aside>
