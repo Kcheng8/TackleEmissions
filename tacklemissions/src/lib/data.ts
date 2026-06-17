@@ -289,3 +289,74 @@ export const impactMetrics = [
   { value: 1.5,  suffix: "B",  label: "Addressable Cattle Population",   description: "Global livestock market opportunity",        color: "#3B82F6", decimals: 1 },
   { value: 27,   suffix: "×",  label: "Methane Climate Potency",         description: "Versus CO₂ over 100 years (IPCC AR6)",        color: "#F59E0B" },
 ];
+
+export const references = [
+  {
+    ref: "FAO, 2013",
+    source:
+      "Gerber et al., Tackling Climate Change Through Livestock — livestock ≈ 14.5% of global GHG, with enteric fermentation the dominant driver.",
+    url: "https://www.fao.org/4/i3437e/i3437e.pdf",
+    cite: "fao.org",
+  },
+  {
+    ref: "FAO GLEAM",
+    source:
+      "Global Livestock Environmental Assessment Model — enteric fermentation ≈ 98 Mt CH₄/yr; ~1.5 billion cattle worldwide.",
+    url: "https://www.fao.org/gleam/en/",
+    cite: "fao.org/gleam",
+  },
+  {
+    ref: "IPCC AR6, 2021",
+    source:
+      "Sixth Assessment Report (WG1) — biogenic methane has a 100-year global warming potential of ≈ 27× CO₂.",
+    url: "https://www.ipcc.ch/report/ar6/wg1/",
+    cite: "ipcc.ch",
+  },
+  {
+    ref: "Altermann et al., 2018",
+    source:
+      "PeiR lytic enzyme on PHA bionanoparticles reduced methane up to 97% in pure culture. Front. Microbiol.",
+    url: "https://doi.org/10.3389/fmicb.2018.02378",
+    cite: "doi:10.3389/fmicb.2018.02378",
+  },
+  {
+    ref: "Altermann et al., 2022",
+    source:
+      "Tailored PHA–PeiR nanoparticles across rumen models (5–15% in continuous flow). Front. Microbiol. 13:816695.",
+    url: "https://doi.org/10.3389/fmicb.2022.816695",
+    cite: "doi:10.3389/fmicb.2022.816695",
+  },
+  {
+    ref: "Henderson et al., 2015",
+    source:
+      "Global Rumen Census — ~74% of rumen archaea are Methanobrevibacter across 32 ruminant species. Sci. Rep. 5:14567.",
+    url: "https://doi.org/10.1038/srep14567",
+    cite: "doi:10.1038/srep14567",
+  },
+  {
+    ref: "PNAS, 2024",
+    source:
+      "Asparagopsis seaweed additive reduced enteric methane ~37.7% in grazing beef cattle (feedlot trials reach >90%).",
+    url: "https://www.pnas.org/doi/10.1073/pnas.2410863121",
+    cite: "pnas.org",
+  },
+  {
+    ref: "dsm-firmenich",
+    source: "Bovaer (3-NOP) reduces dairy enteric methane ~30% as a daily feed additive.",
+    url: "https://www.bovaer.com/",
+    cite: "bovaer.com",
+  },
+  {
+    ref: "GMInsights, 2024",
+    source:
+      "Ruminant Methane Reduction Market — USD 2.7B (2024) → 5.2B (2034) at 6.7% CAGR; feed additives >90% of share.",
+    url: "https://www.gminsights.com/industry-analysis/ruminant-methane-reduction-market",
+    cite: "gminsights.com",
+  },
+  {
+    ref: "AgFunderNews",
+    source: "Reported funding for FutureFeed (~$13M) and Rumin8 (~$17M, 2023).",
+    url: "https://agfundernews.com/red-seaweed-was-billed-as-a-gamechanger-for-livestock-methane-reduction-so-when-will-it-deliver",
+    cite: "agfundernews.com",
+  },
+];

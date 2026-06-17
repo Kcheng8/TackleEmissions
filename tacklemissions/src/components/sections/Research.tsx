@@ -1,10 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Fragment, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import { fadeUp } from '@/lib/motion';
-import { researchTimeline } from '@/lib/data';
+import References from '@/components/ui/References';
+import { researchTimeline, references } from '@/lib/data';
 
 const citations: { ref: string; color: string; finding: ReactNode; source: string; doi: string }[] = [
   {
@@ -46,14 +47,6 @@ const citations: { ref: string; color: string; finding: ReactNode; source: strin
       'Rumen microbial community composition varies with diet and host, but a core microbiome is found across a wide geographical range. Sci. Rep. 5:14567.',
     doi: '10.1038/srep14567',
   },
-];
-
-const dbtl = [
-  { b: 'D', label: 'Design', color: '#00C16E' },
-  { b: 'B', label: 'Build', color: '#22d87a' },
-  { b: 'T', label: 'Test', color: '#3B82F6' },
-  { b: 'L', label: 'Learn', color: '#60A5FA' },
-  { b: 'O', label: 'Optimise', color: '#8B5CF6' },
 ];
 
 export default function Research() {
@@ -120,39 +113,7 @@ export default function Research() {
           })}
         </ol>
 
-        <motion.div {...fadeUp()} className="dbtl">
-          <span className="mono-label">FIG.03 — SYNTHETIC BIOLOGY DESIGN WORKFLOW</span>
-          <div className="dbtl__row">
-            {dbtl.map((n, i) => (
-              <Fragment key={n.b}>
-                <span className="dbtl__node" style={{ ['--c' as string]: n.color }}>
-                  <b>{n.b}</b>
-                  {n.label}
-                </span>
-                {i < dbtl.length - 1 && <span className="dbtl__arrow">→</span>}
-              </Fragment>
-            ))}
-            <span className="dbtl__loop">↺</span>
-          </div>
-        </motion.div>
-
-        <motion.div {...fadeUp()} className="refs">
-          <span className="mono-label">REFERENCES</span>
-          <ol>
-            {citations.map((c) => (
-              <li key={c.doi}>
-                <span className="refs__author">{c.ref}.</span> {c.source}{' '}
-                <a
-                  href={`https://doi.org/${c.doi}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  doi:{c.doi}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </motion.div>
+        <References items={references} />
       </div>
     </SectionWrapper>
   );
