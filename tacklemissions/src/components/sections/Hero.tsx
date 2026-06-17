@@ -97,8 +97,8 @@ const flowNodes = [
 const readout = [
   { k: 'TARGET CH₄ ↓', v: '60–80', small: '%' },
   { k: 'SELECTIVITY', v: 'Archaea', small: '-only' },
-  { k: 'PARTICLE Ø', v: '100–300', small: 'nm' },
-  { k: 'BIODEGRADES', v: '7–14', small: 'days' },
+  { k: 'PARTICLE Ø', v: '50–500', small: 'nm' },
+  { k: 'CARRIER', v: 'PHA', small: ' bead' },
 ];
 
 export default function Hero() {

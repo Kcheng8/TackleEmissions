@@ -696,6 +696,19 @@ em { font-style: normal; }
 .dbtl__arrow { color: var(--faint); margin-bottom: 22px; }
 .dbtl__loop { color: var(--primary); font-size: 1.3rem; margin-bottom: 22px; }
 
+.refs { margin-top: clamp(40px, 6vw, 60px); padding-top: 24px; border-top: 1px solid var(--line); }
+.refs .mono-label { display: block; color: var(--primary); margin-bottom: 18px; }
+.refs ol { display: flex; flex-direction: column; gap: 13px; counter-reset: ref; }
+.refs li { position: relative; padding-left: 26px; font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
+.refs li::before {
+  counter-increment: ref; content: "[" counter(ref) "]";
+  position: absolute; left: 0; top: 1px;
+  font-family: var(--mono); font-size: 0.72rem; color: var(--faint);
+}
+.refs__author { color: var(--fg); font-weight: 500; }
+.refs a { color: var(--primary); font-family: var(--mono); font-size: 0.76rem; white-space: nowrap; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.refs a:hover { border-color: currentColor; }
+
 /* =================== 05 · TEAM =================== */
 .teamgrid { grid-template-columns: repeat(4, 1fr); }
 .member { position: relative; padding: 22px 22px 24px; border-radius: var(--r); border: 1px solid var(--line); background: var(--panel); transition: transform 0.3s var(--ease), border-color 0.3s; overflow: hidden; }

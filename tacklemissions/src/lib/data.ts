@@ -18,10 +18,10 @@ export const problemStats = [
     color: "#EF4444",
   },
   {
-    value: "28×",
+    value: "27×",
     label: "more potent than CO₂",
     description:
-      "Methane has 28× the global warming potential of CO₂ over a 100-year horizon, making it a priority for rapid reduction.",
+      "Biogenic methane has 27× the global warming potential of CO₂ over a 100-year horizon (IPCC AR6), making it a priority for rapid reduction.",
     color: "#F97316",
   },
   {
@@ -96,8 +96,8 @@ export const solutionSteps = [
     step: "01",
     title: "PHA Nanoparticle Synthesis",
     description:
-      "Biodegradable polyhydroxyalkanoate (PHA) nanoparticles are manufactured using engineered microbial fermentation. PHAs are naturally occurring biopolymers — fully safe and metabolisable.",
-    detail: "100–300 nm diameter · Rumen-stable · GRAS-safe",
+      "Biodegradable polyhydroxyalkanoate (PHA) nanoparticles are manufactured using engineered microbial fermentation. PHAs are naturally occurring biopolymers — biocompatible and metabolisable.",
+    detail: "50–500 nm diameter · Rumen-stable · Food-contact grade",
     color: "#00C16E",
   },
   {
@@ -138,15 +138,15 @@ export const platformComponents = [
   {
     title: "PHA Nanoparticle Chassis",
     description:
-      "Biodegradable biopolymer nanoparticles engineered for rumen stability. Produced via scalable microbial fermentation. Fully GRAS-safe and metabolised post-action.",
-    specs: ["100–300 nm diameter", "pH 5.5–7.5 stable", "Biodegrades in 7–14 days", "GRAS-safe biopolymer"],
+      "Biodegradable biopolymer nanoparticles engineered for rumen stability. Produced via scalable microbial fermentation. Biocompatible and metabolised post-action.",
+    specs: ["50–500 nm diameter", "pH 5.5–7.5 stable", "Fully biodegradable", "FDA food-contact grade"],
     color: "#00C16E",
   },
   {
     title: "PeiR Enzyme Payload",
     description:
-      "Pseudomurein endoisopeptidase R — a naturally occurring enzyme with intrinsic selectivity for the unique pseudomurein cell wall of methanogens. Literature-validated mechanism.",
-    specs: ["Archaea-specific targeting", "No bacterial off-target", "Thermostable 30–40°C", "Published enzyme kinetics"],
+      "Pseudomurein endoisopeptidase R — a naturally occurring enzyme with intrinsic selectivity for the unique pseudomurein cell wall of methanogenic archaea, primarily Methanobrevibacter (~74% of rumen archaea). Literature-validated mechanism.",
+    specs: ["Targets Methanobrevibacter spp.", "No bacterial off-target", "Thermostable 30–40°C", "Published enzyme kinetics"],
     color: "#3B82F6",
   },
   {
@@ -174,9 +174,9 @@ export const platformAdvantages = [
 ];
 
 export const competitors = [
-  { company: "FutureFeed",        technology: "Asparagopsis seaweed extract",   stage: "Commercial",   limitation: "Supply chain & regulatory risk",          funding: "$25M+" },
-  { company: "Rumin8",            technology: "Synthetic bromoform delivery",   stage: "Commercial",   limitation: "Regulatory concerns, daily dosing",       funding: "$100M+" },
-  { company: "Bovaer (DSM)",      technology: "3-NOP chemical inhibitor",       stage: "Commercial",   limitation: "Daily dosing, chemical safety pathway",   funding: ">$500M" },
+  { company: "FutureFeed",        technology: "Asparagopsis seaweed extract",   stage: "Commercial",   limitation: "Supply chain & regulatory risk",          funding: "$13M" },
+  { company: "Rumin8",            technology: "Synthetic bromoform delivery",   stage: "Commercial",   limitation: "Regulatory concerns, daily dosing",       funding: "$17M" },
+  { company: "Bovaer (DSM)",      technology: "3-NOP chemical inhibitor",       stage: "Commercial",   limitation: "Daily dosing, chemical safety pathway",   funding: "DSM-backed" },
   { company: "Mootral",           technology: "Garlic & citrus extract",        stage: "Commercial",   limitation: "Inconsistent efficacy, palatability",     funding: "$30M+" },
   { company: "TacklEmission",    technology: "Targeted PHA-PeiR nanoparticles", stage: "Pre-Seed R&D", limitation: "— Differentiated novel approach",       funding: "Seeking seed", isOurs: true },
 ];
@@ -288,5 +288,5 @@ export const impactMetrics = [
   { value: 60,   suffix: "%",  label: "Methane Reduction Target",        description: "Per animal, per dosing cycle",               color: "#00C16E" },
   { value: 1.5,  suffix: "B",  label: "Addressable Cattle Population",   description: "Global livestock market opportunity",        color: "#3B82F6", decimals: 1 },
   { value: 200,  suffix: "MT", label: "CO₂e Reduction Potential",        description: "Annual carbon equivalent at 40% adoption",   color: "#8B5CF6" },
-  { value: 28,   suffix: "×",  label: "Methane Climate Potency",         description: "Versus CO₂ over a 100-year period",          color: "#F59E0B" },
+  { value: 27,   suffix: "×",  label: "Methane Climate Potency",         description: "Versus CO₂ over 100 years (IPCC AR6)",        color: "#F59E0B" },
 ];

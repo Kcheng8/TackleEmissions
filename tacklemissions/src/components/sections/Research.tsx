@@ -6,28 +6,45 @@ import SectionWrapper from '@/components/ui/SectionWrapper';
 import { fadeUp } from '@/lib/motion';
 import { researchTimeline } from '@/lib/data';
 
-const citations: { ref: string; color: string; finding: ReactNode }[] = [
+const citations: { ref: string; color: string; finding: ReactNode; source: string; doi: string }[] = [
   {
-    ref: 'Pfister et al., 2020',
+    ref: 'Altermann et al., 2018',
     color: '#00C16E',
     finding: (
       <>
-        PeiR specifically cleaves pseudomurein in vitro — validated lytic activity against{' '}
-        <em>Methanobrevibacter ruminantium</em>.
+        PeiR-displaying nanoparticles reduced methane by up to <strong>97% in pure culture</strong>{' '}
+        over five days, selectively lysing methanogenic archaea via pseudomurein cleavage.
       </>
     ),
+    source:
+      'Inhibition of Rumen Methanogens by a Novel Archaeal Lytic Enzyme Displayed on Tailored Bionanoparticles. Front. Microbiol.',
+    doi: '10.3389/fmicb.2018.02378',
   },
   {
-    ref: 'Koller et al., 2022',
+    ref: 'Altermann et al., 2022',
     color: '#3B82F6',
-    finding:
-      'PHA nanoparticles demonstrate stability across rumen pH ranges (5.5–7.0) with controlled surface functionalisation.',
+    finding: (
+      <>
+        Scaled into a continuous-flow rumen model, the nanoparticles achieved a{' '}
+        <strong>5–15% methane reduction</strong> over 11 days — the lab-to-rumen gap our work targets.
+      </>
+    ),
+    source:
+      'Tailored Nanoparticles With the Potential to Reduce Ruminant Methane Emissions. Front. Microbiol. 13:816695.',
+    doi: '10.3389/fmicb.2022.816695',
   },
   {
-    ref: 'Johnson et al., 2017',
+    ref: 'Henderson et al., 2015',
     color: '#8B5CF6',
-    finding:
-      'Enteric methane constitutes the largest single source of agricultural greenhouse-gas emissions globally.',
+    finding: (
+      <>
+        Across 32 ruminant species, ~74% of rumen archaea are <em>Methanobrevibacter</em> — a small,
+        conserved set of methanogen targets for a selective therapeutic.
+      </>
+    ),
+    source:
+      'Rumen microbial community composition varies with diet and host, but a core microbiome is found across a wide geographical range. Sci. Rep. 5:14567.',
+    doi: '10.1038/srep14567',
   },
 ];
 
@@ -117,6 +134,24 @@ export default function Research() {
             ))}
             <span className="dbtl__loop">↺</span>
           </div>
+        </motion.div>
+
+        <motion.div {...fadeUp()} className="refs">
+          <span className="mono-label">REFERENCES</span>
+          <ol>
+            {citations.map((c) => (
+              <li key={c.doi}>
+                <span className="refs__author">{c.ref}.</span> {c.source}{' '}
+                <a
+                  href={`https://doi.org/${c.doi}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  doi:{c.doi}
+                </a>
+              </li>
+            ))}
+          </ol>
         </motion.div>
       </div>
     </SectionWrapper>

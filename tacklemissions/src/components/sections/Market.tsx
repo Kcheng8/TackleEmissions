@@ -9,7 +9,7 @@ import { competitors } from '@/lib/data';
 const metrics = [
   { prefix: '$', value: 2.7, decimals: 1, suffix: 'B', heading: 'Current market size', note: '2024 global market', color: '#00C16E' },
   { prefix: '$', value: 5.2, decimals: 1, suffix: 'B', heading: 'Projected by 2034', note: '10-year outlook', color: '#3B82F6' },
-  { prefix: '', value: 7.5, decimals: 1, suffix: '%', heading: 'CAGR', note: '2024–2034', color: '#8B5CF6' },
+  { prefix: '', value: 6.7, decimals: 1, suffix: '%', heading: 'CAGR', note: '2024–2034', color: '#8B5CF6' },
 ];
 
 const revenueBars = [

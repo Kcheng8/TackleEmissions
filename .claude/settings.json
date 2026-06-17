@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.frontiersin.org)",
+      "WebSearch",
+      "WebFetch(domain:pmc.ncbi.nlm.nih.gov)",
+      "Bash(grep -rn \"GRAS\\\\|7–14\\\\|7.5.*CAGR\\\\|\\\\$25M\\\\|\\\\$100M\\\\|>\\\\$500M\\\\|97% in pure\" src)",
+      "Bash(npx tsc *)",
+      "Bash(echo \"TSC: $?\")",
+      "Bash(curl -s http://localhost:3000/)"
+    ]
+  }
+}
