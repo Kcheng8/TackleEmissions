@@ -16,8 +16,6 @@ function scrollToSection(href: string) {
   }
 }
 
-const num = (i: number) => String(i + 1).padStart(2, '0');
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -76,14 +74,13 @@ export default function Navbar() {
         </a>
 
         <nav className="nav__links" aria-label="Primary">
-          {navLinks.map((l, i) => (
+          {navLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={go(l.href)}
               className={active === l.href ? 'is-current' : undefined}
             >
-              <span>{num(i)}</span>
               {l.label}
             </a>
           ))}
@@ -117,9 +114,9 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
           >
-            {navLinks.map((l, i) => (
+            {navLinks.map((l) => (
               <a key={l.href} href={l.href} onClick={go(l.href, true)}>
-                <span>{num(i)}</span> {l.label}
+                {l.label}
               </a>
             ))}
             <a className="nav__mobile-cta" href="#investors" onClick={go('#investors', true)}>

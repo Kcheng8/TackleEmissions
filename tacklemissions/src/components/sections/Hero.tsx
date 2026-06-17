@@ -5,7 +5,7 @@ import { fadeUpOnMount } from '@/lib/motion';
 
 /* Deterministic particles — no SSR/hydration mismatch. Mirrors design/script.js. */
 const COLORS = ['#00C16E', '#3B82F6', '#8B5CF6'];
-const PARTICLES = Array.from({ length: 50 }, (_, i) => {
+const PARTICLES = Array.from({ length: 28 }, (_, i) => {
   const size = ((i % 3) + 1) * 2;
   const o = Number((0.12 + ((i * 0.013) % 0.28)).toFixed(2));
   return {
