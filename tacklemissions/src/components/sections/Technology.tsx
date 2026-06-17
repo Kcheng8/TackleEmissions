@@ -94,7 +94,7 @@ export default function Technology() {
           </div>
           <div className="arch__result">
             Feed Additive → Rumen → Selective Methanogen Disruption →{' '}
-            <strong>Target: 60–80% CH₄ Reduction</strong>
+            <strong>Target: 30%+ CH₄ Reduction</strong>
           </div>
         </motion.div>
 

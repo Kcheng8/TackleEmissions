@@ -14,7 +14,7 @@ export const problemStats = [
     value: "14.5%",
     label: "of global GHG emissions",
     description:
-      "Livestock agriculture is the second-largest source of greenhouse gases, with enteric fermentation the dominant driver.",
+      "Livestock is a leading source of agricultural emissions and the dominant source of agricultural methane, driven by enteric fermentation.",
     color: "#EF4444",
   },
   {
@@ -28,7 +28,7 @@ export const problemStats = [
     value: "1.5B",
     label: "cattle worldwide",
     description:
-      "Each animal produces 70–120 kg of methane per year via methanogenesis in the rumen — with no infrastructure needed.",
+      "Each animal produces roughly 100–150 kg of methane per year via methanogenesis in the rumen (beef to dairy).",
     color: "#3B82F6",
   },
   {
@@ -44,7 +44,7 @@ export const currentSolutions = [
   {
     name: "Seaweed (Asparagopsis)",
     company: "FutureFeed",
-    effectiveness: "~80%",
+    effectiveness: "37–95%",
     limitations: [
       "Supply chain bottlenecks",
       "Palatability & taste effects",
@@ -83,7 +83,7 @@ export const currentSolutions = [
   {
     name: "PHA Nano-PeiR",
     company: "TacklEmission",
-    effectiveness: "60–80%*",
+    effectiveness: "30%+*",
     limitations: ["Novel approach — in validation"],
     status: "R&D Stage",
     statusColor: "#4A8DDE",
@@ -105,7 +105,7 @@ export const solutionSteps = [
     title: "PeiR Enzyme Surface Display",
     description:
       "PeiR pseudomurein endoisopeptidase enzymes are anchored on the nanoparticle surface using synthetic biology surface-display systems, creating a targeted biological weapon.",
-    detail: "~1000 enzyme units per particle · Stable anchoring",
+    detail: "PhaC surface display · Stable anchoring",
     color: "#22d87a",
   },
   {
@@ -129,7 +129,7 @@ export const solutionSteps = [
     title: "Sustained Methane Reduction",
     description:
       "Disruption of methanogenic archaea reduces rumen methane output while preserving the microbial ecosystem essential for cattle nutrition, productivity, and welfare.",
-    detail: "Target: 60–80% CH₄ reduction · Maintained animal productivity",
+    detail: "Target: 30%+ CH₄ reduction · Maintained animal productivity",
     color: "#8B5CF6",
   },
 ];
@@ -146,7 +146,7 @@ export const platformComponents = [
     title: "PeiR Enzyme Payload",
     description:
       "Pseudomurein endoisopeptidase R — a naturally occurring enzyme with intrinsic selectivity for the unique pseudomurein cell wall of methanogenic archaea, primarily Methanobrevibacter (~74% of rumen archaea). Literature-validated mechanism.",
-    specs: ["Targets Methanobrevibacter spp.", "No bacterial off-target", "Thermostable 30–40°C", "Published enzyme kinetics"],
+    specs: ["Targets Methanobrevibacter spp.", "No bacterial off-target", "Archaea-specific lysis"],
     color: "#3B82F6",
   },
   {
@@ -285,8 +285,7 @@ export const supervisor = {
 };
 
 export const impactMetrics = [
-  { value: 60,   suffix: "%",  label: "Methane Reduction Target",        description: "Per animal, per dosing cycle",               color: "#00C16E" },
+  { value: 30,   suffix: "%+", label: "Methane Reduction Target",        description: "Per animal, per dosing cycle",               color: "#00C16E" },
   { value: 1.5,  suffix: "B",  label: "Addressable Cattle Population",   description: "Global livestock market opportunity",        color: "#3B82F6", decimals: 1 },
-  { value: 200,  suffix: "MT", label: "CO₂e Reduction Potential",        description: "Annual carbon equivalent at 40% adoption",   color: "#8B5CF6" },
   { value: 27,   suffix: "×",  label: "Methane Climate Potency",         description: "Versus CO₂ over 100 years (IPCC AR6)",        color: "#F59E0B" },
 ];

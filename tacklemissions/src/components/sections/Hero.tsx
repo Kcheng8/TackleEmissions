@@ -84,8 +84,8 @@ const flowNodes = [
   {
     idx: '05',
     color: '#00C16E',
-    label: 'Net Zero',
-    sub: 'CH₄ reduced 60–80%',
+    label: 'Lower Emissions',
+    sub: 'CH₄ reduced 30%+',
     icon: (
       <svg viewBox="0 0 32 32" fill="none">
         <path d="M8 17l5 5 11-11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -95,7 +95,7 @@ const flowNodes = [
 ];
 
 const readout = [
-  { k: 'TARGET CH₄ ↓', v: '60–80', small: '%' },
+  { k: 'TARGET CH₄ ↓', v: '30', small: '%+' },
   { k: 'SELECTIVITY', v: 'Archaea', small: '-only' },
   { k: 'PARTICLE Ø', v: '50–500', small: 'nm' },
   { k: 'CARRIER', v: 'PHA', small: ' bead' },
