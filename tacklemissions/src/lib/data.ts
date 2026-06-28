@@ -195,30 +195,30 @@ export const researchTimeline = [
   },
   {
     year: "2026",
-    phase: "Nanoparticle Engineering",
+    phase: "Nanoparticle Engineering & In Vitro Validation",
     status: "upcoming",
     milestones: [
       "PeiR surface-display system optimisation",
       "In vitro archaea activity assays (lysis confirmation)",
       "Nanoparticle stability in simulated rumen fluid (SRF)",
+      "In vitro rumen fermentation gas-production assays",
+      "Methane reduction quantification (GreenFeed / SF₆ tracer)",
       "Provisional patent application filing",
     ],
   },
   {
-    year: "2027",
-    phase: "Validation Studies",
-    status: "upcoming",
+    year: "Future",
+    phase: "Animal Trials & Product Safety",
+    status: "tentative",
     milestones: [
-      "In vitro rumen fermentation gas-production assays",
       "Ethics-approved animal feeding trials",
-      "Methane reduction quantification (GreenFeed / SF₆ tracer)",
       "Milk / meat safety and quality analysis",
     ],
   },
   {
-    year: "2028",
+    year: "Future",
     phase: "Commercial Partnerships",
-    status: "upcoming",
+    status: "tentative",
     milestones: [
       "Industry partner pilot programs in Australian feedlots",
       "Regulatory submissions (APVMA / international equivalents)",

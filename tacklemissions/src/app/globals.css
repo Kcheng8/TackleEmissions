@@ -679,6 +679,8 @@ em { font-style: normal; }
   background: var(--ink); border: 1.5px solid var(--line-strong); color: var(--faint); z-index: 2;
 }
 .tl--current .tl__year { background: var(--primary); border-color: var(--primary); color: #07182C; box-shadow: 0 0 0 5px rgba(74,141,222,0.18); }
+.tl--tentative .tl__year { border-style: dashed; font-size: 1.05rem; line-height: 1; }
+.tl--tentative .tl__card { border-style: dashed; }
 .tl__card { padding: 22px 24px; border-radius: var(--r); border: 1px solid var(--line); background: var(--panel); transition: transform 0.25s var(--ease); }
 .tl__card:hover { transform: translateX(4px); }
 .tl--current .tl__card { background: linear-gradient(120deg, rgba(74,141,222,0.1), rgba(59,130,246,0.05)); border-color: rgba(74,141,222,0.25); }

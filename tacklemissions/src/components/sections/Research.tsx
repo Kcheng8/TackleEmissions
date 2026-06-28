@@ -88,17 +88,18 @@ export default function Research() {
         <ol className="timeline">
           {researchTimeline.map((t, i) => {
             const current = t.status === 'current';
+            const tentative = t.status === 'tentative';
             return (
               <motion.li
-                key={t.year}
+                key={t.phase}
                 {...fadeUp(0.08 * i)}
-                className={`tl${current ? ' tl--current' : ''}`}
+                className={`tl${current ? ' tl--current' : ''}${tentative ? ' tl--tentative' : ''}`}
               >
-                <div className="tl__year">{t.year.slice(2)}</div>
+                <div className="tl__year">{tentative ? '→' : t.year.slice(2)}</div>
                 <div className="tl__card">
                   <div className="tl__meta">
                     <span className={`pill${current ? ' pill--green' : ''}`}>
-                      {current ? 'In Progress' : t.year}
+                      {current ? 'In Progress' : tentative ? 'Future goal' : t.year}
                     </span>
                     <h4>{t.phase}</h4>
                   </div>
