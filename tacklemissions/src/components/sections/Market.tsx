@@ -6,6 +6,10 @@ import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import { fadeUp } from '@/lib/motion';
 import { competitors } from '@/lib/data';
 
+// Market sizing sources (kept in-code, not shown on the site):
+//   2024 base ~$2.7B is corroborated across analysts — GMInsights $2.7B, Emergen $2.72B, Grand View $2.79B.
+//   2034 projection is GMInsights ($5.2B @ 6.7% CAGR). Analyst estimates range ~$4.2–5.4B at 6.3–8.0% CAGR
+//   (Grand View ~$4.2B by 2030 @ 6.3%; Emergen ~$5.4B by 2033 @ 8.0%).
 const metrics = [
   { prefix: '$', value: 2.7, decimals: 1, suffix: 'B', heading: 'Current market size', note: '2024 global market', color: '#00C16E' },
   { prefix: '$', value: 5.2, decimals: 1, suffix: 'B', heading: 'Projected by 2034', note: '10-year outlook', color: '#3B82F6' },
@@ -29,7 +33,7 @@ export default function Market() {
             <span className="shead__tag tag--amber">OPPORTUNITY</span>
           </div>
           <h2 className="shead__title">
-            A <em>$5.2B market</em> by 2034
+            A market on track for <em>~$4–5B</em> by the early 2030s
           </h2>
           <p className="shead__lede">
             The livestock methane-mitigation market is expanding rapidly, driven by net-zero
@@ -121,6 +125,11 @@ export default function Market() {
             );
           })}
         </motion.div>
+
+        <p className="revenue__note">
+          FutureFeed founding round A$13M (~US$9.3M); ~US$29M raised to date. Funding figures reflect
+          reported rounds and may lag latest raises.
+        </p>
       </div>
     </SectionWrapper>
   );

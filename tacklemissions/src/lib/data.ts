@@ -120,7 +120,7 @@ export const solutionSteps = [
     step: "04",
     title: "Selective Archaea Targeting",
     description:
-      "PeiR cleaves pseudomurein — a cell wall component found exclusively in methanogenic archaea. This gives exquisite selectivity: no effect on beneficial rumen bacteria.",
+      "PeiR cleaves pseudomurein — a cell-wall polymer unique to the Methanobacteriales, the order that includes Methanobrevibacter, the dominant rumen methanogens (~74% of rumen archaea). This gives exquisite selectivity: no effect on beneficial rumen bacteria, whose cell walls lack pseudomurein entirely.",
     detail: "Archaea-specific · Zero off-target bacterial activity",
     color: "#60A5FA",
   },
@@ -145,7 +145,7 @@ export const platformComponents = [
   {
     title: "PeiR Enzyme Payload",
     description:
-      "Pseudomurein endoisopeptidase R — a naturally occurring enzyme with intrinsic selectivity for the unique pseudomurein cell wall of methanogenic archaea, primarily Methanobrevibacter (~74% of rumen archaea). Literature-validated mechanism.",
+      "Pseudomurein endoisopeptidase R — a naturally occurring enzyme with intrinsic selectivity for the pseudomurein cell wall of the Methanobacteriales, primarily Methanobrevibacter — which constitute ~74% of rumen archaea. Literature-validated mechanism.",
     specs: ["Targets Methanobrevibacter spp.", "No bacterial off-target", "Archaea-specific lysis"],
     color: "#3B82F6",
   },
@@ -174,8 +174,8 @@ export const platformAdvantages = [
 ];
 
 export const competitors = [
-  { company: "FutureFeed",        technology: "Asparagopsis seaweed extract",   stage: "Commercial",   limitation: "Supply chain & regulatory risk",          funding: "$13M" },
-  { company: "Rumin8",            technology: "Synthetic bromoform delivery",   stage: "Commercial",   limitation: "Regulatory concerns, daily dosing",       funding: "$17M" },
+  { company: "FutureFeed",        technology: "Asparagopsis seaweed extract",   stage: "Commercial",   limitation: "Supply chain & regulatory risk",          funding: "~US$9M (A$13M)" },
+  { company: "Rumin8",            technology: "Synthetic bromoform delivery",   stage: "Commercial",   limitation: "Regulatory concerns, daily dosing",       funding: "$17M, 2023" },
   { company: "Bovaer (DSM)",      technology: "3-NOP chemical inhibitor",       stage: "Commercial",   limitation: "Daily dosing, chemical safety pathway",   funding: "DSM-backed" },
   { company: "Mootral",           technology: "Garlic & citrus extract",        stage: "Commercial",   limitation: "Inconsistent efficacy, palatability",     funding: "$30M+" },
   { company: "TacklEmission",    technology: "Targeted PHA-PeiR nanoparticles", stage: "Pre-Seed R&D", limitation: "— Differentiated novel approach",       funding: "Seeking seed", isOurs: true },
