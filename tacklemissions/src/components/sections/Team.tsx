@@ -13,14 +13,13 @@ export default function Team() {
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
             <span className="shead__coord">[ TEAM ]</span>
-            <span className="shead__tag tag--amber">UNIVERSITY OF QUEENSLAND</span>
           </div>
           <h2 className="shead__title">
             Meet the <em>team</em>
           </h2>
           <p className="shead__lede">
-            A multidisciplinary team combining chemical engineering, molecular biology, synthetic
-            biology, and computational science — anchored at the University of Queensland.
+            Students across chemical engineering, molecular biology, synthetic biology, and computer
+            science, working together at the University of Queensland.
           </p>
         </motion.header>
 
@@ -88,7 +87,6 @@ export default function Team() {
             )}
           </div>
           <div className="supcard__body">
-            <span className="member__cat">Supervisor</span>
             <h3>{supervisor.name}</h3>
             <p className="member__role">{supervisor.role}</p>
             <p className="supcard__affil">{supervisor.affiliation}</p>

@@ -17,8 +17,8 @@ export default function Footer() {
             </span>
           </div>
           <p className="footer__blurb">
-            Engineering targeted, biodegradable nanotechnology to eliminate methane emissions from
-            livestock agriculture.
+            A student research team developing a biological feed additive to reduce methane emissions
+            from cattle.
           </p>
           <p className="footer__org">University of Queensland · Brisbane, Australia</p>
           <a

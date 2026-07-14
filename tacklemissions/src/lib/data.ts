@@ -84,7 +84,7 @@ export const currentSolutions = [
     name: "PHA Nano-PeiR",
     company: "TacklEmission",
     effectiveness: "30%+*",
-    limitations: ["Novel approach — in validation"],
+    limitations: ["Novel approach, in validation"],
     status: "R&D Stage",
     statusColor: "#4A8DDE",
     isOurs: true,
@@ -96,7 +96,7 @@ export const solutionSteps = [
     step: "01",
     title: "PHA Nanoparticle Synthesis",
     description:
-      "Biodegradable polyhydroxyalkanoate (PHA) nanoparticles are manufactured using engineered microbial fermentation. PHAs are naturally occurring biopolymers — biocompatible and metabolisable.",
+      "Biodegradable polyhydroxyalkanoate (PHA) nanoparticles are manufactured using engineered microbial fermentation. PHAs are naturally occurring biopolymers that are biocompatible and metabolisable.",
     detail: "50–500 nm diameter · Rumen-stable · Food-contact grade",
     color: "#00C16E",
   },
@@ -104,7 +104,7 @@ export const solutionSteps = [
     step: "02",
     title: "PeiR Enzyme Surface Display",
     description:
-      "PeiR pseudomurein endoisopeptidase enzymes are anchored on the nanoparticle surface using synthetic biology surface-display systems, creating a targeted biological weapon.",
+      "PeiR pseudomurein endoisopeptidase enzymes are anchored on the nanoparticle surface using synthetic biology surface-display systems, so each particle carries the active enzyme to where methanogens live.",
     detail: "PhaC surface display · Stable anchoring",
     color: "#22d87a",
   },
@@ -120,7 +120,7 @@ export const solutionSteps = [
     step: "04",
     title: "Selective Archaea Targeting",
     description:
-      "PeiR cleaves pseudomurein — a cell-wall polymer unique to the Methanobacteriales, the order that includes Methanobrevibacter, the dominant rumen methanogens (~74% of rumen archaea). This gives exquisite selectivity: no effect on beneficial rumen bacteria, whose cell walls lack pseudomurein entirely.",
+      "PeiR cleaves pseudomurein, a cell-wall polymer unique to the Methanobacteriales, the order that includes Methanobrevibacter, the dominant rumen methanogens (~74% of rumen archaea). That gives it selectivity: no effect on beneficial rumen bacteria, whose cell walls lack pseudomurein entirely.",
     detail: "Archaea-specific · Zero off-target bacterial activity",
     color: "#60A5FA",
   },
@@ -130,7 +130,7 @@ export const solutionSteps = [
     description:
       "Disruption of methanogenic archaea reduces rumen methane output while preserving the microbial ecosystem essential for cattle nutrition, productivity, and welfare.",
     detail: "Target: 30%+ CH₄ reduction · Maintained animal productivity",
-    color: "#8B5CF6",
+    color: "#2E9E8F",
   },
 ];
 
@@ -145,16 +145,16 @@ export const platformComponents = [
   {
     title: "PeiR Enzyme Payload",
     description:
-      "Pseudomurein endoisopeptidase R — a naturally occurring enzyme with intrinsic selectivity for the pseudomurein cell wall of the Methanobacteriales, primarily Methanobrevibacter — which constitute ~74% of rumen archaea. Literature-validated mechanism.",
+      "Pseudomurein endoisopeptidase R, a naturally occurring enzyme with intrinsic selectivity for the pseudomurein cell wall of the Methanobacteriales, primarily Methanobrevibacter, which constitute ~74% of rumen archaea. Literature-validated mechanism.",
     specs: ["Targets Methanobrevibacter spp.", "No bacterial off-target", "Archaea-specific lysis"],
     color: "#3B82F6",
   },
   {
     title: "Synthetic Biology Platform",
     description:
-      "State-of-the-art genetic engineering tools to optimise PHA production pathway, enzyme expression levels, and surface-display efficiency across iterative design cycles.",
+      "Genetic engineering tools to optimise the PHA production pathway, enzyme expression levels, and surface-display efficiency across iterative design cycles.",
     specs: ["Modular genetic design", "Codon-optimised expression", "Directed evolution ready", "Iterative DBTL cycles"],
-    color: "#8B5CF6",
+    color: "#2E9E8F",
   },
   {
     title: "Scalable Manufacturing",
@@ -166,11 +166,11 @@ export const platformComponents = [
 ];
 
 export const platformAdvantages = [
-  { title: "Specificity",       description: "Targets only methane-producing archaea — zero impact on beneficial rumen bacteria or animal health.",   color: "#00C16E" },
-  { title: "Biodegradability",  description: "PHA completely biodegrades — no chemical residues in meat, milk, environment, or supply chain.",         color: "#22d87a" },
-  { title: "Scalability",       description: "Microbial fermentation is an established industrial process enabling production at any required scale.",   color: "#3B82F6" },
-  { title: "Low Dosing Burden", description: "Potential for single or low-frequency dosing versus competing daily additives — reducing farmer burden.", color: "#60A5FA" },
-  { title: "Modularity",        description: "The platform is adaptable to other microbial targets, creating a versatile livestock health technology.",  color: "#8B5CF6" },
+  { title: "Specificity",       description: "Targets only methane-producing archaea, with no intended impact on beneficial rumen bacteria or animal health.", color: "#00C16E" },
+  { title: "Biodegradability",  description: "PHA is a biodegradable biopolymer, aiming to avoid chemical residues in meat, milk, or the environment.",       color: "#22d87a" },
+  { title: "Scalability",       description: "Microbial fermentation is an established industrial process, so production can scale with established methods.", color: "#3B82F6" },
+  { title: "Low Dosing Burden", description: "Aiming for less frequent dosing than daily chemical additives, which would reduce the burden on farmers.",      color: "#60A5FA" },
+  { title: "Modularity",        description: "The surface-display approach could be retargeted to other microbial targets in livestock health.",                color: "#2E9E8F" },
 ];
 
 export const competitors = [
@@ -178,7 +178,7 @@ export const competitors = [
   { company: "Rumin8",            technology: "Synthetic bromoform delivery",   stage: "Commercial",   limitation: "Regulatory concerns, daily dosing",       funding: "$17M, 2023" },
   { company: "Bovaer (DSM)",      technology: "3-NOP chemical inhibitor",       stage: "Commercial",   limitation: "Daily dosing, chemical safety pathway",   funding: "DSM-backed" },
   { company: "Mootral",           technology: "Garlic & citrus extract",        stage: "Commercial",   limitation: "Inconsistent efficacy, palatability",     funding: "$30M+" },
-  { company: "TacklEmission",    technology: "Targeted PHA-PeiR nanoparticles", stage: "Pre-Seed R&D", limitation: "— Differentiated novel approach",       funding: "Seeking seed", isOurs: true },
+  { company: "TacklEmission",    technology: "Targeted PHA-PeiR nanoparticles", stage: "Pre-Seed R&D", limitation: "Early-stage, unproven in vivo",       funding: "Seeking seed", isOurs: true },
 ];
 
 export const researchTimeline = [
@@ -252,11 +252,11 @@ export const teamMembers = [
   {
     name: "Kierren Cheng",
     affiliation: "University of Queensland",
-    bio: "Bachelor of Engineering & Science — Chemical & Bioprocess Engineering and Microbiology.",
+    bio: "Bachelor of Engineering & Science, Chemical & Bioprocess Engineering and Microbiology.",
     category: "Bachelor",
     initials: "KC",
     photo: "",
-    color: "#8B5CF6",
+    color: "#2E9E8F",
     linkedin: "https://www.linkedin.com/in/kierren-cheng-7ba5841b2/",
   },
   {
@@ -283,7 +283,7 @@ export const teamMembers = [
 
 export const supervisor = {
   name: "Dr. Axayacatl (Axa) Gonzalez",
-  role: "Principal Investigator & Scientific Supervisor",
+  role: "Supervisor",
   affiliation: "University of Queensland",
   initials: "AG",
   photo: "/Axa.jpeg",
@@ -300,21 +300,21 @@ export const references = [
   {
     ref: "FAO, 2013",
     source:
-      "Gerber et al., Tackling Climate Change Through Livestock — livestock ≈ 14.5% of global GHG, with enteric fermentation the dominant driver.",
+      "Gerber et al., Tackling Climate Change Through Livestock: livestock ≈ 14.5% of global GHG, with enteric fermentation the dominant driver.",
     url: "https://www.fao.org/4/i3437e/i3437e.pdf",
     cite: "fao.org",
   },
   {
     ref: "FAO GLEAM",
     source:
-      "Global Livestock Environmental Assessment Model — enteric fermentation ≈ 98 Mt CH₄/yr; ~1.5 billion cattle worldwide.",
+      "Global Livestock Environmental Assessment Model: enteric fermentation ≈ 98 Mt CH₄/yr; ~1.5 billion cattle worldwide.",
     url: "https://www.fao.org/gleam/en/",
     cite: "fao.org/gleam",
   },
   {
     ref: "IPCC AR6, 2021",
     source:
-      "Sixth Assessment Report (WG1) — biogenic methane has a 100-year global warming potential of ≈ 27× CO₂.",
+      "Sixth Assessment Report (WG1): biogenic methane has a 100-year global warming potential of ≈ 27× CO₂.",
     url: "https://www.ipcc.ch/report/ar6/wg1/",
     cite: "ipcc.ch",
   },
@@ -335,7 +335,7 @@ export const references = [
   {
     ref: "Henderson et al., 2015",
     source:
-      "Global Rumen Census — ~74% of rumen archaea are Methanobrevibacter across 32 ruminant species. Sci. Rep. 5:14567.",
+      "Global Rumen Census: ~74% of rumen archaea are Methanobrevibacter across 32 ruminant species. Sci. Rep. 5:14567.",
     url: "https://doi.org/10.1038/srep14567",
     cite: "doi:10.1038/srep14567",
   },
@@ -355,7 +355,7 @@ export const references = [
   {
     ref: "GMInsights, 2024",
     source:
-      "Ruminant Methane Reduction Market — USD 2.7B (2024) → 5.2B (2034) at 6.7% CAGR; feed additives >90% of share.",
+      "Ruminant Methane Reduction Market: USD 2.7B (2024) to 5.2B (2034) at 6.7% CAGR; feed additives >90% of share.",
     url: "https://www.gminsights.com/industry-analysis/ruminant-methane-reduction-market",
     cite: "gminsights.com",
   },

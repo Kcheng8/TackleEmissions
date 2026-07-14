@@ -27,7 +27,8 @@ const citations: { ref: string; color: string; finding: ReactNode; source: strin
     finding: (
       <>
         Scaled into a continuous-flow rumen model, the nanoparticles achieved a{' '}
-        <strong>5–15% methane reduction</strong> over 11 days — the lab-to-rumen gap our work targets.
+        <strong>5–15% methane reduction</strong> over 11 days. That gap between pure culture and a
+        working rumen is what our project targets.
       </>
     ),
     source:
@@ -36,11 +37,11 @@ const citations: { ref: string; color: string; finding: ReactNode; source: strin
   },
   {
     ref: 'Henderson et al., 2015',
-    color: '#8B5CF6',
+    color: '#2E9E8F',
     finding: (
       <>
-        Across 32 ruminant species, ~74% of rumen archaea are <em>Methanobrevibacter</em> — a small,
-        conserved set of methanogen targets for a selective therapeutic.
+        Across 32 ruminant species, ~74% of rumen archaea are <em>Methanobrevibacter</em>. That is a
+        small, conserved set of methanogens for a selective treatment to target.
       </>
     ),
     source:

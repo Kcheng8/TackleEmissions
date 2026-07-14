@@ -1,28 +1,38 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Newsreader, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+// Newsreader: an editorial, journal-style serif with optical sizing for the
+// headlines; Public Sans keeps the body plain and legible; IBM Plex Mono gives
+// the data labels a lab-instrument register.
+const displaySerif = Newsreader({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-display",
 });
 
-const geistMono = Geist_Mono({
+const bodySans = Public_Sans({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  style: ["normal", "italic"],
+  variable: "--font-body",
+});
+
+const labelMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-code",
 });
 
 const SITE_URL = "https://tacklemission.com";
 const SITE_NAME = "TacklEmission";
-const TITLE = "TacklEmission — Engineering Biology to Eliminate Methane from Livestock";
+const TITLE = "TacklEmission: engineering biology to reduce methane from livestock";
 const DESCRIPTION =
-  "TacklEmission develops targeted, biodegradable PHA nanoparticles displaying the PeiR enzyme to selectively reduce methane-producing archaea in the cattle rumen — helping agriculture reach net zero.";
+  "TacklEmission is developing a biological feed additive that reduces methane-producing archaea in the cattle rumen. A student team from the University of Queensland, at the early research stage.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: `%s — ${SITE_NAME}`,
+    template: `%s · ${SITE_NAME}`,
   },
   description: DESCRIPTION,
   keywords: [
@@ -95,7 +105,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${displaySerif.variable} ${bodySans.variable} ${labelMono.variable}`}
+    >
       <body>
         <script
           type="application/ld+json"

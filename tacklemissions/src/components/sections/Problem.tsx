@@ -27,14 +27,13 @@ export default function Problem() {
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
             <span className="shead__coord">[ PROBLEM ]</span>
-            <span className="shead__tag tag--danger">CLIMATE EMERGENCY</span>
           </div>
           <h2 className="shead__title">
             Livestock methane is a <em>climate emergency</em>
           </h2>
           <p className="shead__lede">
-            Agriculture contributes 14.5% of all global greenhouse-gas emissions. Methane from
-            cattle is one of the largest — and most tractable — near-term reduction targets.
+            Agriculture contributes about 14.5% of all global greenhouse-gas emissions. Methane from
+            cattle is one of the largest near-term reduction targets, and one of the most tractable.
           </p>
         </motion.header>
 
@@ -80,7 +79,6 @@ export default function Problem() {
                     <h4>{c.name}</h4>
                     <p className="solcard__co">{c.company}</p>
                   </div>
-                  <span className={`chip${ours ? ' chip--ours' : ''}`}>{c.status}</span>
                 </div>
                 <p className="solcard__eff-k">{ours ? 'Projected efficacy' : 'Reported efficacy'}</p>
                 <p className="solcard__eff">

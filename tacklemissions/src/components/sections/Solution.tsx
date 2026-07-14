@@ -18,14 +18,13 @@ export default function Solution() {
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
             <span className="shead__coord">[ SOLUTION ]</span>
-            <span className="shead__tag tag--green">FIVE-STEP PATHWAY</span>
           </div>
           <h2 className="shead__title">
             How <em>TacklEmission</em> works
           </h2>
           <p className="shead__lede">
             A five-step biological pathway from engineered nanoparticles to sustained methane
-            reduction — without disrupting rumen ecology or animal productivity.
+            reduction, without disrupting rumen ecology or animal productivity.
           </p>
         </motion.header>
 

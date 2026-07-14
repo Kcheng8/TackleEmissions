@@ -7,19 +7,19 @@ import { fadeUp } from '@/lib/motion';
 import { competitors } from '@/lib/data';
 
 // Market sizing sources (kept in-code, not shown on the site):
-//   2024 base ~$2.7B is corroborated across analysts — GMInsights $2.7B, Emergen $2.72B, Grand View $2.79B.
+//   2024 base ~$2.7B is corroborated across analysts: GMInsights $2.7B, Emergen $2.72B, Grand View $2.79B.
 //   2034 projection is GMInsights ($5.2B @ 6.7% CAGR). Analyst estimates range ~$4.2–5.4B at 6.3–8.0% CAGR
 //   (Grand View ~$4.2B by 2030 @ 6.3%; Emergen ~$5.4B by 2033 @ 8.0%).
 const metrics = [
   { prefix: '$', value: 2.7, decimals: 1, suffix: 'B', heading: 'Current market size', note: '2024 global market', color: '#00C16E' },
   { prefix: '$', value: 5.2, decimals: 1, suffix: 'B', heading: 'Projected by 2034', note: '10-year outlook', color: '#3B82F6' },
-  { prefix: '', value: 6.7, decimals: 1, suffix: '%', heading: 'CAGR', note: '2024–2034', color: '#8B5CF6' },
+  { prefix: '', value: 6.7, decimals: 1, suffix: '%', heading: 'CAGR', note: '2024–2034', color: '#2E9E8F' },
 ];
 
 const revenueBars = [
   { label: 'Feed Additives', pct: 35, color: '#00C16E' },
   { label: 'Carbon Markets', pct: 25, color: '#3B82F6' },
-  { label: 'Tech Licensing', pct: 20, color: '#8B5CF6' },
+  { label: 'Tech Licensing', pct: 20, color: '#2E9E8F' },
   { label: 'Direct Sales', pct: 20, color: '#F59E0B' },
 ];
 
@@ -30,7 +30,6 @@ export default function Market() {
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
             <span className="shead__coord">[ MARKET ]</span>
-            <span className="shead__tag tag--amber">OPPORTUNITY</span>
           </div>
           <h2 className="shead__title">
             A market on track for <em>~$4–5B</em> by the early 2030s
@@ -92,8 +91,8 @@ export default function Market() {
           <span className="mono-label">LANDSCAPE</span>
           <h3>Competitive landscape</h3>
           <p>
-            TacklEmission occupies a unique position with targeted biodegradable nanotechnology —
-            differentiated from both chemical and supply-chain-constrained solutions.
+            Most current options are either chemical inhibitors or supply-chain-constrained
+            extracts. A targeted, biodegradable nanoparticle sits apart from both.
           </p>
         </motion.div>
 
@@ -120,7 +119,7 @@ export default function Market() {
                 <span data-th="Funding" className="mono">
                   {c.funding}
                 </span>
-                <span data-th="Limitation">{c.limitation.replace(/^—\s*/, '')}</span>
+                <span data-th="Limitation">{c.limitation}</span>
               </div>
             );
           })}

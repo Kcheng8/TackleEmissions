@@ -67,7 +67,7 @@ export default function Contact() {
     setErrors(next);
     if (Object.values(next).some(Boolean)) return;
 
-    // Honeypot: bots fill hidden fields — silently accept without sending.
+    // Honeypot: bots fill hidden fields, so silently accept without sending.
     if (honeypot.current?.value) {
       setSubmitted(true);
       return;
@@ -89,7 +89,7 @@ export default function Contact() {
           subject: `New ${form.type} enquiry from ${form.name}`,
           from_name: 'TacklEmission Website',
           name: form.name,
-          organisation: form.org || '—',
+          organisation: form.org || 'Not provided',
           email: form.email,
           enquiry_type: form.type,
           message: form.message,
@@ -115,14 +115,13 @@ export default function Contact() {
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
             <span className="shead__coord">[ CONTACT ]</span>
-            <span className="shead__tag tag--green">48-HOUR RESPONSE</span>
           </div>
           <h2 className="shead__title">
-            Let&apos;s build the future <em>together</em>
+            Talk to the <em>team</em>
           </h2>
           <p className="shead__lede">
-            Whether you&apos;re an investor, research partner, industry collaborator, or simply
-            curious — we&apos;d love to hear from you.
+            Whether you&apos;re an investor, research partner, industry collaborator, or just
+            curious, we&apos;d like to hear from you.
           </p>
         </motion.header>
 
@@ -144,7 +143,7 @@ export default function Contact() {
               </div>
               <div>
                 <dt>Response time</dt>
-                <dd>Within 48 hours</dd>
+                <dd>Usually within a few days</dd>
               </div>
             </dl>
 
@@ -155,7 +154,7 @@ export default function Contact() {
                   <span>1</span>We review your message and identify the best point of contact.
                 </li>
                 <li>
-                  <span>2</span>We respond within 48 hours with an appropriate next step.
+                  <span>2</span>We reply, usually within a few days, with a next step.
                 </li>
                 <li>
                   <span>3</span>We schedule an introductory call or share requested materials.
@@ -176,7 +175,7 @@ export default function Contact() {
           </motion.aside>
 
           <motion.form {...fadeUp(0.08)} className="contact__form" onSubmit={handleSubmit} noValidate>
-            {/* Honeypot — hidden from real users, catches bots */}
+            {/* Honeypot: hidden from real users, catches bots */}
             <input
               ref={honeypot}
               type="text"
@@ -280,7 +279,7 @@ export default function Contact() {
                   </svg>
                 </div>
                 <h3>Message sent</h3>
-                <p>Thanks for reaching out. We&apos;ll get back to you within 48 hours.</p>
+                <p>Thanks for reaching out. We&apos;ll get back to you soon.</p>
               </div>
             )}
           </motion.form>

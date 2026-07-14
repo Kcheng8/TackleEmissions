@@ -33,8 +33,6 @@ const cardIcons: ReactNode[] = [
   </svg>,
 ];
 
-const advSymbols = ['⊕', '♻', '↗', '⊘', '≡'];
-
 export default function Technology() {
   return (
     <SectionWrapper id="technology" className="section section--ink">
@@ -42,14 +40,14 @@ export default function Technology() {
         <motion.header {...fadeUp()} className="shead">
           <div className="shead__rule">
             <span className="shead__coord">[ TECHNOLOGY ]</span>
-            <span className="shead__tag tag--blue">PLATFORM</span>
           </div>
           <h2 className="shead__title">
             A modular biotech <em>platform</em>
           </h2>
           <p className="shead__lede">
-            Four integrated components create a uniquely specific, safe, and scalable methane
-            mitigation system — with broad future applications beyond enteric fermentation.
+            Four components that make the system specific to rumen methanogens and, if it works,
+            manufacturable at scale. The same surface-display approach could later extend beyond
+            enteric fermentation.
           </p>
         </motion.header>
 
@@ -74,33 +72,9 @@ export default function Technology() {
           ))}
         </div>
 
-        <motion.div {...fadeUp()} className="arch">
-          <div className="arch__head">
-            <span className="mono-label">FIG.02 — PLATFORM ARCHITECTURE</span>
-          </div>
-          <div className="arch__flow">
-            <span className="arch__node" style={{ ['--c' as string]: '#00C16E' }}>Microbial Fermentation</span>
-            <span className="arch__arrow">→</span>
-            <span className="arch__node" style={{ ['--c' as string]: '#3B82F6' }}>PHA Biosynthesis</span>
-            <span className="arch__arrow">→</span>
-            <span className="arch__node" style={{ ['--c' as string]: '#8B5CF6' }}>Nanoparticle Formulation</span>
-          </div>
-          <div className="arch__flow">
-            <span className="arch__node" style={{ ['--c' as string]: '#F59E0B' }}>PeiR Expression</span>
-            <span className="arch__arrow">→</span>
-            <span className="arch__node" style={{ ['--c' as string]: '#00C16E' }}>Surface Display</span>
-            <span className="arch__arrow">→</span>
-            <span className="arch__node arch__node--w">Armed Nanoparticle</span>
-          </div>
-          <div className="arch__result">
-            Feed Additive → Rumen → Selective Methanogen Disruption →{' '}
-            <strong>Target: 30%+ CH₄ Reduction</strong>
-          </div>
-        </motion.div>
-
         <motion.div {...fadeUp()} className="subhead">
-          <span className="mono-label">WHY IT WINS</span>
-          <h3>Competitive advantages</h3>
+          <span className="mono-label">DIFFERENTIATION</span>
+          <h3>Where the approach differs</h3>
         </motion.div>
 
         <div className="advgrid">
@@ -111,7 +85,7 @@ export default function Technology() {
               className="adv"
               style={{ ['--c' as string]: a.color }}
             >
-              <span className="adv__sym">{advSymbols[i]}</span>
+              <span className="adv__sym">{String(i + 1).padStart(2, '0')}</span>
               <h4>{a.title}</h4>
               <p>{a.description}</p>
             </motion.article>
