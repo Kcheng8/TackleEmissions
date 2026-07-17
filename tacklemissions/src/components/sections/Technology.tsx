@@ -1,37 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import { fadeUp } from '@/lib/motion';
 import { platformComponents, platformAdvantages } from '@/lib/data';
-
-const cardCodes = ['A1', 'A2', 'A3', 'A4'];
-
-const cardIcons: ReactNode[] = [
-  <svg key="a1" viewBox="0 0 32 32" fill="none">
-    <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1.5" />
-    <circle cx="16" cy="6" r="2" fill="currentColor" />
-    <circle cx="16" cy="26" r="2" fill="currentColor" />
-    <circle cx="6" cy="16" r="2" fill="currentColor" />
-    <circle cx="26" cy="16" r="2" fill="currentColor" />
-    <circle cx="16" cy="16" r="3.5" fill="currentColor" opacity="0.5" />
-  </svg>,
-  <svg key="a2" viewBox="0 0 32 32" fill="none">
-    <path d="M8 16c0-6 4-8 8-8s8 2 8 8M8 16c0 6 4 8 8 8s8-2 8-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <circle cx="12" cy="12" r="1.8" fill="currentColor" />
-    <circle cx="20" cy="20" r="1.8" fill="currentColor" />
-  </svg>,
-  <svg key="a3" viewBox="0 0 32 32" fill="none">
-    <path d="M11 7v18M21 7v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <path d="M11 11q5-2 10 0M11 16q5 2 10 0M11 21q5-2 10 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>,
-  <svg key="a4" viewBox="0 0 32 32" fill="none">
-    <rect x="5" y="18" width="5" height="8" rx="1" fill="currentColor" opacity="0.5" />
-    <rect x="13" y="12" width="5" height="14" rx="1" fill="currentColor" opacity="0.7" />
-    <rect x="21" y="6" width="5" height="20" rx="1" fill="currentColor" />
-  </svg>,
-];
 
 export default function Technology() {
   return (
@@ -59,8 +31,7 @@ export default function Technology() {
               className="techcard"
               style={{ ['--c' as string]: c.color }}
             >
-              <span className="techcard__no">{cardCodes[i]}</span>
-              <div className="techcard__icon">{cardIcons[i]}</div>
+              <span className="techcard__rule" aria-hidden="true" />
               <h3>{c.title}</h3>
               <p>{c.description}</p>
               <div className="speclist">

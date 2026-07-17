@@ -1,25 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Newsreader, Public_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Public_Sans } from "next/font/google";
 import "./globals.css";
 
-// Newsreader: an editorial, journal-style serif with optical sizing for the
-// headlines; Public Sans keeps the body plain and legible; IBM Plex Mono gives
-// the data labels a lab-instrument register.
-const displaySerif = Newsreader({
-  subsets: ["latin"],
-  variable: "--font-display",
-});
-
+// Public Sans is the single family for the whole site — headings, body and
+// labels alike.
 const bodySans = Public_Sans({
   subsets: ["latin"],
   style: ["normal", "italic"],
   variable: "--font-body",
-});
-
-const labelMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-code",
 });
 
 const SITE_URL = "https://tacklemission.com";
@@ -105,10 +93,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${displaySerif.variable} ${bodySans.variable} ${labelMono.variable}`}
-    >
+    <html lang="en" className={bodySans.variable}>
       <body>
         <script
           type="application/ld+json"

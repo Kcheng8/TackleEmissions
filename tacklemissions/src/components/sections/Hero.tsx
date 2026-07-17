@@ -56,7 +56,6 @@ export default function Hero() {
               </span>
             </div>
           ))}
-          <p className="readout__note">design targets, illustrative</p>
         </motion.aside>
       </div>
     </section>
