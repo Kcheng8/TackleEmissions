@@ -434,6 +434,28 @@ em { font-style: normal; }
 .sd__kicker { font-size: 11px; letter-spacing: 0.16em; color: var(--faint); text-transform: uppercase; }
 .sd__title { font-size: clamp(1.3rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-top: 6px; }
 .sd__desc { font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 22px; }
+/* The diagrams are dark line-art on a transparent ground, so they need a light
+   mat to be legible against the panel. They run the full width of the panel and
+   are deliberately NOT height-capped: these carry small type (gene labels, and
+   the callouts on the particle), and any cap shrinks that type past reading. */
+.sd__figure { margin-bottom: 22px; }
+/* Only the artwork is matted — the caption below sits on the panel itself. */
+.sd__figure-mat {
+  display: block; padding: 14px;
+  border-radius: var(--r-sm); background: #fff;
+  border: 1px solid color-mix(in srgb, var(--c) 22%, transparent);
+}
+.sd__figure-img { display: block; width: 100%; height: auto; }
+.sd__figure-credit {
+  margin-top: 10px; font-size: 0.72rem; line-height: 1.4;
+  color: var(--faint);
+}
+.sd__figure-credit a {
+  color: inherit; text-decoration: underline;
+  text-underline-offset: 2px; text-decoration-thickness: 1px;
+  transition: color 0.2s;
+}
+.sd__figure-credit a:hover { color: var(--muted); }
 .sd__params {
   border-radius: var(--r-sm); padding: 16px 18px; margin-top: auto;
   border: 1px solid color-mix(in srgb, var(--c) 22%, transparent);

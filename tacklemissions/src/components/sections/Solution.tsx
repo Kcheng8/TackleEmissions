@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import { fadeUp } from '@/lib/motion';
@@ -59,6 +60,31 @@ export default function Solution() {
               </div>
             </div>
             <p className="sd__desc">{s.description}</p>
+            {s.image && (
+              <figure className="sd__figure">
+                <span className="sd__figure-mat">
+                  <Image
+                    src={s.image}
+                    alt={s.imageAlt ?? ''}
+                    className="sd__figure-img"
+                    sizes="(max-width: 880px) 100vw, 560px"
+                    /* line-art with small labels: the default 75 blurs the type */
+                    quality={90}
+                  />
+                </span>
+                {s.imageCredit && (
+                  <figcaption className="sd__figure-credit">
+                    {s.imageCreditUrl ? (
+                      <a href={s.imageCreditUrl} target="_blank" rel="noopener noreferrer">
+                        {s.imageCredit}
+                      </a>
+                    ) : (
+                      s.imageCredit
+                    )}
+                  </figcaption>
+                )}
+              </figure>
+            )}
             <div className="sd__params">
               <p className="sd__params-k">Technical parameters</p>
               <p className="sd__params-v">{s.detail}</p>

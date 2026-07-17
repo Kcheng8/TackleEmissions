@@ -1,9 +1,12 @@
+import type { StaticImageData } from "next/image";
 import type { SponsorLogo } from "@/components/ui/SponsorRibbon";
 import asbcLogo from "../../public/sponsors/asbc.png";
 import ideaBioLogo from "../../public/sponsors/ideabio.jpg";
 import idtLogo from "../../public/sponsors/idt.jpg";
 import nebLogo from "../../public/sponsors/neb.svg";
 import uqLogo from "../../public/sponsors/uq.png";
+import phaSynthesis from "../../public/steps/pha-nanoparticle-synthesis.png";
+import phaParticle from "../../public/steps/pha-particle.png";
 
 export const navLinks = [
   { href: "#problem",    label: "Problem" },
@@ -98,7 +101,23 @@ export const currentSolutions = [
   },
 ];
 
-export const solutionSteps = [
+/* Steps may carry a diagram. The figures are drawn as dark ink on a transparent
+   ground, so `.sd__figure` mats them on white — they are illegible straight on
+   the panel. */
+type SolutionStep = {
+  step: string;
+  title: string;
+  description: string;
+  detail: string;
+  color: string;
+  image?: StaticImageData;
+  imageAlt?: string;
+  /* Attribution for a figure redrawn from published work. */
+  imageCredit?: string;
+  imageCreditUrl?: string;
+};
+
+export const solutionSteps: SolutionStep[] = [
   {
     step: "01",
     title: "PHA Nanoparticle Synthesis",
@@ -106,6 +125,9 @@ export const solutionSteps = [
       "Biodegradable polyhydroxyalkanoate (PHA) nanoparticles are manufactured using engineered microbial fermentation. PHAs are naturally occurring biopolymers that are biocompatible and metabolisable.",
     detail: "50–500 nm diameter · Rumen-stable · Food-contact grade",
     color: "#00C16E",
+    image: phaSynthesis,
+    imageAlt:
+      "Three-stage diagram of the engineered expression construct. With a repressor bound to the operator there is no transcription of the phaA, phaB and phaC-peiR genes; IPTG then binds the repressor and lifts it off the operator; RNA polymerase transcribes the operon, yielding a PHA nanoparticle that displays PeiR enzyme on its surface.",
   },
   {
     step: "02",
@@ -114,6 +136,11 @@ export const solutionSteps = [
       "PeiR pseudomurein endoisopeptidase enzymes are anchored on the nanoparticle surface using synthetic biology surface-display systems, so each particle carries the active enzyme to where methanogens live.",
     detail: "PhaC surface display · Stable anchoring",
     color: "#22d87a",
+    image: phaParticle,
+    imageAlt:
+      "Cross-section of a PHA nanoparticle: a PHA core wrapped in a phospholipid layer, studded with PhaC enzyme anchors that display PeiR enzymes on the surface. Each PeiR carries PMBRs for cell-wall binding and a C-terminus C39 peptidase domain.",
+    imageCredit: "Adapted from Altermann et al., 2018",
+    imageCreditUrl: "https://doi.org/10.3389/fmicb.2018.02378",
   },
   {
     step: "03",
