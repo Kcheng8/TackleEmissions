@@ -754,6 +754,74 @@ em { font-style: normal; }
 .contact__success h3 { font-size: 1.3rem; font-weight: 600; }
 .contact__success p { font-size: 0.9rem; color: var(--muted); max-width: 280px; }
 
+/* =================== SPONSOR RIBBON =================== */
+/* Full-bleed white band between the hero and the dark sections. Logos are
+   supplied as dark ink for light backgrounds, so they sit straight on the band
+   with no chip behind them; each slot carries the grayscale → colour hover. */
+.ribbon {
+  --slot-h: 54px;
+  --slot-pad: 44px;
+  --slot-min: 150px;
+  padding: 24px 0;
+  padding-left: var(--spine-w);
+  background: #fff;
+}
+.ribbon__label {
+  font-size: 0.74rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(11, 34, 64, 0.5);
+  text-align: center; margin-bottom: 14px;
+}
+
+.ribbon__viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.ribbon__track {
+  display: flex;
+  width: max-content;
+  animation: ribbon-scroll 38s linear infinite;
+}
+.ribbon__copy { display: flex; flex-shrink: 0; }
+
+/* Shift = -100% / copies rendered by SponsorRibbon.tsx (3). Change both together. */
+@keyframes ribbon-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+.ribbon__slot {
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  height: var(--slot-h); min-width: var(--slot-min);
+  padding-inline: var(--slot-pad);
+}
+.ribbon__chip {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 100%; padding: 8px 16px;
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.ribbon__slot:hover .ribbon__chip,
+.ribbon__chip:focus-visible { filter: grayscale(0); opacity: 1; }
+.ribbon__img { height: 100%; width: auto; max-width: 200px; object-fit: contain; }
+
+@media (max-width: 620px) {
+  .ribbon { --slot-h: 42px; --slot-pad: 20px; --slot-min: 104px; padding-block: 18px; }
+  .ribbon__img { max-width: 140px; }
+}
+
+/* No scrolling for reduced-motion: drop the duplicate copies and let the real
+   one wrap, so every sponsor stays visible instead of freezing off-screen. */
+@media (prefers-reduced-motion: reduce) {
+  .ribbon__viewport { overflow: visible; mask-image: none; -webkit-mask-image: none; }
+  .ribbon__track { animation: none; width: 100%; }
+  .ribbon__copy { flex-wrap: wrap; justify-content: center; width: 100%; }
+  .ribbon__copy[aria-hidden="true"] { display: none; }
+  .ribbon__slot { padding-block: 8px; }
+}
+
 /* =================== FOOTER =================== */
 .footer { background: #0B2240; border-top: 1px solid var(--line); padding-left: var(--spine-w); }
 .footer__inner { display: grid; grid-template-columns: 1.6fr 1fr; gap: 44px; padding-top: 64px; padding-bottom: 40px; }

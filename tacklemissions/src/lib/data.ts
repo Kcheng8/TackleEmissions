@@ -1,3 +1,10 @@
+import type { SponsorLogo } from "@/components/ui/SponsorRibbon";
+import asbcLogo from "../../public/sponsors/asbc.png";
+import ideaBioLogo from "../../public/sponsors/ideabio.jpg";
+import idtLogo from "../../public/sponsors/idt.jpg";
+import nebLogo from "../../public/sponsors/neb.svg";
+import uqLogo from "../../public/sponsors/uq.png";
+
 export const navLinks = [
   { href: "#problem",    label: "Problem" },
   { href: "#solution",   label: "Solution" },
@@ -365,4 +372,12 @@ export const references = [
     url: "https://agfundernews.com/red-seaweed-was-billed-as-a-gamechanger-for-livestock-methane-reduction-so-when-will-it-deliver",
     cite: "agfundernews.com",
   },
+];
+
+export const sponsors: SponsorLogo[] = [
+  { name: "The University of Queensland", logo: uqLogo, url: "https://www.uq.edu.au/" },
+  { name: "Australasian Synthetic Biology Challenge", logo: asbcLogo },
+  { name: "Integrated DNA Technologies", logo: idtLogo, url: "https://www.idtdna.com/" },
+  { name: "IDEA Bio", logo: ideaBioLogo },
+  { name: "New England Biolabs", logo: nebLogo, url: "https://www.neb.com/" },
 ];

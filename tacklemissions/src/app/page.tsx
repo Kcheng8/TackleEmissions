@@ -10,6 +10,8 @@ import Research from '@/components/sections/Research';
 import Team from '@/components/sections/Team';
 import Impact from '@/components/sections/Impact';
 import Contact from '@/components/sections/Contact';
+import SponsorRibbon from '@/components/ui/SponsorRibbon';
+import { sponsors } from '@/lib/data';
 
 export default function Home() {
   return (
@@ -20,6 +22,7 @@ export default function Home() {
       <main id="main">
         <span id="top" />
         <Hero />
+        <SponsorRibbon sponsors={sponsors} label="Supported by" />
         <Problem />
         <Solution />
         <Technology />
