@@ -128,6 +128,8 @@ export const solutionSteps: SolutionStep[] = [
     image: phaSynthesis,
     imageAlt:
       "Three-stage diagram of the engineered expression construct. With a repressor bound to the operator there is no transcription of the phaA, phaB and phaC-peiR genes; IPTG then binds the repressor and lifts it off the operator; RNA polymerase transcribes the operon, yielding a PHA nanoparticle that displays PeiR enzyme on its surface.",
+    imageCredit: "Adapted from Altermann et al., 2018",
+    imageCreditUrl: "https://doi.org/10.3389/fmicb.2018.02378",
   },
   {
     step: "02",
