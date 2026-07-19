@@ -291,7 +291,7 @@ export const teamMembers = [
     bio: "Bachelor of Engineering & Science, Chemical & Bioprocess Engineering and Microbiology.",
     category: "Bachelor",
     initials: "KC",
-    photo: "",
+    photo: "/Kierren.jpg",
     color: "#2E9E8F",
     linkedin: "https://www.linkedin.com/in/kierren-cheng-7ba5841b2/",
   },
