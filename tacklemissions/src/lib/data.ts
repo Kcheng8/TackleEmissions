@@ -288,7 +288,7 @@ export const teamMembers = [
   {
     name: "Kierren Cheng",
     affiliation: "University of Queensland",
-    bio: "Bachelor of Engineering & Science, Chemical & Bioprocess Engineering and Microbiology.",
+    bio: "Chemical Engineering & Microbiology.",
     category: "Bachelor",
     initials: "KC",
     photo: "/Kierren.jpg",
