@@ -238,8 +238,7 @@ export const researchTimeline = [
       "In vitro archaea activity assays (lysis confirmation)",
       "Nanoparticle stability in simulated rumen fluid (SRF)",
       "In vitro rumen fermentation gas-production assays",
-      "Methane reduction quantification (GreenFeed / SF₆ tracer)",
-      "Provisional patent application filing",
+      "Methane reduction quantification",
     ],
   },
   {
