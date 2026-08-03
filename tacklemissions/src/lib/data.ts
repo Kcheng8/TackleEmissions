@@ -54,7 +54,7 @@ export const currentSolutions = [
   {
     name: "Seaweed (Asparagopsis)",
     company: "FutureFeed",
-    effectiveness: "37–95%",
+    effectiveness: "80%+",
     limitations: [
       "Supply chain bottlenecks",
       "Palatability & taste effects",
