@@ -16,6 +16,7 @@ export const navLinks = [
   { href: "#research",   label: "R&D" },
   { href: "#team",       label: "Team" },
   { href: "#impact",     label: "Impact" },
+  { href: "#news",       label: "News" },
   { href: "#contact",    label: "Contact" },
 ];
 
@@ -324,6 +325,65 @@ export const supervisor = {
   photo: "/Axa.jpeg",
   color: "#60A5FA",
 };
+
+/* News is ordered newest-first; the first entry renders as the featured card.
+   `date` is the display string, `isoDate` feeds the <time datetime> attribute.
+   Presenters are matched to `teamMembers` by name, so each one picks up that
+   member's accent colour and LinkedIn link automatically. */
+export type NewsItem = {
+  id: string;
+  award?: string;
+  event: string;
+  host: string;
+  date: string;
+  isoDate: string;
+  headline: string;
+  body: string[];
+  image?: string;
+  imageAlt?: string;
+  presenters?: string[];
+  alongside?: string[];
+  judges?: string[];
+  thanks?: { name: string; note: string }[];
+  next?: string;
+  url?: string;
+};
+
+export const newsItems: NewsItem[] = [
+  {
+    id: "judges-choice-2026",
+    award: "Judges’ Choice Award",
+    event: "UQ SynBio Pitch Night",
+    host: "UQ Biotechnology Society",
+    date: "22 September 2026",
+    isoDate: "2026-09-22",
+    headline: "TacklEmission takes home the Judges’ Choice Award",
+    body: [
+      "We are thrilled to share that TacklEmission received the Judges’ Choice Award at the UQ SynBio Pitch Night, hosted by the UQ Biotechnology Society.",
+      "Rachel Mueller and Felipe Victorica took the stage for TacklEmission, pitching our synthetic biology solution to one of the cattle industry’s most significant sustainability challenges: enteric methane emissions.",
+      "It was fantastic to present alongside the talented teams from Adhesyn, Melanosense and Pherosen, and to celebrate the innovative ideas being developed by UQ students. Thank you to everyone who attended, asked questions and supported the four UQ teams — we are grateful to be part of such an enthusiastic community of biotechnology innovators.",
+    ],
+    image: "/news/pitch-night.jpg",
+    imageAlt:
+      "Rachel Mueller and Felipe Victorica presenting TacklEmission to a seated audience in a UQ lecture theatre. Two large screens behind them show the pitch deck's problem slide, headed “We need solutions for global warming. Fast.”, with the cost of natural disasters to the Australian economy rising from $38 billion to $73 billion per year by 2060.",
+    presenters: ["Rachel Mueller", "Felipe Victorica"],
+    alongside: ["Adhesyn", "Melanosense", "Pherosen"],
+    judges: [
+      "Trent Munro",
+      "Huadong Peng",
+      "Matthew Busato",
+      "Nélida Gómez Quintero",
+      "Kirill Alexandrov",
+    ],
+    thanks: [
+      { name: "UQ Biotechnology Society", note: "for organising such a fantastic evening" },
+      { name: "Dr. Axayacatl (Axa) Gonzalez & IDEA Bio", note: "for continued guidance and support" },
+      { name: "Alex Baker, FutureFeed", note: "our industry mentor throughout the ASBC journey" },
+    ],
+    next: "Next stop: the Australasian SynBio Challenge Finals in Sydney.",
+    url: "https://www.linkedin.com/company/tacklemission/",
+  },
+];
 
 export const impactMetrics = [
   { value: 30,   suffix: "%+", label: "Methane Reduction Target",        description: "Per animal, per dosing cycle",               color: "#00C16E" },

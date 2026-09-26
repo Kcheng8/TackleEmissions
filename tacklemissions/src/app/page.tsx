@@ -8,6 +8,7 @@ import Market from '@/components/sections/Market';
 import Research from '@/components/sections/Research';
 import Team from '@/components/sections/Team';
 import Impact from '@/components/sections/Impact';
+import News from '@/components/sections/News';
 import Contact from '@/components/sections/Contact';
 import SponsorRibbon from '@/components/ui/SponsorRibbon';
 import { sponsors } from '@/lib/data';
@@ -28,6 +29,7 @@ export default function Home() {
         <Research />
         <Team />
         <Impact />
+        <News />
         <Contact />
       </main>
       <Footer />
