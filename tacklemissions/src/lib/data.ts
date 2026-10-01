@@ -326,33 +326,72 @@ export const supervisor = {
   color: "#60A5FA",
 };
 
-/* News is ordered newest-first; the first entry renders as the featured card.
+/* News is ordered newest-first and renders as a filterable feed.
    `date` is the display string, `isoDate` feeds the <time datetime> attribute.
-   Presenters are matched to `teamMembers` by name, so each one picks up that
-   member's accent colour and LinkedIn link automatically. */
+   `category` drives both the entry tag and the filter row — the filter is built
+   from the categories actually present, so it never offers an empty option.
+   Judges carrying a `role` render as a titled list instead of bare name chips. */
+export type NewsCategory = "Award" | "Event" | "Publication" | "Update";
+
 export type NewsItem = {
   id: string;
-  award?: string;
-  event: string;
-  host: string;
+  category: NewsCategory;
+  event?: string;
+  host?: string;
   date: string;
   isoDate: string;
   headline: string;
   body: string[];
   image?: string;
   imageAlt?: string;
-  presenters?: string[];
-  alongside?: string[];
-  judges?: string[];
+  judges?: { name: string; role?: string }[];
   thanks?: { name: string; note: string }[];
-  next?: string;
   url?: string;
+  urlLabel?: string;
+};
+
+/* Tag colour per category. */
+export const newsCategoryColors: Record<NewsCategory, string> = {
+  Award: "#F59E0B",
+  Event: "#3B82F6",
+  Publication: "#2E9E8F",
+  Update: "#4A8DDE",
 };
 
 export const newsItems: NewsItem[] = [
   {
+    id: "nucleate-second-2026",
+    category: "Award",
+    event: "Reverse Industry Pitches & Student Elevator Pitch Competition",
+    host: "Nucleate Australia, Brisbane",
+    date: "30 September 2026",
+    isoDate: "2026-09-30",
+    headline: "Second place at the Nucleate Australia student pitch competition",
+    body: [
+      "Felipe represented TacklEmission at Nucleate Australia’s Brisbane Reverse Industry Pitches and Student Elevator Pitch Competition, presenting our approach to tackling enteric methane through synthetic biology and long-duration delivery. We are incredibly excited to have placed second.",
+      "Beyond the competition itself, the night was a valuable chance to hear directly from industry leaders, investors and the broader biotechnology community about the challenges and opportunities shaping early-stage biotech.",
+      "A huge congratulations to Felipe for representing the team and delivering the pitch — another milestone as we keep developing and challenging the concept.",
+    ],
+    image: "/news/reverse-pitch.jpg",
+    imageAlt:
+      "Felipe Victorica pitching TacklEmission with a microphone to a seated audience, beside a Nucleate Australia banner and a University of Queensland Institute for Molecular Bioscience table. The slide behind him lays out the mechanism: livestock account for ~14% of global greenhouse gas emissions, methanogenic archaea in the rumen emit enteric methane, an engineered bionanoparticle delivers the treatment, and the methanogens are lysed, cutting methane production while raising farm revenue.",
+    judges: [
+      { name: "Dr Michelle Williams", role: "Strategic Partnerships Lead, Sanofi" },
+      { name: "Dr Christina Kulis", role: "Analyst, Brandon Capital’s CUREator" },
+      { name: "Dr Chynna-Loren Sheremeta", role: "Business Development Analyst, QIMR Berghofer" },
+    ],
+    thanks: [
+      {
+        name: "Nucleate Australia",
+        note: "for creating a platform for students and emerging founders to share ambitious biotech ideas with industry",
+      },
+    ],
+    url: "https://www.linkedin.com/company/tacklemission/",
+    urlLabel: "Read the full post on LinkedIn",
+  },
+  {
     id: "judges-choice-2026",
-    award: "Judges’ Choice Award",
+    category: "Award",
     event: "UQ SynBio Pitch Night",
     host: "UQ Biotechnology Society",
     date: "22 September 2026",
@@ -362,26 +401,25 @@ export const newsItems: NewsItem[] = [
       "We are thrilled to share that TacklEmission received the Judges’ Choice Award at the UQ SynBio Pitch Night, hosted by the UQ Biotechnology Society.",
       "Rachel Mueller and Felipe Victorica took the stage for TacklEmission, pitching our synthetic biology solution to one of the cattle industry’s most significant sustainability challenges: enteric methane emissions.",
       "It was fantastic to present alongside the talented teams from Adhesyn, Melanosense and Pherosen, and to celebrate the innovative ideas being developed by UQ students. Thank you to everyone who attended, asked questions and supported the four UQ teams — we are grateful to be part of such an enthusiastic community of biotechnology innovators.",
+      "Next stop: the Australasian SynBio Challenge Finals in Sydney.",
     ],
     image: "/news/pitch-night.jpg",
     imageAlt:
       "Rachel Mueller and Felipe Victorica presenting TacklEmission to a seated audience in a UQ lecture theatre. Two large screens behind them show the pitch deck's problem slide, headed “We need solutions for global warming. Fast.”, with the cost of natural disasters to the Australian economy rising from $38 billion to $73 billion per year by 2060.",
-    presenters: ["Rachel Mueller", "Felipe Victorica"],
-    alongside: ["Adhesyn", "Melanosense", "Pherosen"],
     judges: [
-      "Trent Munro",
-      "Huadong Peng",
-      "Matthew Busato",
-      "Nélida Gómez Quintero",
-      "Kirill Alexandrov",
+      { name: "Trent Munro" },
+      { name: "Huadong Peng" },
+      { name: "Matthew Busato" },
+      { name: "Nélida Gómez Quintero" },
+      { name: "Kirill Alexandrov" },
     ],
     thanks: [
       { name: "UQ Biotechnology Society", note: "for organising such a fantastic evening" },
       { name: "Dr. Axayacatl (Axa) Gonzalez & IDEA Bio", note: "for continued guidance and support" },
       { name: "Alex Baker, FutureFeed", note: "our industry mentor throughout the ASBC journey" },
     ],
-    next: "Next stop: the Australasian SynBio Challenge Finals in Sydney.",
     url: "https://www.linkedin.com/company/tacklemission/",
+    urlLabel: "Read the full post on LinkedIn",
   },
 ];
 
