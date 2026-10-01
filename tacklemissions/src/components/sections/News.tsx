@@ -28,25 +28,29 @@ function NewsEntry({ item }: { item: NewsItem }) {
       <h3 className="newsentry__title">{item.headline}</h3>
       {meta && <p className="newsentry__meta">{meta}</p>}
 
-      <div className="newsentry__body">
-        {item.body.map((p) => (
-          <p key={p.slice(0, 40)}>{p}</p>
-        ))}
-      </div>
+      {/* Story left, photo right. Body comes first in the DOM so it still reads
+          before the image once the columns stack on narrow screens. */}
+      <div className={`newsentry__cols${item.image ? '' : ' newsentry__cols--solo'}`}>
+        <div className="newsentry__body">
+          {item.body.map((p) => (
+            <p key={p.slice(0, 40)}>{p}</p>
+          ))}
+        </div>
 
-      {item.image && (
-        <figure className="newsentry__figure">
-          <div className="newsentry__figure-frame">
-            <Image
-              src={item.image}
-              alt={item.imageAlt ?? ''}
-              fill
-              sizes="(max-width: 880px) 100vw, 500px"
-              className="newsentry__img"
-            />
-          </div>
-        </figure>
-      )}
+        {item.image && (
+          <figure className="newsentry__figure">
+            <div className="newsentry__figure-frame">
+              <Image
+                src={item.image}
+                alt={item.imageAlt ?? ''}
+                fill
+                sizes="(max-width: 880px) 100vw, 400px"
+                className="newsentry__img"
+              />
+            </div>
+          </figure>
+        )}
+      </div>
 
       {(item.judges || item.thanks) && (
         <div className="newsentry__ack">

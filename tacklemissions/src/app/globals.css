@@ -716,14 +716,21 @@ em { font-style: normal; }
 }
 .newsentry__meta { font-size: 0.82rem; color: var(--faint); margin-top: 9px; }
 
-.newsentry__body { margin-top: 16px; max-width: 72ch; }
+/* Story left, photo right. The grid is capped so the prose column keeps a
+   readable measure instead of stretching the full container width. */
+.newsentry__cols {
+  display: grid; grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 32px; align-items: start;
+  margin-top: 16px; max-width: 1080px;
+}
+.newsentry__cols--solo { grid-template-columns: minmax(0, 72ch); }
+
 .newsentry__body p { font-size: 0.94rem; color: var(--muted); line-height: 1.65; }
 .newsentry__body p + p { margin-top: 13px; }
 
-/* Modest, left-aligned — the story leads and the photo supports it. A single
-   16:9 frame keeps the feed even: it matches the widescreen shots exactly and
-   trims only top and bottom from the 4:3 ones, which are framed with room. */
-.newsentry__figure { margin: 22px 0 0; max-width: 500px; }
+/* A single 16:9 frame keeps the feed even: it matches the widescreen shots
+   exactly and trims only top and bottom from the 4:3 ones, which have room. */
+.newsentry__figure { margin: 4px 0 0; }
 .newsentry__figure-frame {
   position: relative; width: 100%; aspect-ratio: 16 / 9;
   border-radius: var(--r); overflow: hidden;
@@ -760,7 +767,10 @@ em { font-style: normal; }
 
 @media (max-width: 880px) {
   .newsentry__ack { grid-template-columns: 1fr; }
-  .newsentry__figure { max-width: 100%; }
+  /* Too narrow for a side column — the photo drops below the story it follows. */
+  .newsentry__cols,
+  .newsentry__cols--solo { grid-template-columns: 1fr; gap: 22px; }
+  .newsentry__figure { max-width: 460px; }
 }
 
 @media (max-width: 560px) {
