@@ -696,9 +696,14 @@ em { font-style: normal; }
   color: var(--primary); border-color: rgba(74,141,222,0.45); background: rgba(74,141,222,0.12);
 }
 
-.newsfeed { display: flex; flex-direction: column; }
-.newsentry { padding: 38px 0; border-top: 1px solid var(--line); }
-.newsfeed > div:first-child .newsentry { border-top: none; padding-top: 0; }
+/* Each announcement is boxed so a growing feed stays visually separated. */
+.newsfeed { display: flex; flex-direction: column; gap: 22px; }
+.newsentry {
+  padding: clamp(26px, 3.2vw, 36px);
+  border-radius: var(--r); border: 1px solid var(--line); background: var(--panel);
+  transition: border-color 0.3s;
+}
+.newsentry:hover { border-color: var(--line-strong); }
 
 .newsentry__head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
 .newsentry__cat {
@@ -738,11 +743,12 @@ em { font-style: normal; }
 }
 .newsentry__img { object-fit: cover; object-position: center; }
 
-/* Acknowledgements sit quieter than the story they follow. */
+/* Acknowledgements sit quieter than the story they follow. Now that the entry
+   itself is boxed, a rule separates them rather than a second nested box. */
 .newsentry__ack {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
-  margin-top: 24px; padding: 20px 22px; max-width: 900px;
-  border-radius: var(--r); border: 1px solid var(--line); background: var(--surface);
+  margin-top: 26px; padding-top: 22px; max-width: 980px;
+  border-top: 1px solid var(--line);
 }
 .ack__group .mono-label { display: block; color: var(--primary); margin-bottom: 11px; }
 .ack__chips { display: flex; flex-wrap: wrap; gap: 8px; }

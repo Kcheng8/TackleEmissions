@@ -361,7 +361,7 @@ export const newsCategoryColors: Record<NewsCategory, string> = {
 export const newsItems: NewsItem[] = [
   {
     id: "nucleate-second-2026",
-    category: "Award",
+    category: "Event",
     event: "Reverse Industry Pitches & Student Elevator Pitch Competition",
     host: "Nucleate Australia, Brisbane",
     date: "30 September 2026",
@@ -391,7 +391,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: "judges-choice-2026",
-    category: "Award",
+    category: "Event",
     event: "UQ SynBio Pitch Night",
     host: "UQ Biotechnology Society",
     date: "22 September 2026",
