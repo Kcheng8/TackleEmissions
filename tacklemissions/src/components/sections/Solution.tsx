@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
+import PhaExpressionAnimation from '@/components/ui/PhaExpressionAnimation';
 import { fadeUp } from '@/lib/motion';
 import { solutionSteps } from '@/lib/data';
 
@@ -60,31 +60,6 @@ export default function Solution() {
               </div>
             </div>
             <p className="sd__desc">{s.description}</p>
-            {s.image && (
-              <figure className="sd__figure">
-                <span className="sd__figure-mat">
-                  <Image
-                    src={s.image}
-                    alt={s.imageAlt ?? ''}
-                    className="sd__figure-img"
-                    sizes="(max-width: 880px) 100vw, 560px"
-                    /* line-art with small labels: the default 75 blurs the type */
-                    quality={90}
-                  />
-                </span>
-                {s.imageCredit && (
-                  <figcaption className="sd__figure-credit">
-                    {s.imageCreditUrl ? (
-                      <a href={s.imageCreditUrl} target="_blank" rel="noopener noreferrer">
-                        {s.imageCredit}
-                      </a>
-                    ) : (
-                      s.imageCredit
-                    )}
-                  </figcaption>
-                )}
-              </figure>
-            )}
             <div className="sd__params">
               <p className="sd__params-k">Technical parameters</p>
               <p className="sd__params-v">{s.detail}</p>
@@ -103,6 +78,22 @@ export default function Solution() {
               </span>
             </div>
           </div>
+        </motion.div>
+
+        <motion.div {...fadeUp()} className="subhead">
+          <span className="mono-label">Construct pPHB01</span>
+          <h3>
+            Inducible expression of the <em>phaA–phaB–phaC–peiR</em> operon
+          </h3>
+          <p>
+            A lac-regulated operon in <em>E. coli</em> BL21 stays silent until IPTG lifts the
+            repressor. Transcription then yields the PHA biosynthesis enzymes, which build a
+            bionanoparticle displaying the PeiR lytic enzyme on its surface.
+          </p>
+        </motion.div>
+
+        <motion.div {...fadeUp(0.05)}>
+          <PhaExpressionAnimation />
         </motion.div>
       </div>
     </SectionWrapper>

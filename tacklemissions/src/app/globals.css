@@ -434,28 +434,6 @@ em { font-style: normal; }
 .sd__kicker { font-size: 11px; letter-spacing: 0.16em; color: var(--faint); text-transform: uppercase; }
 .sd__title { font-size: clamp(1.3rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-top: 6px; }
 .sd__desc { font-size: 1rem; color: var(--muted); line-height: 1.6; margin-bottom: 22px; }
-/* The diagrams are dark line-art on a transparent ground, so they need a light
-   mat to be legible against the panel. They run the full width of the panel and
-   are deliberately NOT height-capped: these carry small type (gene labels, and
-   the callouts on the particle), and any cap shrinks that type past reading. */
-.sd__figure { margin-bottom: 22px; }
-/* Only the artwork is matted — the caption below sits on the panel itself. */
-.sd__figure-mat {
-  display: block; padding: 14px;
-  border-radius: var(--r-sm); background: #fff;
-  border: 1px solid color-mix(in srgb, var(--c) 22%, transparent);
-}
-.sd__figure-img { display: block; width: 100%; height: auto; }
-.sd__figure-credit {
-  margin-top: 10px; font-size: 0.72rem; line-height: 1.4;
-  color: var(--faint);
-}
-.sd__figure-credit a {
-  color: inherit; text-decoration: underline;
-  text-underline-offset: 2px; text-decoration-thickness: 1px;
-  transition: color 0.2s;
-}
-.sd__figure-credit a:hover { color: var(--muted); }
 .sd__params {
   border-radius: var(--r-sm); padding: 16px 18px; margin-top: auto;
   border: 1px solid color-mix(in srgb, var(--c) 22%, transparent);
@@ -467,6 +445,144 @@ em { font-style: normal; }
 .sd__progress-k { font-size: 10px; color: var(--faint); }
 .sd__bar { flex: 1; height: 3px; border-radius: 3px; background: rgba(255,255,255,0.08); overflow: hidden; }
 .sd__bar span { display: block; height: 100%; background: var(--c); border-radius: 3px; }
+
+/* =================== 01b · PHA EXPRESSION ANIMATION =================== */
+/* Ported from the standalone pha-expression-animation.html. The site is
+   permanently dark (layout.tsx sets colorScheme: "dark" and there is no
+   prefers-color-scheme / [data-theme] switch anywhere), so the original's
+   light + dark token pairs collapse to one set mapped onto the site palette.
+   Only the biology-specific colours with no site equivalent are defined here. */
+.pha {
+  --pha-dna:        #14315E;   /* DNA backbone fill — was --dna */
+  --pha-gene:       #2E9E8F;   /* gene bodies — site --teal */
+  --pha-gene-ink:   #07182C;   /* text on gene fill — site --ink */
+  --pha-rnap:       #2B4461;   /* polymerase body — was --rnap */
+  --pha-rnap-ink:   #CFE3F8;   /* text on polymerase */
+  --pha-repressor:  #6A71C8;   /* indigo repressor — no site equivalent */
+  --pha-rna:        #DD9A5E;   /* mRNA strand — no site equivalent */
+  --pha-core:       #A2674B;   /* PHA granule core — no site equivalent */
+  --pha-lipid:      #63A0EA;   /* phospholipid heads — site --primary-2 */
+  --pha-phac:       #EF9A43;   /* PhaC synthase — no site equivalent */
+  --pha-link:       #F0D264;   /* PMBR linker — no site equivalent */
+  --pha-peir:       #DD5C4D;   /* PeiR payload — no site equivalent */
+  --pha-misc:       #72B667;   /* other surface proteins — no site equivalent */
+
+  display: flex; flex-direction: column; gap: 16px;
+  padding: clamp(20px, 2.6vw, 28px);
+  border-radius: var(--r); border: 1px solid var(--line); background: var(--panel);
+}
+
+.pha__scene { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.pha__panel { min-width: 0; }
+.pha__panel--circuit { flex: 1 1 440px; }
+.pha__panel--particle { flex: 1 1 230px; max-width: 320px; margin-inline: auto; }
+.pha svg { display: block; width: 100%; height: auto; max-width: 100%; overflow: visible; }
+
+/* The original switched between three families here. This site runs one family
+   throughout and separates roles by size, weight and tracking instead. */
+.pha-t-box   { font-family: var(--sans); font-weight: 600; font-size: 17px; letter-spacing: 0.01em; }
+.pha-t-lab   { font-family: var(--sans); font-weight: 500; font-size: 16px; }
+.pha-t-state { font-family: var(--sans); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+.pha-t-mini  { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: 0.06em; }
+
+/* ---- motion defaults ---- */
+.pha__scene .pha-mv { transition: transform 0.85s cubic-bezier(0.45, 0.05, 0.2, 1), opacity 0.6s ease; }
+.pha__scene .pha-fd { transition: opacity 0.55s ease; }
+.pha__scene .pha-draw { transition: stroke-dashoffset 1.3s ease 0.15s, opacity 0.4s ease; }
+
+/* ---- stage machine: every rule below keys off [data-stage] ---- */
+.pha-rnap { transform: translateX(0); }
+.pha__scene[data-stage="2"] .pha-rnap,
+.pha__scene[data-stage="3"] .pha-rnap { transform: translateX(56px); }
+
+.pha-repressor { transform: translate(0, 0) rotate(0deg); transform-origin: 230px 148px; }
+.pha__scene[data-stage="1"] .pha-repressor { transform: translate(46px, -74px) rotate(-11deg); }
+.pha__scene[data-stage="2"] .pha-repressor,
+.pha__scene[data-stage="3"] .pha-repressor { transform: translate(132px, -128px) rotate(-20deg); opacity: 0; }
+
+.pha-iptg { opacity: 0; }
+.pha__scene[data-stage="1"] .pha-iptg,
+.pha__scene[data-stage="2"] .pha-iptg,
+.pha__scene[data-stage="3"] .pha-iptg { opacity: 1; }
+
+.pha-blocked { opacity: 1; }
+.pha__scene[data-stage="1"] .pha-blocked { opacity: 0.35; }
+.pha__scene[data-stage="2"] .pha-blocked,
+.pha__scene[data-stage="3"] .pha-blocked { opacity: 0; }
+
+.pha-tx { opacity: 0; }
+.pha__scene[data-stage="2"] .pha-tx,
+.pha__scene[data-stage="3"] .pha-tx { opacity: 1; }
+.pha-txpath { stroke-dasharray: 230; stroke-dashoffset: 230; }
+.pha__scene[data-stage="2"] .pha-txpath,
+.pha__scene[data-stage="3"] .pha-txpath { stroke-dashoffset: 0; }
+
+.pha-mrna { stroke-dasharray: 330; stroke-dashoffset: 330; opacity: 0; }
+.pha__scene[data-stage="2"] .pha-mrna,
+.pha__scene[data-stage="3"] .pha-mrna { stroke-dashoffset: 0; opacity: 1; }
+
+.pha-particle {
+  opacity: 0.14; transform: scale(0.88); transform-origin: 150px 150px;
+  transition: transform 1s cubic-bezier(0.3, 1.3, 0.5, 1), opacity 0.8s ease;
+}
+.pha__scene[data-stage="3"] .pha-particle { opacity: 1; transform: scale(1); }
+.pha-spikes { opacity: 0; transition: opacity 0.7s ease 0.45s; }
+.pha__scene[data-stage="3"] .pha-spikes { opacity: 1; }
+.pha-ghost { opacity: 1; transition: opacity 0.4s ease; }
+.pha__scene[data-stage="3"] .pha-ghost { opacity: 0; }
+
+/* ---- rail ---- */
+.pha__rail { display: flex; flex-direction: column; gap: 12px; }
+.pha__progress { height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.pha__progress span { display: block; height: 100%; width: 0; background: var(--primary); }
+
+.pha__steps { display: flex; gap: 8px; flex-wrap: wrap; }
+.pha__step {
+  flex: 1 1 150px; min-width: 0; text-align: left; cursor: pointer;
+  background: transparent; border: 1px solid var(--line); border-radius: var(--r);
+  padding: 9px 11px; color: var(--muted); font-family: var(--sans); font-size: 13px;
+  display: flex; flex-direction: column; gap: 2px;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+.pha__step b {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+  color: var(--faint);
+}
+.pha__step em { font-style: normal; font-weight: 600; font-size: 14px; color: var(--fg); }
+.pha__step:hover { border-color: var(--line-strong); }
+.pha__step[aria-current="true"] {
+  border-color: rgba(74, 141, 222, 0.45);
+  background: rgba(74, 141, 222, 0.12);
+  color: var(--fg);
+}
+.pha__step[aria-current="true"] b { color: var(--primary); }
+.pha__step:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+.pha__controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.pha__controls .btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.pha__caption { font-size: 0.86rem; color: var(--muted); flex: 1 1 220px; min-width: 0; line-height: 1.55; }
+
+.pha__legend {
+  display: flex; flex-wrap: wrap; gap: 8px 16px;
+  border-top: 1px solid var(--line); padding-top: 14px;
+}
+.pha__key { display: flex; align-items: center; gap: 7px; font-size: 0.78rem; color: var(--muted); }
+.pha__key i { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.pha__key b { color: var(--fg); font-weight: 600; }
+
+.pha__foot { font-size: 0.76rem; color: var(--faint); letter-spacing: 0.02em; }
+
+/* The scene holds its current stage; only the tweening is dropped. The global
+   reduced-motion rule already zeroes durations, this guards the SVG explicitly. */
+@media (prefers-reduced-motion: reduce) {
+  .pha__scene * { transition: none !important; animation: none !important; }
+}
+
+@media (max-width: 620px) {
+  .pha__panel--circuit, .pha__panel--particle { flex: 1 1 100%; }
+  .pha__step { flex: 1 1 100%; }
+  .pha__caption { flex: 1 1 100%; }
+}
 
 /* =================== 02 · TECHNOLOGY =================== */
 .techgrid { grid-template-columns: repeat(2, 1fr); }

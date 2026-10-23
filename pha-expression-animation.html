@@ -1,0 +1,431 @@
+<title>IPTG-Induced PHA Assembly</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+/* Layout: a two-panel bench diagram — gene circuit left, particle right — with a
+   stage rail beneath it. Everything is driven by [data-stage] on #anim.          */
+:root{
+  --bg:#f6f7f3;
+  --surface:#ffffff;
+  --ink:#1b2419;
+  --muted:#5e6b59;
+  --line:#dbe0d4;
+  --accent:#2f7d3a;
+  --on-accent:#f7fff6;
+  --dna:#e2efdc;
+  --gene:#2f8f45;
+  --gene-ink:#ffffff;
+  --rnap:#c3daf3;
+  --rnap-ink:#1e3a56;
+  --repressor:#3a3f86;
+  --iptg:#e0a233;
+  --stop:#cc3b33;
+  --rna:#b4632a;
+  --core:#7d4a35;
+  --lipid:#78b4e2;
+  --phac:#e08427;
+  --link:#e8c547;
+  --peir:#c0392b;
+  --misc:#5f9e55;
+  --ff-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --ff-body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ff-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11150f;
+    --surface:#1a2017;
+    --ink:#e9efe4;
+    --muted:#9aa894;
+    --line:#2d3728;
+    --accent:#6fc47d;
+    --on-accent:#08140b;
+    --dna:#26331f;
+    --gene:#3da257;
+    --gene-ink:#08140b;
+    --rnap:#2b4461;
+    --rnap-ink:#cfe3f8;
+    --repressor:#6a71c8;
+    --iptg:#eeb552;
+    --stop:#ef6a5f;
+    --rna:#dd9a5e;
+    --core:#a2674b;
+    --lipid:#5f9ccb;
+    --phac:#ef9a43;
+    --link:#f0d264;
+    --peir:#dd5c4d;
+    --misc:#72b667;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11150f;
+  --surface:#1a2017;
+  --ink:#e9efe4;
+  --muted:#9aa894;
+  --line:#2d3728;
+  --accent:#6fc47d;
+  --on-accent:#08140b;
+  --dna:#26331f;
+  --gene:#3da257;
+  --gene-ink:#08140b;
+  --rnap:#2b4461;
+  --rnap-ink:#cfe3f8;
+  --repressor:#6a71c8;
+  --iptg:#eeb552;
+  --stop:#ef6a5f;
+  --rna:#dd9a5e;
+  --core:#a2674b;
+  --lipid:#5f9ccb;
+  --phac:#ef9a43;
+  --link:#f0d264;
+  --peir:#dd5c4d;
+  --misc:#72b667;
+  color-scheme:dark;
+}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--ff-body);line-height:1.55}
+
+.wrap{
+  max-width:1060px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:28px 36px;
+  display:flex;flex-direction:column;gap:20px;
+}
+
+.masthead{display:flex;flex-direction:column;gap:6px}
+.eyebrow{
+  font-family:var(--ff-mono);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+}
+h1{
+  font-family:var(--ff-display);font-weight:700;font-size:clamp(22px,3.4vw,30px);
+  margin:0;letter-spacing:-.015em;text-wrap:balance;
+}
+.standfirst{margin:0;color:var(--muted);font-size:15px;max-width:62ch}
+
+.stage-box{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:18px 16px 14px;display:flex;flex-direction:column;gap:14px;
+}
+.scene{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.panel{min-width:0}
+.panel-circuit{flex:1 1 440px}
+.panel-particle{flex:1 1 230px;max-width:320px;margin-inline:auto}
+svg{display:block;width:100%;height:auto;max-width:100%;overflow:visible}
+
+/* ---- shared svg text ---- */
+.t-box{font-family:var(--ff-mono);font-weight:600;font-size:17px}
+.t-lab{font-family:var(--ff-body);font-weight:500;font-size:16px}
+.t-state{font-family:var(--ff-display);font-weight:600;font-size:19px}
+.t-mini{font-family:var(--ff-mono);font-weight:600;font-size:13px;letter-spacing:.04em}
+
+/* ---- motion defaults ---- */
+#anim .mv{transition:transform .85s cubic-bezier(.45,.05,.2,1),opacity .6s ease}
+#anim .fd{transition:opacity .55s ease}
+#anim .draw{transition:stroke-dashoffset 1.3s ease .15s,opacity .4s ease}
+
+/* ---- element states ---- */
+.rnap-body{fill:var(--rnap)}
+.rnap-txt{fill:var(--rnap-ink)}
+#rnap{transform:translateX(0)}
+#anim[data-stage="2"] #rnap,#anim[data-stage="3"] #rnap{transform:translateX(56px)}
+
+.rep-body{fill:var(--repressor)}
+#repressor{transform:translate(0,0) rotate(0deg);transform-origin:230px 148px}
+#anim[data-stage="1"] #repressor{transform:translate(46px,-74px) rotate(-11deg)}
+#anim[data-stage="2"] #repressor,#anim[data-stage="3"] #repressor{
+  transform:translate(132px,-128px) rotate(-20deg);opacity:0
+}
+#iptg{opacity:0}
+#anim[data-stage="1"] #iptg,#anim[data-stage="2"] #iptg,#anim[data-stage="3"] #iptg{opacity:1}
+
+#blocked{opacity:1}
+#anim[data-stage="1"] #blocked{opacity:.35}
+#anim[data-stage="2"] #blocked,#anim[data-stage="3"] #blocked{opacity:0}
+
+#txGroup{opacity:0}
+#anim[data-stage="2"] #txGroup,#anim[data-stage="3"] #txGroup{opacity:1}
+#txPath{stroke-dasharray:230;stroke-dashoffset:230}
+#anim[data-stage="2"] #txPath,#anim[data-stage="3"] #txPath{stroke-dashoffset:0}
+
+#mrna{stroke-dasharray:330;stroke-dashoffset:330;opacity:0}
+#anim[data-stage="2"] #mrna,#anim[data-stage="3"] #mrna{stroke-dashoffset:0;opacity:1}
+
+#particle{opacity:.14;transform:scale(.88);transform-origin:150px 150px;
+  transition:transform 1s cubic-bezier(.3,1.3,.5,1),opacity .8s ease}
+#anim[data-stage="3"] #particle{opacity:1;transform:scale(1)}
+#spikes{opacity:0;transition:opacity .7s ease .45s}
+#anim[data-stage="3"] #spikes{opacity:1}
+.ghost-note{opacity:1;transition:opacity .4s ease}
+#anim[data-stage="3"] .ghost-note{opacity:0}
+
+/* ---- rail ---- */
+.rail{display:flex;flex-direction:column;gap:10px}
+.progress{height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:var(--accent)}
+.steps{display:flex;gap:8px;flex-wrap:wrap}
+.step{
+  flex:1 1 150px;min-width:0;text-align:left;cursor:pointer;
+  background:transparent;border:1px solid var(--line);border-radius:10px;
+  padding:9px 11px;color:var(--muted);font-family:var(--ff-body);font-size:13px;
+  display:flex;flex-direction:column;gap:2px;transition:border-color .3s,color .3s,background .3s;
+}
+.step b{font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.step em{font-style:normal;font-weight:600;font-size:14px;color:var(--ink)}
+.step[aria-current="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}
+.step:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{
+  font-family:var(--ff-body);font-weight:600;font-size:13px;cursor:pointer;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  border-radius:8px;padding:7px 14px;transition:border-color .2s,background .2s;
+}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.caption{font-size:14px;color:var(--muted);flex:1 1 220px;min-width:0}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;border-top:1px solid var(--line);padding-top:12px}
+.key{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+.key i{width:11px;height:11px;border-radius:3px;flex:none}
+.key b{color:var(--ink);font-weight:600}
+
+.foot{font-size:12.5px;color:var(--muted);font-family:var(--ff-mono)}
+
+@media (prefers-reduced-motion:reduce){
+  #anim *{transition:none!important;animation:none!important}
+}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">TacklEmission · construct pPHB01</div>
+    <h1>Inducible expression of the phaA–phaB–phaC–peiR operon</h1>
+    <p class="standfirst">A <span style="font-family:var(--ff-mono)">lac</span>-regulated operon in <em>E. coli</em> BL21 stays silent until IPTG lifts the repressor. Transcription then yields the PHA biosynthesis enzymes, which build a bionanoparticle displaying the PeiR lytic enzyme on its surface.</p>
+  </header>
+
+  <section class="stage-box">
+    <div class="scene" id="anim" data-stage="0">
+
+      <!-- ============ PANEL A: gene circuit ============ -->
+      <div class="panel panel-circuit">
+        <svg viewBox="0 0 600 300" role="img" aria-labelledby="circuitTitle">
+          <title id="circuitTitle">lac-regulated phaA-phaB-phaC-peiR operon with RNA polymerase and repressor</title>
+          <defs>
+            <marker id="ahGrey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+            </marker>
+            <marker id="ahGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <!-- RNA polymerase -->
+          <g id="rnap" class="mv">
+            <ellipse class="rnap-body" cx="106" cy="196" rx="80" ry="56"/>
+            <text class="t-lab rnap-txt" x="106" y="190" text-anchor="middle">RNA</text>
+            <text class="t-lab rnap-txt" x="106" y="210" text-anchor="middle">polymerase</text>
+          </g>
+
+          <!-- construct -->
+          <g>
+            <rect x="30" y="172" width="142" height="48" fill="var(--dna)" stroke="var(--gene)" stroke-width="2"/>
+            <text class="t-box" x="101" y="202" text-anchor="middle" fill="var(--ink)">Promoter</text>
+
+            <rect x="172" y="172" width="112" height="48" fill="var(--dna)" stroke="var(--gene)" stroke-width="2"/>
+            <text class="t-box" x="228" y="202" text-anchor="middle" fill="var(--ink)">Operator</text>
+
+            <rect x="284" y="172" width="68" height="48" fill="var(--gene)" stroke="var(--gene)" stroke-width="2"/>
+            <text class="t-box" x="318" y="202" text-anchor="middle" fill="var(--gene-ink)">phaA</text>
+
+            <rect x="352" y="172" width="68" height="48" fill="var(--gene)" stroke="var(--gene)" stroke-width="2"/>
+            <text class="t-box" x="386" y="202" text-anchor="middle" fill="var(--gene-ink)">phaB</text>
+
+            <rect x="420" y="172" width="150" height="48" fill="var(--gene)" stroke="var(--gene)" stroke-width="2"/>
+            <text class="t-box" x="495" y="202" text-anchor="middle" fill="var(--gene-ink)">phaC-peiR</text>
+          </g>
+
+          <!-- blocked state -->
+          <g id="blocked" class="fd">
+            <path d="M288,166 L288,120 L470,120" fill="none" stroke="var(--muted)" stroke-width="4"
+                  stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahGrey)"/>
+            <text class="t-state" x="378" y="78" text-anchor="middle" fill="var(--stop)">No transcription</text>
+            <g stroke="var(--stop)" stroke-width="7" stroke-linecap="round">
+              <line x1="365" y1="107" x2="391" y2="133"/>
+              <line x1="391" y1="107" x2="365" y2="133"/>
+            </g>
+          </g>
+
+          <!-- transcription state -->
+          <g id="txGroup" class="fd">
+            <path id="txPath" class="draw" d="M288,166 L288,120 L470,120" fill="none" stroke="var(--accent)"
+                  stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ahGreen)"/>
+            <text class="t-state" x="378" y="78" text-anchor="middle" fill="var(--accent)">Transcription</text>
+          </g>
+
+          <!-- mRNA transcript -->
+          <path id="mrna" class="draw" fill="none" stroke="var(--rna)" stroke-width="4" stroke-linecap="round"
+                d="M292,248 q16,-13 32,0 t32,0 t32,0 t32,0 t32,0 t32,0 t32,0 t32,0"/>
+          <text class="t-mini" x="292" y="278" fill="var(--rna)" opacity="0" id="mrnaLab">mRNA</text>
+
+          <!-- repressor + IPTG -->
+          <g id="repressor" class="mv">
+            <rect class="rep-body" x="178" y="130" width="104" height="38" rx="9"/>
+            <text class="t-lab" x="230" y="155" text-anchor="middle" fill="#fff">Repressor</text>
+            <g id="iptg" class="fd">
+              <circle cx="288" cy="166" r="13" fill="var(--iptg)" stroke="var(--surface)" stroke-width="2"/>
+              <text class="t-mini" x="306" y="171" fill="var(--ink)">IPTG</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- ============ PANEL B: bionanoparticle ============ -->
+      <div class="panel panel-particle">
+        <svg viewBox="0 0 300 300" role="img" aria-labelledby="partTitle">
+          <title id="partTitle">PHA bionanoparticle displaying PeiR on its surface</title>
+          <g id="particle">
+            <g id="lipids"></g>
+            <ellipse cx="150" cy="150" rx="56" ry="47" fill="var(--core)"/>
+            <g stroke="var(--surface)" stroke-width="2" fill="none" opacity=".35">
+              <path d="M118,142 q16,-14 32,2 t32,-4"/>
+              <path d="M114,158 q18,12 36,-4 t34,8"/>
+              <path d="M128,170 q14,-10 28,4 t26,-6"/>
+            </g>
+            <g id="spikes"></g>
+          </g>
+          <text class="t-mini ghost-note" x="150" y="288" text-anchor="middle" fill="var(--muted)">awaiting induction</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ============ rail ============ -->
+    <div class="rail">
+      <div class="progress"><span id="bar"></span></div>
+      <div class="steps" id="steps"></div>
+      <div class="controls">
+        <button class="btn btn-primary" id="play" type="button">Pause</button>
+        <button class="btn" id="restart" type="button">Restart</button>
+        <p class="caption" id="caption"></p>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span class="key"><i style="background:var(--core)"></i><b>PHA core</b></span>
+      <span class="key"><i style="background:var(--lipid)"></i><b>Phospholipid layer</b></span>
+      <span class="key"><i style="background:var(--phac)"></i><b>PhaC synthase</b></span>
+      <span class="key"><i style="background:var(--peir)"></i><b>PeiR</b> C39 peptidase</span>
+      <span class="key"><i style="background:var(--link)"></i><b>PMBRs</b> cell-wall binding</span>
+      <span class="key"><i style="background:var(--misc)"></i><b>Other proteins</b></span>
+    </div>
+  </section>
+
+  <p class="foot">phaA · β-ketothiolase — phaB · acetoacetyl-CoA reductase — phaC · PHA synthase (C-terminal PeiR fusion)</p>
+</div>
+
+<script>
+(function(){
+  var NS = "http://www.w3.org/2000/svg";
+  var anim = document.getElementById("anim");
+
+  /* ---------- build the particle surface ---------- */
+  var lipids = "";
+  for (var k = 0; k < 44; k++){
+    var a = (k / 44) * Math.PI * 2;
+    var rx = 62 + (k % 2 ? 6 : 0), ry = 53 + (k % 2 ? 6 : 0);
+    var x = 150 + Math.cos(a) * rx, y = 150 + Math.sin(a) * ry;
+    var fill = (k % 11 === 0) ? "var(--misc)" : "var(--lipid)";
+    lipids += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="7" fill="' + fill + '"/>';
+  }
+  document.getElementById("lipids").innerHTML = lipids;
+
+  var spikes = "";
+  for (var s = 0; s < 16; s++){
+    var ang = s * (360 / 16);
+    spikes +=
+      '<g transform="rotate(' + ang + ' 150 150) translate(150 150)">' +
+        '<rect x="-9" y="-92" width="18" height="30" rx="6" fill="var(--phac)"/>' +
+        '<path d="M0,-92 q-6,-6 0,-12 q6,-6 0,-12" fill="none" stroke="var(--link)" stroke-width="5" stroke-linecap="round"/>' +
+        '<path d="M-9,-122 a10,10 0 1,1 17,5" fill="none" stroke="var(--peir)" stroke-width="6" stroke-linecap="round"/>' +
+      '</g>';
+  }
+  document.getElementById("spikes").innerHTML = spikes;
+
+  /* ---------- stages ---------- */
+  var stages = [
+    { tag:"Stage 01", name:"Repressed",   dur:3200,
+      text:"The repressor occupies the operator. RNA polymerase binds the promoter but cannot clear it, so the operon stays silent." },
+    { tag:"Stage 02", name:"Induction",   dur:3200,
+      text:"IPTG binds the repressor as a gratuitous inducer, changing its shape so it releases the operator DNA." },
+    { tag:"Stage 03", name:"Transcription", dur:3600,
+      text:"With the operator free, polymerase reads through phaA, phaB and the phaC-peiR fusion into a single transcript." },
+    { tag:"Stage 04", name:"Assembly",    dur:4600,
+      text:"PhaA and PhaB feed acetyl-CoA to PhaC, which polymerises PHA and stays anchored to the granule, displaying PeiR on the surface." }
+  ];
+
+  var stepsEl = document.getElementById("steps");
+  stages.forEach(function(st, idx){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "step";
+    b.innerHTML = "<b>" + st.tag + "</b><em>" + st.name + "</em>";
+    b.addEventListener("click", function(){ goTo(idx); playing = false; syncPlay(); });
+    stepsEl.appendChild(b);
+  });
+
+  var bar = document.getElementById("bar");
+  var caption = document.getElementById("caption");
+  var playBtn = document.getElementById("play");
+  var mrnaLab = document.getElementById("mrnaLab");
+
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var current = 0, playing = !reduced, start = performance.now(), raf = null;
+
+  function render(){
+    anim.dataset.stage = current;
+    caption.textContent = stages[current].text;
+    mrnaLab.setAttribute("opacity", current >= 2 ? "1" : "0");
+    Array.prototype.forEach.call(stepsEl.children, function(el, i){
+      el.setAttribute("aria-current", i === current ? "true" : "false");
+    });
+  }
+
+  function goTo(n){
+    current = ((n % stages.length) + stages.length) % stages.length;
+    start = performance.now();
+    bar.style.width = "0%";
+    render();
+  }
+
+  function syncPlay(){
+    playBtn.textContent = playing ? "Pause" : "Play";
+    if (playing && !raf) raf = requestAnimationFrame(tick);
+  }
+
+  function tick(now){
+    raf = null;
+    if (!playing) return;
+    var p = (now - start) / stages[current].dur;
+    if (p >= 1){ goTo(current + 1); }
+    else { bar.style.width = (p * 100).toFixed(2) + "%"; }
+    raf = requestAnimationFrame(tick);
+  }
+
+  playBtn.addEventListener("click", function(){
+    playing = !playing;
+    start = performance.now();
+    syncPlay();
+  });
+  document.getElementById("restart").addEventListener("click", function(){
+    goTo(0); playing = true; syncPlay();
+  });
+
+  render();
+  syncPlay();
+})();
+</script>
